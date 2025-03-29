@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://to42viyhpa1x"]
+
+[ext_resource type="Texture2D" uid="uid://b3q6xcqpujs4m" path="res://Assets/png/1/Asset 21.png" id="1_mdsv2"]
+[ext_resource type="Texture2D" uid="uid://2yun56kfjrs0" path="res://Assets/png/1/Asset 22.png" id="2_7q5xi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkupc"]
+atlas = ExtResource("1_mdsv2")
+region = Rect2(108, 0, 215, 557)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnw7h"]
+atlas = ExtResource("2_7q5xi")
+region = Rect2(132, 0, 215, 560)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gfl6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkupc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnw7h")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl8ok"]
+atlas = ExtResource("1_mdsv2")
+region = Rect2(0, 0, 108, 557)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7bwg"]
+atlas = ExtResource("2_7q5xi")
+region = Rect2(0, 0, 108, 560)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ci8s8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl8ok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7bwg")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}]
+
+[node name="CastleGate" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(1, 0)
+scale = Vector2(0.4, 0.4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(50, 0)
+sprite_frames = SubResource("SpriteFrames_5gfl6")
+autoplay = "default"
+offset = Vector2(0, -231.515)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-110, -102.5)
+sprite_frames = SubResource("SpriteFrames_ci8s8")
+autoplay = "default"
+offset = Vector2(0, -129.015)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(4.76837e-07, 35)
+polygon = PackedVector2Array(-145, -160, -127.5, -117.5, -100, -72.5, -100, -37.5, -67.5, 10, 145, -5.00003, 145, -35, 135, -65, 127.5, -65, 57.5, -170)

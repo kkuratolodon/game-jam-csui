@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://sp1jlxotx3ek"]
+
+[ext_resource type="Texture2D" uid="uid://tb0nrcynjus4" path="res://Assets/Field Tileset/2 Objects/9 Bush/2.png" id="1_7gvrk"]
+[ext_resource type="Texture2D" uid="uid://bhj7jr5li8wl7" path="res://Assets/Field Tileset/2 Objects/1 Shadow/5.png" id="2_j1bl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5q1o"]
+size = Vector2(33.4405, 5.14469)
+
+[node name="Bush" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Bush" type="Sprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(1.555, 1.555)
+texture = ExtResource("1_7gvrk")
+offset = Vector2(0, -11.925)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.999998, -4)
+scale = Vector2(1.555, 1.555)
+shape = SubResource("RectangleShape2D_p5q1o")
+
+[node name="5" type="Sprite2D" parent="."]
+position = Vector2(-1, -8)
+texture = ExtResource("2_j1bl0")

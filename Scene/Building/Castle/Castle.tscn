@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://eqmkqq56caru"]
+
+[ext_resource type="Script" path="res://Scene/Building/Castle/castle.gd" id="1_b62ub"]
+[ext_resource type="PackedScene" uid="uid://to42viyhpa1x" path="res://Scene/Building/Castle/castle_gate.tscn" id="1_xbkh6"]
+[ext_resource type="PackedScene" uid="uid://cvciefiakvauj" path="res://Scene/Building/Castle/castle_high_tower.tscn" id="2_h7hxi"]
+[ext_resource type="PackedScene" uid="uid://dpet3alel0rcm" path="res://Scene/Building/Castle/castle_medium_tower.tscn" id="3_mthej"]
+[ext_resource type="PackedScene" uid="uid://cvc3qjqdbk2xy" path="res://Scene/Building/Castle/castle_wall_back.tscn" id="4_647h3"]
+[ext_resource type="PackedScene" uid="uid://crj6fm56w8ica" path="res://Scene/Building/Castle/castle_wall_front.tscn" id="5_r2c8t"]
+[ext_resource type="PackedScene" uid="uid://u6t4wthhdvkc" path="res://Scene/Building/Castle/castle_small_tower.tscn" id="6_dpvvk"]
+[ext_resource type="Script" path="res://Scene/Building/Castle/castle_animation.gd" id="8_g2u1w"]
+
+[node name="Castle" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(-532, 11)
+script = ExtResource("1_b62ub")
+
+[node name="CastleGate" parent="." instance=ExtResource("1_xbkh6")]
+position = Vector2(89, 93)
+
+[node name="CastleHighTower" parent="." instance=ExtResource("2_h7hxi")]
+position = Vector2(254, 83)
+
+[node name="CastleMediumTower" parent="." instance=ExtResource("3_mthej")]
+position = Vector2(174, 134)
+
+[node name="CastleMediumTower2" parent="." instance=ExtResource("3_mthej")]
+position = Vector2(108, 45)
+
+[node name="CastleGateBack3" parent="." instance=ExtResource("4_647h3")]
+position = Vector2(400, 103)
+rotation = 3.14159
+scale = Vector2(0.4, -0.4)
+
+[node name="CastleGateBack2" parent="." instance=ExtResource("4_647h3")]
+position = Vector2(294, 103)
+rotation = 3.14159
+scale = Vector2(0.4, -0.4)
+
+[node name="CastleGateBack" parent="." instance=ExtResource("4_647h3")]
+position = Vector2(198, 103)
+rotation = -3.14159
+scale = Vector2(0.4, -0.4)
+
+[node name="CastleSmallTower" parent="." instance=ExtResource("5_r2c8t")]
+position = Vector2(97, 45)
+
+[node name="CastleSmallTower2" parent="." instance=ExtResource("5_r2c8t")]
+position = Vector2(205, 45)
+
+[node name="CastleSmallTower3" parent="." instance=ExtResource("5_r2c8t")]
+position = Vector2(311, 47)
+
+[node name="CastleSmallTower4" parent="." instance=ExtResource("6_dpvvk")]
+position = Vector2(400, 28)
+
+[node name="CastleSmallTower5" parent="." instance=ExtResource("6_dpvvk")]
+position = Vector2(492, 123)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(29, 46, 57, 103, 127, 110, 118, 128, 219, 131, 212, 103, 450, 109, 443, 127, 543, 119, 533, 98, 442, -17, 67, -27, 70, 21, 38, 39)
+
+[node name="CastleAnimation" type="Node2D" parent="."]
+script = ExtResource("8_g2u1w")

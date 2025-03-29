@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvciefiakvauj"]
+
+[ext_resource type="Texture2D" uid="uid://6q8krsf5lde2" path="res://Assets/png/1/Asset 27.png" id="1_66pft"]
+[ext_resource type="Texture2D" uid="uid://bk6poc5seefce" path="res://Assets/png/1/Asset 28.png" id="2_6ewif"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gfl6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_66pft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6ewif")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}]
+
+[node name="CastleHighTower" type="StaticBody2D"]
+scale = Vector2(0.4, 0.4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5gfl6")
+autoplay = "default"
+offset = Vector2(0, -452.475)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 27.5)
+polygon = PackedVector2Array(-125, -30, -86, -19, 0, -5, 81, -17, 125, -30, 90, -95, -82.5, -92.5)
