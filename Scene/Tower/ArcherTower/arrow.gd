@@ -18,9 +18,9 @@ var curve_height: float = 0.5
 var path_progress: float = 0.0
 var path_start: Vector2
 var path_control: Vector2
-func init(new_target: Node2D, spawn_position: Vector2 = Vector2.ZERO) -> Area2D:
+func init(new_target: Node2D, new_damage: int, spawn_position: Vector2 = Vector2.ZERO) -> Area2D:
     target = new_target
-    
+    damage = new_damage
     # Set proper position first if provided
     if spawn_position != Vector2.ZERO:
         global_position = spawn_position
@@ -38,7 +38,7 @@ func init(new_target: Node2D, spawn_position: Vector2 = Vector2.ZERO) -> Area2D:
         
         # Clamp distance within range to calculate travel time between 0.8 and 1.5
         var normalized_distance = clamp((distance_to_target - min_distance) / (max_distance - min_distance), 0.0, 1.0)
-        travel_time = lerp(0.8, 1.5, normalized_distance)
+        travel_time = lerp(0.75, 1.25, normalized_distance)
         
         predict_future_position()
     return self

@@ -9,7 +9,6 @@ var is_move_mode_active: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     # Add self to towers group for easier detection
-    add_to_group("Towers")
     add_to_group("BaseTower")
     
     $TowerOptions/Container/ArcherPanel/ArcherButton.pressed.connect(_on_archer_button_pressed)

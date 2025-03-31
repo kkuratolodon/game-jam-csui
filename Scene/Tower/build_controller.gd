@@ -8,7 +8,7 @@ var base_tower_scene: PackedScene
 var valid_placement: bool = false
 # Add cooldown variables
 var can_build: bool = true
-var build_cooldown: float = 0.5  # 1 second cooldown
+var build_cooldown: float = 0.1  # 1 second cooldown
 var current_cooldown: float = 0.0
 # Add toggle cooldown variables
 var can_toggle: bool = true
@@ -58,9 +58,8 @@ func _process(delta: float) -> void:
         current_toggle_cooldown -= delta
         if current_toggle_cooldown <= 0:
             can_toggle = true
-    
     # Only toggle if the cooldown allows it
-    if (Input.is_action_just_pressed("ui_build") or Input.is_key_pressed(KEY_B)) and can_toggle:
+    if (Input.is_key_pressed(KEY_B)) and can_toggle:
         # If we're not already in build mode, ensure we're entering it
         if !is_build_mode:
             # If move mode is active, exit it first
@@ -110,8 +109,9 @@ func check_placement_validity() -> void:
     valid_placement = true
     
     # Get all towers in the scene
-    var towers_in_scene = get_tree().get_nodes_in_group("Towers")
-    
+    var base_towers = get_tree().get_nodes_in_group("BaseTower")
+    var towers = get_tree().get_nodes_in_group("Towers")
+    var towers_in_scene = base_towers + towers
     # Set minimum allowed distance between towers
     var tower_radius = 45.0  # 32px radius as specified
     var min_distance = tower_radius * 2  # Need 2 times the radius (one for each tower)

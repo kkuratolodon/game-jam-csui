@@ -535,7 +535,6 @@ script = ExtResource("1_3emgw")
 texture = ExtResource("6_lvo18")
 offset = Vector2(0, -6.49)
 hframes = 6
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -6,10 +6,23 @@ extends Node2D
 @onready var animation_tree := $AnimationTree
 @onready var archer_gunpoint := $ArcherAttack
 @onready var area_2d := $Area2D
+@onready var collision : CollisionShape2D = $Area2D/CollisionShape2D
 
+var attack_range = 1000
 var nearest_enemy
 var enemies_in_area = []
 var can_attack : bool
+var damage: int
+var attack_speed: float = 1.0
+
+func _ready():
+    print("ready")
+    archer_gunpoint.damage = damage
+    archer_gunpoint.attack_speed = attack_speed
+    var unique_shape = collision.shape.duplicate()
+    unique_shape.radius = attack_range
+    unique_shape.height = attack_range*2.5
+    collision.shape = unique_shape
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

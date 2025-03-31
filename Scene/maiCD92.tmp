@@ -714,25 +714,6 @@ tile_set = SubResource("TileSet_d8ddj")
 [node name="Enemy" parent="Enemies" instance=ExtResource("5_6cjr8")]
 position = Vector2(612, 959)
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("5_6cjr8")]
-position = Vector2(511, 1147)
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource("5_6cjr8")]
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource("5_6cjr8")]
-position = Vector2(557, 1090)
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource("5_6cjr8")]
-position = Vector2(350, 509)
-
-[node name="Enemy6" parent="Enemies" instance=ExtResource("5_6cjr8")]
-
-[node name="Enemy7" parent="Enemies" instance=ExtResource("5_6cjr8")]
-position = Vector2(338, 891)
-
-[node name="Enemy8" parent="Enemies" instance=ExtResource("5_6cjr8")]
-position = Vector2(232, 533)
-
 [node name="Target" type="Node2D" parent="."]
 position = Vector2(944, 810)
 
@@ -744,6 +725,3 @@ script = ExtResource("9_qhi5u")
 
 [node name="MergeController" type="Node2D" parent="."]
 script = ExtResource("10_sm5l1")
-
-[node name="Enemy" parent="." instance=ExtResource("5_6cjr8")]
-position = Vector2(608, 988)

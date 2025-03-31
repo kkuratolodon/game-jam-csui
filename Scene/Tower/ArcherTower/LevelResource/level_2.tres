@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ArcherTowerState" load_steps=2 format=3 uid="uid://cxgabdqlw8xke"]
+
+[ext_resource type="Script" path="res://Scene/Tower/ArcherTower/archer_tower_state.gd" id="1_ecmym"]
+
+[resource]
+script = ExtResource("1_ecmym")
+level = 2
+attack_damage = 50
+attack_speed = 1.1
+attack_range = 80.0
+archer_positions = Array[Vector2]([Vector2(0, -14)])
+upgrade_duration = 1.4
+has_roof = false

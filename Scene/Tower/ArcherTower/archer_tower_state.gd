@@ -1,24 +1,34 @@
-extends RefCounted
 class_name ArcherTowerState
+extends Resource
 
-# Properties yang berubah berdasarkan level
-var attack_damage: int = 0
-var attack_speed: float = 0
-var attack_range: float = 0
-var archer_count: int = 1
+@export var level: int = 1
+@export var attack_damage: int = 5
+@export var attack_speed: float = 1.0
+@export var attack_range: float = 100.0
+@export var archer_positions: Array[Vector2] = [Vector2(0, -5)]
+@export var upgrade_duration: float = 1.0
+@export var roof_position: Vector2 = Vector2.ZERO
 
-# Method yang akan diimplementasikan oleh setiap state
-func enter_state(tower) -> void:
+func enter_state(tower: ArcherTower) -> void:
+    tower.clear_archers()
+    var has_roof = roof_position != Vector2.ZERO
+    tower.roof.position = roof_position
+    tower.roof.visible = has_roof
+    if has_roof:
+        tower.roof.play("Tier%d-Upgrade" % (level-1))
+    tower.is_upgrading = true
+    tower.anim.play("Tier%d-Upgrade" % (level-1))
+    await tower.get_tree().create_timer(upgrade_duration).timeout
+    for position in archer_positions:
+        tower.spawn_archer(position)
+    print(level)
+    tower.is_upgrading = false
+    tower.anim.play("Tier%d-Idle" % (level))
+    if has_roof:
+        tower.roof.play("Tier%d-Idle" % (level))
+        
+func exit_state(_tower) -> void:
     pass
     
-func exit_state(tower) -> void:
+func update(_tower, _delta: float) -> void:
     pass
-    
-func update(tower, delta: float) -> void:
-    pass
-    
-func get_level() -> int:
-    return 0
-    
-func get_upgrade_cost() -> int:
-    return 0

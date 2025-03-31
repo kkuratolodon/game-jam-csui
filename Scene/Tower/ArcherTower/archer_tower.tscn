@@ -1,9 +1,26 @@
-[gd_scene load_steps=16 format=3 uid="uid://sewf2i1lnfak"]
+[gd_scene load_steps=49 format=3 uid="uid://sewf2i1lnfak"]
 
 [ext_resource type="Script" path="res://Scene/Tower/ArcherTower/archer_tower.gd" id="1_8cn48"]
 [ext_resource type="Texture2D" uid="uid://b8kec85egdvl8" path="res://Assets/Towers/ArcherTower/1 Upgrade/1.png" id="1_uynqo"]
 [ext_resource type="Texture2D" uid="uid://dgauopevrik3h" path="res://Assets/Towers/ArcherTower/2 Idle/1.png" id="3_4w3et"]
 [ext_resource type="PackedScene" uid="uid://cp11q43lj00b6" path="res://Scene/Tower/ArcherTower/archer.tscn" id="3_epgd1"]
+[ext_resource type="Script" path="res://Scene/Tower/ArcherTower/archer_tower_state.gd" id="3_vd8oo"]
+[ext_resource type="Resource" uid="uid://23eei7aftnau" path="res://Scene/Tower/ArcherTower/LevelResource/level_1.tres" id="4_h57bm"]
+[ext_resource type="Resource" uid="uid://cxgabdqlw8xke" path="res://Scene/Tower/ArcherTower/LevelResource/level_2.tres" id="5_3572s"]
+[ext_resource type="Resource" uid="uid://ch4am6olhh5s1" path="res://Scene/Tower/ArcherTower/LevelResource/level_3.tres" id="6_0vtom"]
+[ext_resource type="Resource" uid="uid://8y7mlfu7q8km" path="res://Scene/Tower/ArcherTower/LevelResource/level_4.tres" id="7_4e3kn"]
+[ext_resource type="Texture2D" uid="uid://45h7gyny0v10" path="res://Assets/Towers/ArcherTower/1 Upgrade/2.png" id="7_8xgfg"]
+[ext_resource type="Resource" uid="uid://17iu74h1dgm5" path="res://Scene/Tower/ArcherTower/LevelResource/level_5.tres" id="8_31oby"]
+[ext_resource type="Resource" uid="uid://djsqliawx31dk" path="res://Scene/Tower/ArcherTower/LevelResource/level_6.tres" id="9_8f34c"]
+[ext_resource type="Texture2D" uid="uid://cmky5faxogac5" path="res://Assets/Towers/ArcherTower/2 Idle/2.png" id="9_g1ndr"]
+[ext_resource type="Texture2D" uid="uid://chfn3rslaajf8" path="res://Assets/Towers/ArcherTower/1 Upgrade/3.png" id="10_pbbuu"]
+[ext_resource type="Texture2D" uid="uid://c4rmair46kn3b" path="res://Assets/Towers/ArcherTower/1 Upgrade/4.png" id="11_n8jxk"]
+[ext_resource type="Texture2D" uid="uid://dndk3habme408" path="res://Assets/Towers/ArcherTower/2 Idle/4.png" id="12_4smbu"]
+[ext_resource type="Texture2D" uid="uid://b4eusjt0ejbn6" path="res://Assets/Towers/ArcherTower/2 Idle/3.png" id="13_ncv0x"]
+[ext_resource type="Texture2D" uid="uid://cctsi3jy4bssk" path="res://Assets/Towers/ArcherTower/1 Upgrade/5.png" id="16_77eoy"]
+[ext_resource type="Texture2D" uid="uid://dlvcfr318h0sj" path="res://Assets/Towers/ArcherTower/2 Idle/5.png" id="17_ywsqv"]
+[ext_resource type="Texture2D" uid="uid://c1kojv3gll8r7" path="res://Assets/Towers/ArcherTower/1 Upgrade/6.png" id="18_67fiu"]
+[ext_resource type="Texture2D" uid="uid://4j64h6dnb4uj" path="res://Assets/Towers/ArcherTower/2 Idle/6.png" id="19_kmnew"]
 
 [sub_resource type="Animation" id="Animation_tt04e"]
 length = 0.001
@@ -211,6 +228,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_csjk2"]
 resource_name = "Tier1-Upgrade"
+length = 1.3333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -221,7 +239,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_4w3et")]
+"values": [ExtResource("7_8xgfg")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -233,7 +251,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -254,10 +272,483 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_6j66m"]
+resource_name = "Tier2-Idle"
+length = 1.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [ExtResource("9_g1ndr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3333, 0.6667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1tbq0"]
+resource_name = "Tier2-Upgrade"
+length = 1.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_pbbuu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_hgwfn"]
+resource_name = "Tier3-Idle"
+length = 1.3333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_ncv0x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3333, 0.6667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_0pepy"]
+resource_name = "Tier3-Upgrade"
+length = 1.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_n8jxk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_yi4qy"]
+resource_name = "Tier4-Idle"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_4smbu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.7, 0.933333, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_tfyl5"]
+resource_name = "Tier4-Upgrade"
+length = 1.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_77eoy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_fvacx"]
+resource_name = "Tier5-Idle"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_ywsqv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.7, 0.933333, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_jycnh"]
+resource_name = "Tier5-Upgrade"
+length = 1.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("18_67fiu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_swr53"]
+resource_name = "Tier6-Idle"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("19_kmnew")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.7, 0.933333, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gm0o7"]
@@ -266,30 +757,103 @@ _data = {
 "Tier0-Idle": SubResource("Animation_b2n4a"),
 "Tier0-Upgrade": SubResource("Animation_oi1xp"),
 "Tier1-Idle": SubResource("Animation_30upe"),
-"Tier1-Upgrade": SubResource("Animation_csjk2")
+"Tier1-Upgrade": SubResource("Animation_csjk2"),
+"Tier2-Idle": SubResource("Animation_6j66m"),
+"Tier2-Upgrade": SubResource("Animation_1tbq0"),
+"Tier3-Idle": SubResource("Animation_hgwfn"),
+"Tier3-Upgrade": SubResource("Animation_0pepy"),
+"Tier4-Idle": SubResource("Animation_yi4qy"),
+"Tier4-Upgrade": SubResource("Animation_tfyl5"),
+"Tier5-Idle": SubResource("Animation_fvacx"),
+"Tier5-Upgrade": SubResource("Animation_jycnh"),
+"Tier6-Idle": SubResource("Animation_swr53")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfa3q"]
 radius = 35.4902
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_84dj8"]
-animation = &"Tier0-Upgrade"
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiyil"]
+atlas = ExtResource("11_n8jxk")
+region = Rect2(0, 54, 70, 19)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m08e1"]
-animation = &"Tier1-Idle"
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qfa5"]
+atlas = ExtResource("11_n8jxk")
+region = Rect2(70, 54, 70, 19)
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4gtjq"]
-switch_mode = 2
-advance_mode = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8hqs"]
+atlas = ExtResource("11_n8jxk")
+region = Rect2(140, 54, 70, 19)
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tas5a"]
-states/End/position = Vector2(779, 100)
-states/Start/position = Vector2(195, 100)
-states/Tier0-Upgrade/node = SubResource("AnimationNodeAnimation_84dj8")
-states/Tier0-Upgrade/position = Vector2(365, 100)
-states/Tier1-Idle/node = SubResource("AnimationNodeAnimation_m08e1")
-states/Tier1-Idle/position = Vector2(540, 99)
-transitions = ["Tier0-Upgrade", "Tier1-Idle", SubResource("AnimationNodeStateMachineTransition_4gtjq")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxtmr"]
+atlas = ExtResource("11_n8jxk")
+region = Rect2(210, 54, 70, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw2h1"]
+atlas = ExtResource("12_4smbu")
+region = Rect2(0, 54, 70, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlx37"]
+atlas = ExtResource("12_4smbu")
+region = Rect2(70, 54, 70, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbq1n"]
+atlas = ExtResource("12_4smbu")
+region = Rect2(140, 54, 70, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijbdr"]
+atlas = ExtResource("12_4smbu")
+region = Rect2(210, 54, 70, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xsgg"]
+atlas = ExtResource("12_4smbu")
+region = Rect2(280, 54, 70, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tkn0"]
+atlas = ExtResource("12_4smbu")
+region = Rect2(350, 54, 70, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ig02u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiyil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qfa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8hqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxtmr")
+}],
+"loop": false,
+"name": &"Tier3-Upgrade",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw2h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlx37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbq1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijbdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xsgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tkn0")
+}],
+"loop": true,
+"name": &"Tier4-Idle",
+"speed": 4.29
+}]
 
 [node name="ArcherTower" type="StaticBody2D"]
 y_sort_enabled = true
@@ -298,6 +862,7 @@ collision_layer = 20
 collision_mask = 2
 script = ExtResource("1_8cn48")
 archer = ExtResource("3_epgd1")
+tower_levels = Array[ExtResource("3_vd8oo")]([ExtResource("4_h57bm"), ExtResource("5_3572s"), ExtResource("6_0vtom"), ExtResource("7_4e3kn"), ExtResource("8_31oby"), ExtResource("9_8f34c")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -305,17 +870,24 @@ texture = ExtResource("3_4w3et")
 offset = Vector2(0, -30)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_gm0o7")
 }
-autoplay = "Tier0-Upgrade"
+autoplay = "Tier0-Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.66667)
 shape = SubResource("CircleShape2D_gfa3q")
 
 [node name="Archer" type="Node2D" parent="."]
-position = Vector2(0, 2.66667)
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_tas5a")
+[node name="tmp" type="Node2D" parent="."]
+position = Vector2(0, -20)
+
+[node name="Roof" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 4
+position = Vector2(0, -5.33333)
+sprite_frames = SubResource("SpriteFrames_ig02u")
+animation = &"Tier4-Idle"

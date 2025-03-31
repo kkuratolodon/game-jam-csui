@@ -797,8 +797,9 @@ states/PreAttack/node = SubResource("AnimationNodeBlendSpace2D_4ob01")
 states/PreAttack/position = Vector2(553, 56)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_6wkgg"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_pigyc"), "Idle", "PreAttack", SubResource("AnimationNodeStateMachineTransition_dudq1"), "PreAttack", "Attack", SubResource("AnimationNodeStateMachineTransition_lk86u")]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t0t2o"]
-radius = 100.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vk1tl"]
+radius = 93.43
+height = 240.28
 
 [node name="Archer" type="Node2D"]
 script = ExtResource("1_ybk4u")
@@ -807,7 +808,6 @@ script = ExtResource("1_ybk4u")
 scale = Vector2(0.735, 0.735)
 texture = ExtResource("8_m31fg")
 hframes = 4
-frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -829,9 +829,11 @@ script = ExtResource("11_u8aew")
 arrow_scene = ExtResource("12_xakc4")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_t0t2o")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vk1tl")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

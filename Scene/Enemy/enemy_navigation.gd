@@ -14,7 +14,6 @@ func _ready() -> void:
     recalc_timer.one_shot = false
     add_child(recalc_timer)
     recalc_timer.timeout.connect(_on_recalc_timer_timeout)
-    velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
     await get_tree().process_frame
   
     make_path()
