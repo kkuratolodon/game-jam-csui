@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://c8eltogebh0sg"]
+[gd_scene load_steps=13 format=4 uid="uid://c8eltogebh0sg"]
 
 [ext_resource type="Texture2D" uid="uid://b8kec85egdvl8" path="res://Assets/Towers/ArcherTower/1 Upgrade/1.png" id="1_pe77v"]
 [ext_resource type="Script" path="res://Scene/Tower/base_tower.gd" id="1_xnxwq"]
 [ext_resource type="Texture2D" uid="uid://bhtodn2wiq3dc" path="res://Assets/Icons/archer_icon.png" id="2_5j61k"]
 [ext_resource type="Texture2D" uid="uid://daepn7whdwp0t" path="res://Assets/UI/1 Frames/Portrait_frame.png" id="2_cj4qs"]
+[ext_resource type="FontFile" uid="uid://cantxaynqf5fn" path="res://Assets/Font/TinyFontCraftpixPixel.otf" id="3_ulfj4"]
 [ext_resource type="Texture2D" uid="uid://cg4p1223hjako" path="res://Assets/Icons/catapult_icon.png" id="4_14ql2"]
 [ext_resource type="Texture2D" uid="uid://dib7kk52xveeg" path="res://Assets/UI/1 Frames/Tileset.png" id="4_jedix"]
 [ext_resource type="Texture2D" uid="uid://b432thm2tenew" path="res://Assets/Icons/magic_icon.png" id="5_gamvw"]
@@ -95,7 +96,6 @@ offset = Vector2(0, -30)
 hframes = 4
 
 [node name="TowerOptions" type="Control" parent="."]
-visible = false
 z_index = 4096
 layout_mode = 3
 anchors_preset = 15
@@ -114,6 +114,24 @@ offset_left = -125.0
 offset_top = -66.0
 offset_right = 51.0
 offset_bottom = 110.0
+
+[node name="ErrorMessage" type="Label" parent="TowerOptions/Container"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -8.0
+offset_right = 73.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_ulfj4")
+theme_override_font_sizes/font_size = 13
+text = "Not enough money!"
+horizontal_alignment = 1
 
 [node name="ArcherPanel" type="Panel" parent="TowerOptions/Container"]
 layout_mode = 1
@@ -164,6 +182,26 @@ mouse_filter = 2
 texture = ExtResource("2_5j61k")
 expand_mode = 1
 
+[node name="CostLabel" type="Label" parent="TowerOptions/Container/ArcherPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+text = "100$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MagicPanel" type="Panel" parent="TowerOptions/Container"]
 layout_mode = 1
 anchors_preset = -1
@@ -212,6 +250,26 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("5_gamvw")
 expand_mode = 1
+
+[node name="CostLabel" type="Label" parent="TowerOptions/Container/MagicPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+text = "150$"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CatapultPanel" type="Panel" parent="TowerOptions/Container"]
 layout_mode = 1
@@ -262,6 +320,26 @@ mouse_filter = 2
 texture = ExtResource("4_14ql2")
 expand_mode = 1
 
+[node name="CostLabel" type="Label" parent="TowerOptions/Container/CatapultPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+text = "200$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GuardianPanel" type="Panel" parent="TowerOptions/Container"]
 layout_mode = 1
 anchors_preset = -1
@@ -311,6 +389,26 @@ mouse_filter = 2
 texture = ExtResource("6_ou7c8")
 expand_mode = 1
 
+[node name="CostLabel" type="Label" parent="TowerOptions/Container/GuardianPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+text = "250$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TileMap" type="TileMapLayer" parent="TowerOptions"]
 position = Vector2(-59.9999, 29.3334)
 scale = Vector2(0.5, 0.5)
@@ -321,3 +419,15 @@ tile_set = SubResource("TileSet_do3ld")
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TowerOptions/Container" to="." method="_on_container_mouse_exited"]
+[connection signal="mouse_entered" from="TowerOptions/Container/ArcherPanel/ArcherButton" to="." method="_on_archer_button_mouse_entered"]
+[connection signal="mouse_exited" from="TowerOptions/Container/ArcherPanel/ArcherButton" to="." method="_on_tower_button_mouse_exited"]
+[connection signal="pressed" from="TowerOptions/Container/ArcherPanel/ArcherButton" to="." method="_on_archer_button_pressed"]
+[connection signal="mouse_entered" from="TowerOptions/Container/MagicPanel/MagicButton" to="." method="_on_magic_button_mouse_entered"]
+[connection signal="mouse_exited" from="TowerOptions/Container/MagicPanel/MagicButton" to="." method="_on_tower_button_mouse_exited"]
+[connection signal="pressed" from="TowerOptions/Container/MagicPanel/MagicButton" to="." method="_on_magic_button_pressed"]
+[connection signal="mouse_entered" from="TowerOptions/Container/CatapultPanel/CatapultButton" to="." method="_on_catapult_button_mouse_entered"]
+[connection signal="mouse_exited" from="TowerOptions/Container/CatapultPanel/CatapultButton" to="." method="_on_tower_button_mouse_exited"]
+[connection signal="pressed" from="TowerOptions/Container/CatapultPanel/CatapultButton" to="." method="_on_catapult_button_pressed"]
+[connection signal="mouse_entered" from="TowerOptions/Container/GuardianPanel/GuardianButton" to="." method="_on_guardian_button_mouse_entered"]
+[connection signal="mouse_exited" from="TowerOptions/Container/GuardianPanel/GuardianButton" to="." method="_on_tower_button_mouse_exited"]
+[connection signal="pressed" from="TowerOptions/Container/GuardianPanel/GuardianButton" to="." method="_on_guardian_button_pressed"]

@@ -5,17 +5,25 @@ class_name BaseTower
 var is_build_mode_active: bool = false
 var is_move_mode_active: bool = false
 
+# Tower costs
+var TOWER_COSTS = {
+    "ArcherTower": ArcherTower.buy_cost,
+    "MagicTower": 150,
+    "CatapultTower": 200,
+    "GuardianTower": 250
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     # Add self to towers group for easier detection
     add_to_group("BaseTower")
-    
-    $TowerOptions/Container/ArcherPanel/ArcherButton.pressed.connect(_on_archer_button_pressed)
-    $TowerOptions/Container/MagicPanel/MagicButton.pressed.connect(_on_magic_button_pressed)
-    $TowerOptions/Container/CatapultPanel/CatapultButton.pressed.connect(_on_catapult_button_pressed)
-    $TowerOptions/Container/GuardianPanel/GuardianButton.pressed.connect(_on_guardian_button_pressed)
     $TowerOptions.visible = false
+    
+    # Setup cost labels
+    $TowerOptions/Container/ArcherPanel/CostLabel.text = str(TOWER_COSTS["ArcherTower"]) 
+    $TowerOptions/Container/MagicPanel/CostLabel.text = str(TOWER_COSTS["MagicTower"]) 
+    $TowerOptions/Container/CatapultPanel/CostLabel.text = str(TOWER_COSTS["CatapultTower"])
+    $TowerOptions/Container/GuardianPanel/CostLabel.text = str(TOWER_COSTS["GuardianTower"])
     
     # Try to find the build controller and connect to its signal
     var main_scene = get_tree().root.get_child(0)
@@ -67,17 +75,61 @@ func _on_body_exited(body: Node2D) -> void:
         var player = Player.instance
         player.in_base_tower = null
         $TowerOptions.visible = false
+        hide_all_cost_labels()
+        $TowerOptions/Container/ErrorMessage.visible = false
 
+# Method to check if player can afford a tower
+func can_afford_tower(tower_type: String) -> bool:
+    var player = Player.instance
+    if player and TOWER_COSTS.has(tower_type):
+        print( player.money , TOWER_COSTS[tower_type])
+        return player.money >= TOWER_COSTS[tower_type]
+    return false
+
+# Method to create a tower if player has enough money
 func create_tower(tower_type: String) -> Node2D:
-    var tower_options = {
-        "ArcherTower": preload("res://Scene/Tower/ArcherTower/archer_tower.tscn"),
-    }
-    var new_tower = tower_options[tower_type].instantiate()
-    new_tower.position = position
-    get_parent().add_child(new_tower)
-    queue_free()
-    return new_tower
+    print("konz")
+    if can_afford_tower(tower_type):
+        var tower_options = {
+            "ArcherTower": preload("res://Scene/Tower/ArcherTower/archer_tower.tscn"),
+            # "MagicTower": preload("res://Scene/Tower/MagicTower/magic_tower.tscn"),
+            # "CatapultTower": preload("res://Scene/Tower/CatapultTower/catapult_tower.tscn"),
+            # "GuardianTower": preload("res://Scene/Tower/GuardianTower/guardian_tower.tscn"),
+        }
+        
+        if tower_options.has(tower_type):
+            # Deduct cost from player's money
+            Player.instance.money -= TOWER_COSTS[tower_type]
+            
+            # Create the tower
+            var new_tower = tower_options[tower_type].instantiate()
+            new_tower.position = position
+            get_parent().add_child(new_tower)
+            queue_free()
+            return new_tower
+    else:
+        # Show error message when player can't afford it
+        $TowerOptions/Container/ErrorMessage.visible = true
+        # Hide after 2 seconds
+        get_tree().create_timer(2.0).timeout.connect(func(): $TowerOptions/Container/ErrorMessage.visible = false)
+    
+    return null
 
+# Hide all cost labels
+func hide_all_cost_labels() -> void:
+    $TowerOptions/Container/ArcherPanel/CostLabel.visible = false
+    $TowerOptions/Container/MagicPanel/CostLabel.visible = false
+    $TowerOptions/Container/CatapultPanel/CostLabel.visible = false
+    $TowerOptions/Container/GuardianPanel/CostLabel.visible = false
+
+# Update cost label color based on affordability
+func update_cost_label_color(label: Label, tower_type: String) -> void:
+    if can_afford_tower(tower_type):
+        label.add_theme_color_override("font_color", Color(0.2, 1, 0.2))
+    else:
+        label.add_theme_color_override("font_color", Color(1, 0.2, 0.2))
+
+# Button press event handlers
 func _on_archer_button_pressed() -> void:
     create_tower("ArcherTower")
 
@@ -89,6 +141,34 @@ func _on_catapult_button_pressed() -> void:
     
 func _on_guardian_button_pressed() -> void:
     create_tower("GuardianTower")
+
+# Mouse hover event handlers
+func _on_archer_button_mouse_entered() -> void:
+    hide_all_cost_labels()
+    var label = $TowerOptions/Container/ArcherPanel/CostLabel
+    update_cost_label_color(label, "ArcherTower")
+    label.visible = true
+
+func _on_magic_button_mouse_entered() -> void:
+    hide_all_cost_labels()
+    var label = $TowerOptions/Container/MagicPanel/CostLabel
+    update_cost_label_color(label, "MagicTower")
+    label.visible = true
+
+func _on_catapult_button_mouse_entered() -> void:
+    hide_all_cost_labels()
+    var label = $TowerOptions/Container/CatapultPanel/CostLabel
+    update_cost_label_color(label, "CatapultTower")
+    label.visible = true
+
+func _on_guardian_button_mouse_entered() -> void:
+    hide_all_cost_labels()
+    var label = $TowerOptions/Container/GuardianPanel/CostLabel
+    update_cost_label_color(label, "GuardianTower")
+    label.visible = true
+
+func _on_tower_button_mouse_exited() -> void:
+    hide_all_cost_labels()
 
 func _on_mouse_entered() -> void:
     if !is_build_mode_active:

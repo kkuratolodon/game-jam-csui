@@ -5,7 +5,7 @@ signal health_changed(new_health)
 
 static var instance : Castle
 
-@export var max_health: int = 100
+@export var max_health: int = Config.start_hp
 var current_health: int :
     set(value):
         current_health = clamp(value, 0, max_health)

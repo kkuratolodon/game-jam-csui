@@ -35,16 +35,17 @@ mouse_filter = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 135
+theme_override_constants/separation = 85
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_vertical = 0
-text = "hp: x"
+text = "hp: x2121"
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "money: x"
+text = "money: x123132132231"
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

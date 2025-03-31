@@ -2,6 +2,7 @@ class_name ArcherTower
 extends StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
+static var buy_cost := 75
 
 @export var archer : PackedScene
 @export var tower_levels: Array[ArcherTowerState] = []
@@ -11,7 +12,7 @@ extends StaticBody2D
 @onready var roof: AnimatedSprite2D = $Roof
 @onready var max_level = tower_levels.size()
 
-var buy_cost : int
+
 var is_upgrading:=false
 var current_level_index: int = 0
 var type = "ArcherTower"

@@ -3,6 +3,12 @@ class_name Player
 static var instance: Player = null
 
 var in_base_tower: BaseTower
+var money : int : 
+    set(value):
+        money = value
+        money_changed.emit(money)
+
+signal money_changed(new_health)
 
 func _enter_tree() -> void:
     if instance != null:
@@ -10,6 +16,7 @@ func _enter_tree() -> void:
         return
     
     instance = self
+    money = Config.start_money
 
 static func get_instance() -> CharacterBody2D:
     return instance
