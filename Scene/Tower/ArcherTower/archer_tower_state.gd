@@ -22,7 +22,6 @@ func enter_state(tower: ArcherTower, is_spawn_archer: bool = true, speed_up: flo
     if is_spawn_archer:
         for position in archer_positions:
             tower.spawn_archer(position)
-    print(level)
     tower.is_upgrading = false
     tower.anim.play("Tier%d-Idle" % (level))
     if has_roof:
