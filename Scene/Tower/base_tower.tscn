@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dej0xobfq4b8q" path="res://Assets/Icons/guardian_icon.png" id="6_ou7c8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bh4vw"]
-radius = 32.0
+radius = 40.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t3evc"]
 texture = ExtResource("4_jedix")
@@ -96,6 +96,7 @@ offset = Vector2(0, -30)
 hframes = 4
 
 [node name="TowerOptions" type="Control" parent="."]
+visible = false
 z_index = 4096
 layout_mode = 3
 anchors_preset = 15

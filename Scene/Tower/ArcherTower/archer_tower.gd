@@ -13,24 +13,34 @@ static var buy_cost := 75
 @onready var max_level = tower_levels.size()
 @onready var start_level = Config.archer_start_level
 
-var sell_price : int = 50
+var sell_price : int = 0
 var is_upgrading:=false
 var current_level_index: int = 0
 var type = "ArcherTower"
 func _ready() -> void:
     add_to_group("Towers")
-    var speed_up = min((start_level)/1.5,2.0)
-    anim.speed_scale = (start_level)/1.5
+    var speed_up = min((start_level),2.0)
+    anim.speed_scale = (start_level)
     if tower_levels.size() > 0:
-        change_state(tower_levels[0], false, speed_up)
+        if current_level_index < start_level - 2:
+            change_state(tower_levels[0], false, speed_up)
+        else:
+            print(speed_up)
+            change_state(tower_levels[0], true, speed_up)
     while current_level_index < start_level - 2:
+        print("masuk")
         if current_level_index >= tower_levels.size():
             break
         await get_tree().create_timer(current_state.upgrade_duration/speed_up).timeout
         upgrade_tower(false, speed_up)
-    await get_tree().create_timer(current_state.upgrade_duration/speed_up).timeout
-    upgrade_tower(true, speed_up)
+    if current_level_index < start_level - 1:
+        print("masuk12")
+        await get_tree().create_timer(current_state.upgrade_duration/speed_up).timeout
+        upgrade_tower(true, speed_up)
     anim.speed_scale = 1
+    
+    # Update the sell price after initial setup
+    update_sell_price()
 
 func change_state(new_state: ArcherTowerState, is_spawn_archer:bool = true, speed_up:float = 1) -> void:
     if current_state:
@@ -48,7 +58,26 @@ func upgrade_tower( is_spawn_archer:bool = true, speed_up:float = 1) -> bool:
     # First upgrade (+1)
     change_state(tower_levels[current_level_index], is_spawn_archer, speed_up) 
     
+    # Update the sell price after upgrading
+    update_sell_price()
+    
     return true
+
+# Calculate the total cost spent on the tower
+func calculate_total_cost() -> int:
+    var current_level = current_state.level  # Convert from 0-indexed to 1-indexed
+    if current_level <= start_level:
+        # If we haven't upgraded past the start level, cost is just buy_cost
+        return buy_cost
+    else:
+        # If we've upgraded, use the formula: 2^(current_level - start_level) * buy_cost
+        var level_diff = current_level - start_level
+        return pow(2, level_diff) * buy_cost
+
+# Update the sell price (60% of total costs)
+func update_sell_price() -> void:
+    var total_cost = calculate_total_cost()
+    sell_price = int(total_cost * 0.6)  # 60% of total cost
 
 func spawn_archer(offset : Vector2) -> void:
     var archer_instance = archer.instantiate()
@@ -64,7 +93,6 @@ func spawn_archer(offset : Vector2) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    print(current_level_index)
     pass
 
 func clear_archers() -> void:
