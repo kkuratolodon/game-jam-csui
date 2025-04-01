@@ -1,7 +1,7 @@
 extends Node
 
 var start_hp := 100
-var start_money := 100
+var start_money := 1000
 
 func _ready():
     fetch_config()

@@ -9,5 +9,5 @@ attack_damage = 50
 attack_speed = 1.1
 attack_range = 80.0
 archer_positions = Array[Vector2]([Vector2(0, -14)])
-upgrade_duration = 1.4
-has_roof = false
+upgrade_duration = 1.0
+roof_position = Vector2(0, 0)

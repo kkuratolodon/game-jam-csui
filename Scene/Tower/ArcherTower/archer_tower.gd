@@ -22,21 +22,22 @@ func _ready() -> void:
         change_state(tower_levels[0])
 
 
-func change_state(new_state: ArcherTowerState) -> void:
+func change_state(new_state: ArcherTowerState, is_spawn_archer:bool = true, speed_up:float = 1) -> void:
     if current_state:
         current_state.exit_state(self)
     
     current_state = new_state
-    current_state.enter_state(self)
+    current_state.enter_state(self, is_spawn_archer, speed_up)
 
 func upgrade_tower() -> bool:
     current_level_index += 1
-    current_level_index = max_level - 1
-    if current_level_index >= tower_levels.size():
-        current_level_index = tower_levels.size() - 1
+    # Check if we can upgrade by at least 1 level
+    if current_level_index + 1 >= tower_levels.size():
         return false
-        
+    
+    # First upgrade (+1)
     change_state(tower_levels[current_level_index])
+    
     return true
 
 func spawn_archer(offset : Vector2) -> void:
@@ -44,6 +45,7 @@ func spawn_archer(offset : Vector2) -> void:
     archer_instance.position = offset
     
     # Pass the current state's attributes to the archer
+    
     archer_instance.damage = current_state.attack_damage
     archer_instance.attack_speed = current_state.attack_speed
     archer_instance.attack_range = current_state.attack_range

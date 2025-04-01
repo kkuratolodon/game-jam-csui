@@ -331,6 +331,7 @@ size = Vector2(12, 20)
 radius = 7.0
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_vit48")
@@ -386,6 +387,8 @@ value = 100.0
 nine_patch_stretch = true
 texture_under = ExtResource("7_kwot8")
 texture_progress = ExtResource("7_sylqx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="target_reached" from="NavigationAgent2D" to="NavigationAgent2D" method="_on_navigation_agent_2d_target_reached"]

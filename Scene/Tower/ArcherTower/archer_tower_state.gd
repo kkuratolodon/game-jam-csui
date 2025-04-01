@@ -9,7 +9,7 @@ extends Resource
 @export var upgrade_duration: float = 1.0
 @export var roof_position: Vector2 = Vector2.ZERO
 
-func enter_state(tower: ArcherTower) -> void:
+func enter_state(tower: ArcherTower, is_spawn_archer: bool = true, speed_up: float = 1) -> void:
     tower.clear_archers()
     var has_roof = roof_position != Vector2.ZERO
     tower.roof.position = roof_position
@@ -18,9 +18,10 @@ func enter_state(tower: ArcherTower) -> void:
         tower.roof.play("Tier%d-Upgrade" % (level-1))
     tower.is_upgrading = true
     tower.anim.play("Tier%d-Upgrade" % (level-1))
-    await tower.get_tree().create_timer(upgrade_duration).timeout
-    for position in archer_positions:
-        tower.spawn_archer(position)
+    await tower.get_tree().create_timer(upgrade_duration/speed_up).timeout
+    if is_spawn_archer:
+        for position in archer_positions:
+            tower.spawn_archer(position)
     print(level)
     tower.is_upgrading = false
     tower.anim.play("Tier%d-Idle" % (level))

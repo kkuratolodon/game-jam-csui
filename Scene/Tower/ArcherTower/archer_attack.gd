@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var arrow_scene: PackedScene
-@export var cooldown_time: float = 1.0
+@export var cooldown_time: float = 0.8
 
 var attack_speed := 1.0
 var can_shoot: bool = true
