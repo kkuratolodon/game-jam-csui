@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 class_name Castle
 
 signal health_changed(new_health)
@@ -24,3 +24,7 @@ func take_damage(damage: int):
     current_health -= damage
     if current_health <= 0:
         queue_free()
+
+func _on_area_entered(area:Area2D) -> void:
+    print(area)
+    pass # Replace with function body.

@@ -2,7 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 
-@onready var enemies_node := get_node("/root/Node2D/Enemies")
+@onready var enemy_paths_node := get_node("/root/Node2D/EnemyPaths")
 @onready var animation_tree := $AnimationTree
 @onready var archer_gunpoint := $ArcherAttack
 @onready var area_2d := $Area2D
@@ -26,7 +26,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-    # print(animation_tree)
     var dir_to_enemy = get_direction_to_nearest_enemy()
     change_gunpoint_position(dir_to_enemy)
     animation_tree.set("parameters/Idle/blend_position", dir_to_enemy)
@@ -38,21 +37,24 @@ func _physics_process(delta: float) -> void:
 
 
 func find_nearest_enemy():
-    if enemies_node == null or enemies_node.get_child_count() == 0:
+    if enemy_paths_node == null or enemy_paths_node.get_child_count() == 0:
         return null
     
     var nearest_enemy = null
     var min_distance = INF
     
-    for enemy in enemies_node.get_children():
-        if not is_instance_valid(enemy):
-            continue
+    # Iterate through all paths
+    for path in enemy_paths_node.get_children():
+        # Iterate through all enemies in each path
+        for enemy in path.get_children():
+            if not is_instance_valid(enemy):
+                continue
+                
+            var distance = global_position.distance_to(enemy.global_position)
             
-        var distance = global_position.distance_to(enemy.global_position)
-        
-        if distance < min_distance:
-            min_distance = distance
-            nearest_enemy = enemy
+            if distance < min_distance:
+                min_distance = distance
+                nearest_enemy = enemy
     
     return nearest_enemy
 
@@ -106,11 +108,26 @@ func change_gunpoint_position(direction):
         
 
 func _on_area_2d_body_entered(body:Node2D) -> void:
-    if enemies_node and body.get_parent() == enemies_node:
-        enemies_in_area.append(body)
     
-
+    # Check if body is an enemy in any path
+    for path in enemy_paths_node.get_children():
+        if body.get_parent() == path:
+            enemies_in_area.append(body)
+            break
 
 func _on_area_2d_body_exited(body:Node2D) -> void:
     if body in enemies_in_area:
         enemies_in_area.erase(body)
+
+
+func _on_area_2d_area_entered(area:Area2D) -> void:
+    for path in enemy_paths_node.get_children():
+        if area.get_parent().get_parent() == path:
+            enemies_in_area.append(area.get_parent())
+            break
+
+
+
+func _on_area_2d_area_exited(area:Area2D) -> void:
+    if area.get_parent() in enemies_in_area:
+        enemies_in_area.erase(area.get_parent())

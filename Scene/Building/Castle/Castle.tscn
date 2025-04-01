@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://u6t4wthhdvkc" path="res://Scene/Building/Castle/castle_small_tower.tscn" id="6_dpvvk"]
 [ext_resource type="Script" path="res://Scene/Building/Castle/castle_animation.gd" id="8_g2u1w"]
 
-[node name="Castle" type="StaticBody2D"]
+[node name="Castle" type="Area2D"]
 y_sort_enabled = true
 position = Vector2(-532, 11)
 script = ExtResource("1_b62ub")
@@ -61,3 +61,5 @@ polygon = PackedVector2Array(29, 46, 57, 103, 127, 110, 118, 128, 219, 131, 212,
 
 [node name="CastleAnimation" type="Node2D" parent="."]
 script = ExtResource("8_g2u1w")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

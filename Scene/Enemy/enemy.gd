@@ -1,6 +1,7 @@
-extends CharacterBody2D
+extends PathFollow2D
 
 signal health_changed(new_health)
+
 
 @export var speed: float = 100
 @export var damage_dealt: int = 10
@@ -9,6 +10,7 @@ signal health_changed(new_health)
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var timer := Timer.new()
 @onready var hp_bar = $HealthBar
+var path : Path2D
 
 var current_health: int :
     set(value):
@@ -16,6 +18,7 @@ var current_health: int :
         health_changed.emit(current_health)
 
 func _ready():
+    path = get_parent()
     current_health = max_health
     hp_bar.max_value = max_health
     hp_bar.value = current_health

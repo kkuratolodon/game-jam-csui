@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://25ilmxgbhppv"]
+[gd_scene load_steps=21 format=3 uid="uid://25ilmxgbhppv"]
 
 [ext_resource type="Texture2D" uid="uid://bhjmj4dwcxnu3" path="res://Assets/Enemy/2/D_Walk.png" id="1_cht70"]
 [ext_resource type="Texture2D" uid="uid://r1njv0lxhpoj" path="res://Assets/Enemy/2/U_Walk.png" id="1_itoff"]
@@ -327,13 +327,9 @@ blend_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5806"]
 size = Vector2(12, 20)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n5mfo"]
-radius = 7.0
-
-[node name="Enemy" type="CharacterBody2D"]
-collision_layer = 2
-motion_mode = 1
-wall_min_slide_angle = 0.0
+[node name="Enemy" type="PathFollow2D"]
+rotates = false
+loop = false
 script = ExtResource("1_vit48")
 speed = 50.0
 
@@ -362,16 +358,11 @@ shape = SubResource("RectangleShape2D_d5806")
 [node name="EnemyAnimation" type="Node2D" parent="Area2D"]
 script = ExtResource("5_wif4x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_n5mfo")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
 simplify_path = true
 max_speed = 20.0
 debug_enabled = true
-script = ExtResource("6_bff0g")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 z_index = 4095
@@ -388,8 +379,8 @@ nine_patch_stretch = true
 texture_under = ExtResource("7_kwot8")
 texture_progress = ExtResource("7_sylqx")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="."]
+[node name="EnemyMovement" type="Node2D" parent="."]
+script = ExtResource("6_bff0g")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="target_reached" from="NavigationAgent2D" to="NavigationAgent2D" method="_on_navigation_agent_2d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="NavigationAgent2D" method="_on_navigation_agent_2d_velocity_computed"]
