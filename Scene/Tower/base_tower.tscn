@@ -85,6 +85,7 @@ collision_mask = 2
 script = ExtResource("1_xnxwq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 z_as_relative = false
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_bh4vw")

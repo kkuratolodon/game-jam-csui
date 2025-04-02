@@ -15,6 +15,7 @@ var TOWER_COSTS = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    get_tree().set_debug_collisions_hint(true)
     # Add self to towers group for easier detection
     add_to_group("BaseTower")
     $TowerOptions.visible = false

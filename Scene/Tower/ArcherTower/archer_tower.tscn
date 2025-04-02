@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://sewf2i1lnfak"]
+[gd_scene load_steps=60 format=3 uid="uid://sewf2i1lnfak"]
 
 [ext_resource type="Script" path="res://Scene/Tower/ArcherTower/archer_tower.gd" id="1_8cn48"]
 [ext_resource type="Texture2D" uid="uid://b8kec85egdvl8" path="res://Assets/Towers/ArcherTower/1 Upgrade/1.png" id="1_uynqo"]
@@ -855,6 +855,28 @@ animations = [{
 "speed": 4.29
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t8ms8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gumw1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22c68"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_77yii"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ysoth"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5yvim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xgkx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te21y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ypt1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpxyc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_54es1"]
+
 [node name="ArcherTower" type="StaticBody2D"]
 y_sort_enabled = true
 scale = Vector2(1.5, 1.5)
@@ -877,10 +899,13 @@ libraries = {
 autoplay = "Tier0-Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2.66667)
 shape = SubResource("CircleShape2D_gfa3q")
 
 [node name="Archer" type="Node2D" parent="."]
+
+[node name="Archer" parent="Archer" instance=ExtResource("3_epgd1")]
 
 [node name="tmp" type="Node2D" parent="."]
 position = Vector2(0, -20)
@@ -891,3 +916,22 @@ z_index = 4
 position = Vector2(0, -5.33333)
 sprite_frames = SubResource("SpriteFrames_ig02u")
 animation = &"Tier4-Idle"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -31.0
+offset_top = -25.0
+offset_right = 31.0
+offset_bottom = 35.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t8ms8")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_gumw1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_22c68")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_77yii")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ysoth")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_5yvim")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4xgkx")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_te21y")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4ypt1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_bpxyc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_54es1")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

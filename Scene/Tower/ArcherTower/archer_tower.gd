@@ -13,6 +13,7 @@ static var buy_cost := 75
 @onready var max_level = tower_levels.size()
 @onready var start_level = Config.archer_start_level
 
+var debug_overlay: Node2D
 var sell_price : int = 0
 var is_upgrading:=false
 var current_level_index: int = 0
@@ -41,6 +42,14 @@ func _ready() -> void:
     
     # Update the sell price after initial setup
     update_sell_price()
+
+    debug_overlay = Node2D.new()
+    debug_overlay.name = "DebugOverlay"
+    debug_overlay.z_index = 1000  # Very high z-index to always be on top
+    add_child(debug_overlay)
+    
+    # Connect the overlay's draw signal
+    debug_overlay.connect("draw", _on_debug_overlay_draw)
 
 func change_state(new_state: ArcherTowerState, is_spawn_archer:bool = true, speed_up:float = 1) -> void:
     if current_state:
@@ -91,10 +100,6 @@ func spawn_archer(offset : Vector2) -> void:
     
     $Archer.add_child(archer_instance)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    pass
-
 func clear_archers() -> void:
     for child in $Archer.get_children():
         child.queue_free()
@@ -106,3 +111,85 @@ func get_level() -> int:
     if current_state and current_state is ArcherTowerState:
         return current_state.level
     return 0
+
+# Replace these functions only
+var show_debug_shapes := false
+
+func _on_button_pressed() -> void:
+    # Toggle debug visualization
+    show_debug_shapes = !show_debug_shapes
+    print("Debug shapes: ", "ON" if show_debug_shapes else "OFF")
+    debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+
+func _process(delta: float) -> void:
+    if show_debug_shapes:
+        debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+
+# Move drawing logic to the overlay's draw function
+func _on_debug_overlay_draw() -> void:
+    if !show_debug_shapes:
+        return
+    
+    # Draw shapes for each archer
+    for archer_instance in $Archer.get_children():
+        var area = archer_instance.get_node_or_null("Area2D")
+        if !area or !area.has_node("CollisionShape2D"):
+            continue
+            
+        var collision_shape = area.get_node("CollisionShape2D")
+        if !collision_shape or !collision_shape.shape:
+            continue
+        
+        # Get positioning info - relative to the overlay
+        var pos = archer_instance.position + area.position + collision_shape.position
+        
+        
+        # Set colors based on enemy presence
+        var fill_color = Color(0.5, 0.5, 0.5, 0.2)  # Gray with transparency when no enemies
+        var outline_color = Color(0.7, 0.7, 0.7, 0.7)  # Gray outline
+        print(archer_instance.nearest_enemy)
+        if archer_instance.nearest_enemy:
+            fill_color = Color(0, 1, 0, 0.2)  # Green with transparency when enemies present
+            outline_color = Color(0, 1, 0, 0.7)  # Green outline
+        
+        if collision_shape.shape is CapsuleShape2D:
+            # Draw capsule shape
+            var radius = collision_shape.shape.radius
+            var height = collision_shape.shape.height
+            
+            # Use transform to handle rotation
+            debug_overlay.draw_set_transform(pos, collision_shape.rotation, Vector2.ONE)
+            
+            # Calculate capsule parameters
+            var half_height = height / 2
+            var capsule_center_offset = half_height - radius
+            
+            # Create points for capsule polygon
+            var points = []
+            var segments = 32  # Number of segments for each semicircle
+            
+            # Top semicircle
+            for i in range(segments + 1):
+                var angle = PI + i * PI / segments
+                var x = radius * cos(angle)
+                var y = -capsule_center_offset + radius * sin(angle)
+                points.append(Vector2(x, y))
+            
+            # Bottom semicircle
+            for i in range(segments + 1):
+                var angle = i * PI / segments
+                var x = radius * cos(angle)
+                var y = capsule_center_offset + radius * sin(angle)
+                points.append(Vector2(x, y))
+            
+            # Draw filled capsule as one continuous shape
+            debug_overlay.draw_colored_polygon(points, fill_color)
+            
+            # Draw outline
+            for i in range(points.size() - 1):
+                debug_overlay.draw_line(points[i], points[i + 1], outline_color, 2.0)
+            # Connect last and first points to close the outline
+            debug_overlay.draw_line(points[points.size() - 1], points[0], outline_color, 2.0)
+            
+            # Reset transform
+            debug_overlay.draw_set_transform(Vector2.ZERO, 0, Vector2.ONE)

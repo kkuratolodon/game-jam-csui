@@ -352,6 +352,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/blend_position = Vector2(0.0061444, 0.782101)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_d5806")
 

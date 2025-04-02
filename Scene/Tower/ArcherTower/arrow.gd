@@ -34,7 +34,6 @@ func init(new_target: Node2D, new_damage: int, spawn_position: Vector2 = Vector2
         var min_distance = 100.0  # Distance for minimum travel time
         var max_distance = 200.0  # Distance for maximum travel time
 
-        print("distance to target:", distance_to_target)
         
         # Clamp distance within range to calculate travel time between 0.8 and 1.5
         var normalized_distance = clamp((distance_to_target - min_distance) / (max_distance - min_distance), 0.0, 1.0)
@@ -44,7 +43,6 @@ func init(new_target: Node2D, new_damage: int, spawn_position: Vector2 = Vector2
     return self
 
 func _ready() -> void:
-    print(target)
     if target:
         start_position = global_position
         path_start = global_position

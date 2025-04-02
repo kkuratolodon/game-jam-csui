@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Archer
 # Called when the node enters the scene tree for the first time.
 
 @onready var enemy_paths_node := get_node("/root/Node2D/EnemyPaths")
@@ -131,3 +131,4 @@ func _on_area_2d_area_entered(area:Area2D) -> void:
 func _on_area_2d_area_exited(area:Area2D) -> void:
     if area.get_parent() in enemies_in_area:
         enemies_in_area.erase(area.get_parent())
+
