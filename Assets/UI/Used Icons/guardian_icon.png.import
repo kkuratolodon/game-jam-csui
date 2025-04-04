@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhtodn2wiq3dc"
-path="res://.godot/imported/archer_icon.png-0210e7b3aa00320f486659c685aa99b6.ctex"
+uid="uid://dej0xobfq4b8q"
+path="res://.godot/imported/guardian_icon.png-63700e4643b46dff7e18bf01240d7d17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/archer_icon.png"
-dest_files=["res://.godot/imported/archer_icon.png-0210e7b3aa00320f486659c685aa99b6.ctex"]
+source_file="res://Assets/UI/Used Icons/guardian_icon.png"
+dest_files=["res://.godot/imported/guardian_icon.png-63700e4643b46dff7e18bf01240d7d17.ctex"]
 
 [params]
 

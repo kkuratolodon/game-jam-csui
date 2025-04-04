@@ -18,6 +18,7 @@ script = ExtResource("8_i0qp0")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_yawb3")
 disabled = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg4p1223hjako"
-path="res://.godot/imported/catapult_icon.png-6ccb81b0cdae13723a86f3f4e30a4647.ctex"
+uid="uid://b432thm2tenew"
+path="res://.godot/imported/magic_icon.png-c3223ede3f32894d8b9744f52f6b0a1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/catapult_icon.png"
-dest_files=["res://.godot/imported/catapult_icon.png-6ccb81b0cdae13723a86f3f4e30a4647.ctex"]
+source_file="res://Assets/UI/Used Icons/magic_icon.png"
+dest_files=["res://.godot/imported/magic_icon.png-c3223ede3f32894d8b9744f52f6b0a1f.ctex"]
 
 [params]
 

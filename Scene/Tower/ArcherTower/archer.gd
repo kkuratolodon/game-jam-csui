@@ -21,7 +21,7 @@ func _ready():
     archer_gunpoint.attack_speed = attack_speed
     var unique_shape = collision.shape.duplicate()
     unique_shape.radius = attack_range
-    unique_shape.height = attack_range*2.5
+    unique_shape.height = attack_range*2.2
     collision.shape = unique_shape
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

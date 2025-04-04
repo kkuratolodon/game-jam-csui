@@ -6,7 +6,7 @@
 script = ExtResource("1_vq46s")
 level = 4
 attack_damage = 150
-attack_speed = 1.35
+attack_speed = 1.15
 attack_range = 100.0
 archer_positions = Array[Vector2]([Vector2(0, -21)])
 upgrade_duration = 1.0

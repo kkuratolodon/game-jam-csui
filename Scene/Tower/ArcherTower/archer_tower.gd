@@ -3,7 +3,7 @@ extends StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
 static var buy_cost := 75
-
+static var cooldown_time := 1.0
 @export var archer : PackedScene
 @export var tower_levels: Array[ArcherTowerState] = []
 @onready var anim = $AnimationPlayer
@@ -12,6 +12,8 @@ static var buy_cost := 75
 @onready var roof: AnimatedSprite2D = $Roof
 @onready var max_level = tower_levels.size()
 @onready var start_level = Config.archer_start_level
+@onready var build_controller = get_node("/root/Node2D/BuildController")
+@onready var move_controller = get_node("/root/Node2D/MoveController")
 
 var debug_overlay: Node2D
 var sell_price : int = 0
@@ -74,6 +76,7 @@ func upgrade_tower( is_spawn_archer:bool = true, speed_up:float = 1) -> bool:
 
 # Calculate the total cost spent on the tower
 func calculate_total_cost() -> int:
+    print("current state", current_state)
     var current_level = current_state.level  # Convert from 0-indexed to 1-indexed
     if current_level <= start_level:
         # If we haven't upgraded past the start level, cost is just buy_cost
@@ -120,11 +123,19 @@ func _on_button_pressed() -> void:
     show_debug_shapes = !show_debug_shapes
     print("Debug shapes: ", "ON" if show_debug_shapes else "OFF")
     debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+    turn_off_other_debug_shapes()
+    show_info_ui()
 
 func _process(delta: float) -> void:
     if show_debug_shapes:
         debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
-
+    if move_controller and build_controller:
+        if move_controller.is_move_mode or build_controller.is_build_mode:
+            show_debug_shapes = false
+            debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+            show_info_ui()
+    else:
+        print(move_controller, build_controller)
 # Move drawing logic to the overlay's draw function
 func _on_debug_overlay_draw() -> void:
     if !show_debug_shapes:
@@ -145,12 +156,12 @@ func _on_debug_overlay_draw() -> void:
         
         
         # Set colors based on enemy presence
-        var fill_color = Color(0.5, 0.5, 0.5, 0.2)  # Gray with transparency when no enemies
-        var outline_color = Color(0.7, 0.7, 0.7, 0.7)  # Gray outline
+        var fill_color = Color(0.3, 0.3, 0.3, 0.2)  # Darker gray with transparency when no enemies
+        var outline_color = Color(0.4, 0.4, 0.4, 0.7)  # Darker gray outline
         print(archer_instance.nearest_enemy)
         if archer_instance.nearest_enemy:
-            fill_color = Color(0, 1, 0, 0.2)  # Green with transparency when enemies present
-            outline_color = Color(0, 1, 0, 0.7)  # Green outline
+            fill_color = Color(0, 1, 0, 0.1)  # Lighter green fill with more transparency
+            outline_color = Color(0, 0.7, 0, 0.7)  # Darker green outline
         
         if collision_shape.shape is CapsuleShape2D:
             # Draw capsule shape
@@ -187,9 +198,24 @@ func _on_debug_overlay_draw() -> void:
             
             # Draw outline
             for i in range(points.size() - 1):
-                debug_overlay.draw_line(points[i], points[i + 1], outline_color, 2.0)
+                debug_overlay.draw_line(points[i], points[i + 1], outline_color, 1.5)
             # Connect last and first points to close the outline
-            debug_overlay.draw_line(points[points.size() - 1], points[0], outline_color, 2.0)
+            debug_overlay.draw_line(points[points.size() - 1], points[0], outline_color, 1.5)
             
             # Reset transform
             debug_overlay.draw_set_transform(Vector2.ZERO, 0, Vector2.ONE)
+
+
+func turn_off_other_debug_shapes() -> void:
+    for tower in get_tree().get_nodes_in_group("Towers"):
+        if tower != self:
+            tower.show_debug_shapes = false
+            tower.debug_overlay.queue_redraw() 
+            tower.show_info_ui()
+
+func show_info_ui() -> void:
+    $CanvasLayer/TowerInfo.visible = show_debug_shapes
+    $CanvasLayer/TowerInfo/LevelLabel.text = str(current_state.level)
+    $CanvasLayer/TowerInfo/Panel2/Control/DamageLabel.text = str(current_state.attack_damage)
+    $CanvasLayer/TowerInfo/Panel2/Control2/RangeLabel.text = str(current_state.attack_range)
+    $CanvasLayer/TowerInfo/Panel2/Control3/CooldownLabel.text = "%.1f" % (ArcherTower.cooldown_time/current_state.attack_speed)

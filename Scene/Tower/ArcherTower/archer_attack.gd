@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var arrow_scene: PackedScene
-@export var cooldown_time: float = 0.8
+@export var cooldown_time: float = 1
 
 var attack_speed := 1.0
 var can_shoot: bool = true
@@ -9,7 +9,7 @@ var cooldown_timer: Timer
 var damage: int
 
 func _ready() -> void:
-    cooldown_time = 1.0 / attack_speed
+    cooldown_time = ArcherTower.cooldown_time / attack_speed
     cooldown_timer = Timer.new()
     cooldown_timer.wait_time = cooldown_time
     cooldown_timer.one_shot = true

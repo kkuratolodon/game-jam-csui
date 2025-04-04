@@ -94,7 +94,7 @@ func create_tower(tower_type: String) -> Node2D:
         var tower_options = {
             "ArcherTower": preload("res://Scene/Tower/ArcherTower/archer_tower.tscn"),
             # "MagicTower": preload("res://Scene/Tower/MagicTower/magic_tower.tscn"),
-            # "CatapultTower": preload("res://Scene/Tower/CatapultTower/catapult_tower.tscn"),
+            "CatapultTower": preload("res://Scene/Tower/CatapultTower/catapult_tower.tscn"),
             # "GuardianTower": preload("res://Scene/Tower/GuardianTower/guardian_tower.tscn"),
         }
         

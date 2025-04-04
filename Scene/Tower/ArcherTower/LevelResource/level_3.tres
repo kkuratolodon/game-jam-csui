@@ -6,7 +6,7 @@
 script = ExtResource("1_vxpje")
 level = 3
 attack_damage = 85
-attack_speed = 1.25
+attack_speed = 1.1
 attack_range = 85.0
 archer_positions = Array[Vector2]([Vector2(0, -22)])
 upgrade_duration = 1.0

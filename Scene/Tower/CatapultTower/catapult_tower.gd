@@ -3,67 +3,221 @@ extends StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
 static var buy_cost := 75
-
-@export var archer : PackedScene
+static var cooldown_time := 1.0
+@export var catapult : PackedScene
 @export var tower_levels: Array[CatapultTowerState] = []
 @onready var anim = $AnimationPlayer
 @onready var enemies_node := get_node("/root/Node2D/Enemies")
 @onready var current_state: CatapultTowerState = null
-@onready var roof: AnimatedSprite2D = $Roof
+@onready var roof: Sprite2D = $Roof
 @onready var max_level = tower_levels.size()
+@onready var start_level = Config.catapult_start_level
+@onready var build_controller = get_node("/root/Node2D/BuildController")
+@onready var move_controller = get_node("/root/Node2D/MoveController")
 
-
+var debug_overlay: Node2D
+var sell_price : int = 0
 var is_upgrading:=false
 var current_level_index: int = 0
-var type = "ArcherTower"
+var type = "CatapultTower"
 func _ready() -> void:
     add_to_group("Towers")
+    var speed_up = min((start_level),2.0)
+    anim.speed_scale = (start_level)
     if tower_levels.size() > 0:
-        change_state(tower_levels[0])
+        if current_level_index < start_level - 2:
+            change_state(tower_levels[0], false, speed_up)
+        else:
+            print(speed_up)
+            change_state(tower_levels[0], true, speed_up)
+    while current_level_index < start_level - 2:
+        print("masuk")
+        if current_level_index >= tower_levels.size():
+            break
+        await get_tree().create_timer(current_state.upgrade_duration/speed_up).timeout
+        upgrade_tower(false, speed_up)
+    if current_level_index < start_level - 1:
+        print("masuk12")
+        await get_tree().create_timer(current_state.upgrade_duration/speed_up).timeout
+        upgrade_tower(true, speed_up)
+    anim.speed_scale = 1
+    
+    # Update the sell price after initial setup
+    update_sell_price()
 
+    debug_overlay = Node2D.new()
+    debug_overlay.name = "DebugOverlay"
+    debug_overlay.z_index = 1000  # Very high z-index to always be on top
+    add_child(debug_overlay)
+    
+    # Connect the overlay's draw signal
+    debug_overlay.connect("draw", _on_debug_overlay_draw)
 
-func change_state(new_state: CatapultTowerState, is_spawn_archer:bool = true, speed_up:float = 1) -> void:
+func change_state(new_state: CatapultTowerState, is_spawn_catapult:bool = true, speed_up:float = 1) -> void:
     if current_state:
         current_state.exit_state(self)
     
     current_state = new_state
-    current_state.enter_state(self, is_spawn_archer, speed_up)
+    current_state.enter_state(self, is_spawn_catapult, speed_up)
 
-func upgrade_tower() -> bool:
+func upgrade_tower( is_spawn_catapult:bool = true, speed_up:float = 1) -> bool:
     current_level_index += 1
     # Check if we can upgrade by at least 1 level
-    if current_level_index + 1 >= tower_levels.size():
+    if current_level_index >= tower_levels.size():
         return false
     
     # First upgrade (+1)
-    change_state(tower_levels[current_level_index])
+    change_state(tower_levels[current_level_index], is_spawn_catapult, speed_up) 
+    
+    # Update the sell price after upgrading
+    update_sell_price()
     
     return true
 
-func spawn_archer(offset : Vector2) -> void:
-    var archer_instance = archer.instantiate()
-    archer_instance.position = offset
-    
-    # Pass the current state's attributes to the archer
-    
-    archer_instance.damage = current_state.attack_damage
-    archer_instance.attack_speed = current_state.attack_speed
-    archer_instance.attack_range = current_state.attack_range
-    
-    $Archer.add_child(archer_instance)
+# Calculate the total cost spent on the tower
+func calculate_total_cost() -> int:
+    var current_level = current_state.level  # Convert from 0-indexed to 1-indexed
+    if current_level <= start_level:
+        # If we haven't upgraded past the start level, cost is just buy_cost
+        return buy_cost
+    else:
+        # If we've upgraded, use the formula: 2^(current_level - start_level) * buy_cost
+        var level_diff = current_level - start_level
+        return pow(2, level_diff) * buy_cost
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    pass
+# Update the sell price (60% of total costs)
+func update_sell_price() -> void:
+    var total_cost = calculate_total_cost()
+    sell_price = int(total_cost * 0.6)  # 60% of total cost
 
-func clear_archers() -> void:
-    for child in $Archer.get_children():
+func spawn_catapult(offset : Vector2) -> void:
+    var catapult_instance = catapult.instantiate()
+    catapult_instance.position = offset
+    
+    # Pass the current state's attributes to the catapult
+    
+    catapult_instance.damage = current_state.attack_damage
+    catapult_instance.attack_speed = current_state.attack_speed
+    catapult_instance.attack_range = current_state.attack_range
+    
+    $Catapult.add_child(catapult_instance)
+
+func clear_catapults() -> void:
+    for child in $Catapult.get_children():
         child.queue_free()
 
 func get_type() -> String:
-    return "ArcherTower"
+    return "CatapultTower"
     
 func get_level() -> int:
     if current_state and current_state is CatapultTowerState:
+        # print("current state", current_state.level)
         return current_state.level
+    else:
+        print("gagal")
     return 0
+
+# Replace these functions only
+var show_debug_shapes := false
+
+func _on_button_pressed() -> void:
+    # Toggle debug visualization
+    show_debug_shapes = !show_debug_shapes
+    print("Debug shapes: ", "ON" if show_debug_shapes else "OFF")
+    debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+    turn_off_other_debug_shapes()
+    show_info_ui()
+
+func _process(delta: float) -> void:
+    if show_debug_shapes:
+        debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+    if move_controller and build_controller:
+        if move_controller.is_move_mode or build_controller.is_build_mode:
+            show_debug_shapes = false
+            debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+            show_info_ui()
+    else:
+        print(move_controller, build_controller)
+# Move drawing logic to the overlay's draw function
+func _on_debug_overlay_draw() -> void:
+    if !show_debug_shapes:
+        return
+    
+    # Draw shapes for each catapult
+    for catapult_instance in $Catapult.get_children():
+        var area = catapult_instance.get_node_or_null("Area2D")
+        if !area or !area.has_node("CollisionShape2D"):
+            continue
+            
+        var collision_shape = area.get_node("CollisionShape2D")
+        if !collision_shape or !collision_shape.shape:
+            continue
+        
+        # Get positioning info - relative to the overlay
+        var pos = catapult_instance.position + area.position + collision_shape.position
+        
+        
+        # Set colors based on enemy presence
+        var fill_color = Color(0.3, 0.3, 0.3, 0.2)  # Darker gray with transparency when no enemies
+        var outline_color = Color(0.4, 0.4, 0.4, 0.7)  # Darker gray outline
+        print(catapult_instance.nearest_enemy)
+        if catapult_instance.nearest_enemy:
+            fill_color = Color(0, 1, 0, 0.1)  # Lighter green fill with more transparency
+            outline_color = Color(0, 0.7, 0, 0.7)  # Darker green outline
+        
+        if collision_shape.shape is CapsuleShape2D:
+            # Draw capsule shape
+            var radius = collision_shape.shape.radius
+            var height = collision_shape.shape.height
+            
+            # Use transform to handle rotation
+            debug_overlay.draw_set_transform(pos, collision_shape.rotation, Vector2.ONE)
+            
+            # Calculate capsule parameters
+            var half_height = height / 2
+            var capsule_center_offset = half_height - radius
+            
+            # Create points for capsule polygon
+            var points = []
+            var segments = 32  # Number of segments for each semicircle
+            
+            # Top semicircle
+            for i in range(segments + 1):
+                var angle = PI + i * PI / segments
+                var x = radius * cos(angle)
+                var y = -capsule_center_offset + radius * sin(angle)
+                points.append(Vector2(x, y))
+            
+            # Bottom semicircle
+            for i in range(segments + 1):
+                var angle = i * PI / segments
+                var x = radius * cos(angle)
+                var y = capsule_center_offset + radius * sin(angle)
+                points.append(Vector2(x, y))
+            
+            # Draw filled capsule as one continuous shape
+            debug_overlay.draw_colored_polygon(points, fill_color)
+            
+            # Draw outline
+            for i in range(points.size() - 1):
+                debug_overlay.draw_line(points[i], points[i + 1], outline_color, 1.5)
+            # Connect last and first points to close the outline
+            debug_overlay.draw_line(points[points.size() - 1], points[0], outline_color, 1.5)
+            
+            # Reset transform
+            debug_overlay.draw_set_transform(Vector2.ZERO, 0, Vector2.ONE)
+
+
+func turn_off_other_debug_shapes() -> void:
+    for tower in get_tree().get_nodes_in_group("Towers"):
+        if tower != self:
+            tower.show_debug_shapes = false
+            tower.debug_overlay.queue_redraw() 
+            tower.show_info_ui()
+
+func show_info_ui() -> void:
+    $CanvasLayer/TowerInfo.visible = show_debug_shapes
+    $CanvasLayer/TowerInfo/LevelLabel.text = str(current_state.level)
+    $CanvasLayer/TowerInfo/Panel2/Control/DamageLabel.text = str(current_state.attack_damage)
+    $CanvasLayer/TowerInfo/Panel2/Control2/RangeLabel.text = str(current_state.attack_range)
+    $CanvasLayer/TowerInfo/Panel2/Control3/CooldownLabel.text = "%.1f" % (CatapultTower.cooldown_time/current_state.attack_speed)

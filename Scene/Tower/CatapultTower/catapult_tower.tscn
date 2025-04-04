@@ -1,32 +1,42 @@
-[gd_scene load_steps=59 format=3 uid="uid://df2fe4x85wstl"]
+[gd_scene load_steps=67 format=3 uid="uid://df2fe4x85wstl"]
 
-[ext_resource type="Script" path="res://Scene/Tower/ArcherTower/archer_tower.gd" id="1_ic4ts"]
+[ext_resource type="Script" path="res://Scene/Tower/CatapultTower/catapult_tower.gd" id="1_ic4ts"]
 [ext_resource type="PackedScene" uid="uid://cp11q43lj00b6" path="res://Scene/Tower/ArcherTower/archer.tscn" id="2_dlunp"]
-[ext_resource type="Script" path="res://Scene/Tower/ArcherTower/archer_tower_state.gd" id="3_kg4gc"]
-[ext_resource type="Resource" uid="uid://23eei7aftnau" path="res://Scene/Tower/ArcherTower/LevelResource/level_1.tres" id="4_6fdda"]
-[ext_resource type="Resource" uid="uid://cxgabdqlw8xke" path="res://Scene/Tower/ArcherTower/LevelResource/level_2.tres" id="5_0fl3y"]
-[ext_resource type="Resource" uid="uid://ch4am6olhh5s1" path="res://Scene/Tower/ArcherTower/LevelResource/level_3.tres" id="6_etm02"]
-[ext_resource type="Resource" uid="uid://8y7mlfu7q8km" path="res://Scene/Tower/ArcherTower/LevelResource/level_4.tres" id="7_ksgxp"]
-[ext_resource type="Resource" uid="uid://17iu74h1dgm5" path="res://Scene/Tower/ArcherTower/LevelResource/level_5.tres" id="8_o710d"]
-[ext_resource type="Resource" uid="uid://djsqliawx31dk" path="res://Scene/Tower/ArcherTower/LevelResource/level_6.tres" id="9_0c4dm"]
-[ext_resource type="Texture2D" uid="uid://dgauopevrik3h" path="res://Assets/Towers/ArcherTower/2 Idle/1.png" id="10_83460"]
+[ext_resource type="Script" path="res://Scene/Tower/CatapultTower/catapult_tower_state.gd" id="3_yvqhq"]
+[ext_resource type="Resource" uid="uid://uv3xnrseqfe3" path="res://Scene/Tower/CatapultTower/LevelResource/level_1.tres" id="4_fley6"]
+[ext_resource type="Resource" path="res://Scene/Tower/CatapultTower/LevelResource/level_2.tres" id="5_4agnv"]
+[ext_resource type="Resource" path="res://Scene/Tower/CatapultTower/LevelResource/level_3.tres" id="6_487vp"]
+[ext_resource type="Resource" path="res://Scene/Tower/CatapultTower/LevelResource/level_4.tres" id="7_o0t3w"]
+[ext_resource type="Resource" path="res://Scene/Tower/CatapultTower/LevelResource/level_5.tres" id="8_hjn5f"]
+[ext_resource type="Resource" path="res://Scene/Tower/CatapultTower/LevelResource/level_6.tres" id="9_t1w1g"]
 [ext_resource type="Texture2D" uid="uid://b8kec85egdvl8" path="res://Assets/Towers/ArcherTower/1 Upgrade/1.png" id="11_nwj7a"]
 [ext_resource type="Texture2D" uid="uid://tspbkge7ilq0" path="res://Assets/Towers/CatapultTower/1 Upgrade/2.png" id="12_0mlph"]
 [ext_resource type="Texture2D" uid="uid://blww2qne6i3bl" path="res://Assets/Towers/CatapultTower/1 Upgrade/1.png" id="12_jxy7h"]
 [ext_resource type="Texture2D" uid="uid://bbpjy3obhndm3" path="res://Assets/Towers/CatapultTower/2 Idle/2.png" id="14_qqdqv"]
 [ext_resource type="Texture2D" uid="uid://ceph7gxnq7nkx" path="res://Assets/Towers/CatapultTower/1 Upgrade/3.png" id="15_kwgau"]
-[ext_resource type="Texture2D" uid="uid://c4rmair46kn3b" path="res://Assets/Towers/ArcherTower/1 Upgrade/4.png" id="16_imxy4"]
 [ext_resource type="Texture2D" uid="uid://da8y4d4rhn2xc" path="res://Assets/Towers/CatapultTower/2 Idle/3.png" id="16_ukx4j"]
-[ext_resource type="Texture2D" uid="uid://dndk3habme408" path="res://Assets/Towers/ArcherTower/2 Idle/4.png" id="17_j3ac6"]
 [ext_resource type="Texture2D" uid="uid://dfsgbce41ib4y" path="res://Assets/Towers/CatapultTower/1 Upgrade/4.png" id="17_k8lnl"]
 [ext_resource type="Texture2D" uid="uid://cdvh1ni0qt206" path="res://Assets/Towers/CatapultTower/2 Idle/4.png" id="18_wg1kf"]
 [ext_resource type="Texture2D" uid="uid://dh4fdnh1nnk2d" path="res://Assets/Towers/CatapultTower/1 Upgrade/5.png" id="19_8f3aq"]
 [ext_resource type="Texture2D" uid="uid://cgjb7jmh1olsn" path="res://Assets/Towers/CatapultTower/2 Idle/5.png" id="20_qg2yg"]
+[ext_resource type="Texture2D" uid="uid://b853xvi6qxsut" path="res://Assets/Towers/CatapultTower/2 Idle/roof_4.png" id="20_x5j82"]
 [ext_resource type="Texture2D" uid="uid://7jwqpub0jh6t" path="res://Assets/Towers/CatapultTower/1 Upgrade/6.png" id="21_t6tpd"]
+[ext_resource type="Texture2D" uid="uid://bow04lba5oemg" path="res://Assets/Towers/CatapultTower/1 Upgrade/roof_5.png" id="22_j8xjg"]
 [ext_resource type="Texture2D" uid="uid://cj5jvwx58xasi" path="res://Assets/Towers/CatapultTower/2 Idle/6.png" id="22_yifmq"]
 [ext_resource type="Texture2D" uid="uid://t5edw6sgdmsi" path="res://Assets/Towers/CatapultTower/1 Upgrade/7.png" id="23_drwcr"]
 [ext_resource type="Texture2D" uid="uid://cscgkltfdfqr5" path="res://Assets/Towers/CatapultTower/2 Idle/7.png" id="24_dhnow"]
+[ext_resource type="Texture2D" uid="uid://dy7nsy8glu0m6" path="res://Assets/Towers/CatapultTower/2 Idle/roof_5.png" id="24_ed4uf"]
 [ext_resource type="Texture2D" uid="uid://fvj386ahj6rh" path="res://Assets/Towers/CatapultTower/1 Upgrade/roof_4.png" id="25_e562b"]
+[ext_resource type="Texture2D" uid="uid://bmf1mks151ioe" path="res://Assets/Towers/CatapultTower/1 Upgrade/roof_6.png" id="26_kpfko"]
+[ext_resource type="Texture2D" uid="uid://njrpa36e8duo" path="res://Assets/Towers/CatapultTower/2 Idle/roof_6.png" id="28_238rb"]
+[ext_resource type="Texture2D" uid="uid://dsorjoybor0qj" path="res://Assets/Towers/CatapultTower/1 Upgrade/roof_7.png" id="30_ntnkt"]
+[ext_resource type="Texture2D" uid="uid://dudrdwcwjny7" path="res://Assets/Towers/CatapultTower/2 Idle/roof_7.png" id="32_5n1yb"]
+[ext_resource type="Texture2D" uid="uid://cbcryfjljttk3" path="res://Assets/UI/table.png" id="33_58dka"]
+[ext_resource type="Texture2D" uid="uid://cg4p1223hjako" path="res://Assets/UI/Used Icons/catapult_icon.png" id="34_p4s00"]
+[ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="35_vw4th"]
+[ext_resource type="Texture2D" uid="uid://b5jshn2u6d3q4" path="res://Assets/UI/Used Icons/Icons_Damage.png" id="36_nlxc7"]
+[ext_resource type="Texture2D" uid="uid://5e8vol07v3nc" path="res://Assets/UI/Used Icons/Icons_Range.png" id="37_08hrs"]
+[ext_resource type="Texture2D" uid="uid://cn030u4r2dj1k" path="res://Assets/UI/Used Icons/Icons_Cooldown.png" id="38_87vsq"]
 
 [sub_resource type="Animation" id="Animation_tt04e"]
 length = 0.001
@@ -40,7 +50,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_83460")]
+"values": [ExtResource("14_qqdqv")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -77,6 +87,42 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("30_ntnkt")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_b2n4a"]
@@ -389,6 +435,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_e562b")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_hgwfn"]
 resource_name = "Tier3-Idle"
@@ -442,6 +524,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_x5j82")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 0]
+}
 
 [sub_resource type="Animation" id="Animation_0pepy"]
 resource_name = "Tier3-Upgrade"
@@ -489,6 +607,42 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("22_j8xjg")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -547,6 +701,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("24_ed4uf")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_tfyl5"]
 resource_name = "Tier4-Upgrade"
@@ -594,6 +784,42 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_kpfko")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -652,6 +878,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("28_238rb")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_jycnh"]
 resource_name = "Tier5-Upgrade"
@@ -699,6 +961,42 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("30_ntnkt")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
@@ -757,6 +1055,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Roof:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("32_5n1yb")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Roof:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Roof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.7, 0.933333, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gm0o7"]
 _data = {
@@ -779,121 +1113,32 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfa3q"]
 radius = 35.4902
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mpii7"]
-atlas = ExtResource("25_e562b")
-region = Rect2(0, 0, 70, 130)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_34xsp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8b8rw"]
-atlas = ExtResource("25_e562b")
-region = Rect2(70, 0, 70, 130)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0r6xe"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aaiqi"]
-atlas = ExtResource("25_e562b")
-region = Rect2(140, 0, 70, 130)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0he53"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_swn5d"]
-atlas = ExtResource("25_e562b")
-region = Rect2(210, 0, 70, 130)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6fi0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jiyil"]
-atlas = ExtResource("16_imxy4")
-region = Rect2(0, 54, 70, 19)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ydn3u"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1qfa5"]
-atlas = ExtResource("16_imxy4")
-region = Rect2(70, 54, 70, 19)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vx5r1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y8hqs"]
-atlas = ExtResource("16_imxy4")
-region = Rect2(140, 54, 70, 19)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nowcf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lxtmr"]
-atlas = ExtResource("16_imxy4")
-region = Rect2(210, 54, 70, 19)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k685n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bw2h1"]
-atlas = ExtResource("17_j3ac6")
-region = Rect2(0, 54, 70, 19)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ma0of"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wlx37"]
-atlas = ExtResource("17_j3ac6")
-region = Rect2(70, 54, 70, 19)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wpxpn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rbq1n"]
-atlas = ExtResource("17_j3ac6")
-region = Rect2(140, 54, 70, 19)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iqieh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijbdr"]
-atlas = ExtResource("17_j3ac6")
-region = Rect2(210, 54, 70, 19)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uviur"]
+texture = ExtResource("33_58dka")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xsgg"]
-atlas = ExtResource("17_j3ac6")
-region = Rect2(280, 54, 70, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tkn0"]
-atlas = ExtResource("17_j3ac6")
-region = Rect2(350, 54, 70, 19)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ig02u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mpii7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8b8rw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aaiqi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_swn5d")
-}],
-"loop": true,
-"name": &"Tier2-Upgrade",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jiyil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1qfa5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y8hqs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lxtmr")
-}],
-"loop": false,
-"name": &"Tier3-Upgrade",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bw2h1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wlx37")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rbq1n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ijbdr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1xsgg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2tkn0")
-}],
-"loop": true,
-"name": &"Tier4-Idle",
-"speed": 4.29
-}]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yu1hr"]
 
 [node name="CatapultTower" type="StaticBody2D"]
 y_sort_enabled = true
@@ -901,16 +1146,22 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 20
 collision_mask = 2
 script = ExtResource("1_ic4ts")
-archer = ExtResource("2_dlunp")
-tower_levels = Array[ExtResource("3_kg4gc")]([ExtResource("4_6fdda"), ExtResource("5_0fl3y"), ExtResource("6_etm02"), ExtResource("7_ksgxp"), ExtResource("8_o710d"), ExtResource("9_0c4dm")])
+catapult = ExtResource("2_dlunp")
+tower_levels = Array[ExtResource("3_yvqhq")]([ExtResource("4_fley6"), ExtResource("5_4agnv"), ExtResource("6_487vp"), ExtResource("7_o0t3w"), ExtResource("8_hjn5f"), ExtResource("9_t1w1g")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-texture = ExtResource("10_83460")
+texture = ExtResource("14_qqdqv")
 offset = Vector2(0, -30)
 
+[node name="Roof" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("30_ntnkt")
+offset = Vector2(0, -30)
+hframes = 4
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_gm0o7")
 }
@@ -926,10 +1177,198 @@ shape = SubResource("CircleShape2D_gfa3q")
 [node name="tmp" type="Node2D" parent="."]
 position = Vector2(0, -20)
 
-[node name="Roof" type="AnimatedSprite2D" parent="."]
-z_index = 4
-position = Vector2(0, -30)
-sprite_frames = SubResource("SpriteFrames_ig02u")
-animation = &"Tier2-Upgrade"
-frame = 3
-frame_progress = 0.83754
+[node name="Button" type="Button" parent="."]
+offset_left = -31.0
+offset_top = -25.0
+offset_right = 31.0
+offset_bottom = 35.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_34xsp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_0r6xe")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0he53")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_h6fi0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ydn3u")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_vx5r1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nowcf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_k685n")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ma0of")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wpxpn")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iqieh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TowerInfo" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 377.0
+offset_top = 483.0
+offset_right = -377.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_uviur")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/TowerInfo"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -27.0
+offset_right = 79.0
+offset_bottom = 27.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerInfo/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_p4s00")
+
+[node name="TowerLabel" type="Label" parent="CanvasLayer/TowerInfo"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 16.0
+offset_right = 293.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("35_vw4th")
+theme_override_font_sizes/font_size = 23
+text = "Catapult Tower Lv.
+"
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer/TowerInfo"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("35_vw4th")
+theme_override_font_sizes/font_size = 23
+text = "X"
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/TowerInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.246
+anchor_top = 0.41
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0919952
+offset_top = -11.0
+offset_right = -15.0
+offset_bottom = -11.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yu1hr")
+
+[node name="Control" type="Control" parent="CanvasLayer/TowerInfo/Panel2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.5
+offset_right = 80.0
+offset_bottom = 20.5
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerInfo/Panel2/Control"]
+layout_mode = 2
+anchor_top = 0.325
+anchor_right = 0.6
+anchor_bottom = 0.862
+offset_top = -0.325001
+offset_right = -23.0
+offset_bottom = 2.658
+texture = ExtResource("36_nlxc7")
+expand_mode = 2
+
+[node name="DamageLabel" type="Label" parent="CanvasLayer/TowerInfo/Panel2/Control"]
+layout_mode = 2
+offset_left = 28.0
+offset_top = 13.0
+offset_right = 65.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("35_vw4th")
+theme_override_font_sizes/font_size = 21
+text = "1.6k"
+
+[node name="Control2" type="Control" parent="CanvasLayer/TowerInfo/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.5
+offset_right = 40.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerInfo/Panel2/Control2"]
+layout_mode = 2
+anchor_top = 0.325
+anchor_right = 0.6
+anchor_bottom = 0.862
+offset_top = -0.325001
+offset_right = -23.0
+offset_bottom = 2.658
+texture = ExtResource("37_08hrs")
+expand_mode = 2
+
+[node name="RangeLabel" type="Label" parent="CanvasLayer/TowerInfo/Panel2/Control2"]
+layout_mode = 2
+offset_left = 28.0
+offset_top = 13.0
+offset_right = 65.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("35_vw4th")
+theme_override_font_sizes/font_size = 21
+text = "1.6k"
+
+[node name="Control3" type="Control" parent="CanvasLayer/TowerInfo/Panel2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -20.5
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerInfo/Panel2/Control3"]
+layout_mode = 2
+anchor_top = 0.325
+anchor_right = 0.6
+anchor_bottom = 0.862
+offset_top = -0.325001
+offset_right = -23.0
+offset_bottom = 2.658
+texture = ExtResource("38_87vsq")
+expand_mode = 2
+
+[node name="CooldownLabel" type="Label" parent="CanvasLayer/TowerInfo/Panel2/Control3"]
+layout_mode = 2
+offset_left = 28.0
+offset_top = 13.0
+offset_right = 65.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("35_vw4th")
+theme_override_font_sizes/font_size = 21
+text = "1.6k"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
