@@ -24,6 +24,7 @@ var current_click_cooldown: float = 0.0
 var tower_being_moved: bool = false
 
 var move_mode_indicator: ColorRect
+var mode_label: Label
 
 var recently_moved_towers = []
 var recent_move_timer = 0.0
@@ -41,6 +42,49 @@ func _ready() -> void:
     canvas_layer.layer = 100
     add_child(canvas_layer)
     canvas_layer.add_child(move_mode_indicator)
+    
+    # Create mode indicator label
+    mode_label = Label.new()
+    mode_label.text = "MOVE MODE"
+    mode_label.visible = false
+    mode_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    mode_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+    
+    # Make label fill the entire container
+    mode_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+    mode_label.size_flags_horizontal = Control.SIZE_FILL
+    mode_label.size_flags_vertical = Control.SIZE_FILL
+    
+    # Style the label
+    var font_size = 32
+    
+    # Load custom font
+    var custom_font = load("res://Assets/Font/CraftPixNet Survival Kit.otf")
+    mode_label.add_theme_font_override("font", custom_font)
+    
+    mode_label.add_theme_font_size_override("font_size", font_size)
+    mode_label.add_theme_color_override("font_color", Color(0.2, 0.6, 1.0))
+    mode_label.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.8))
+    mode_label.add_theme_constant_override("outline_size", 3)
+    
+    # Add a container and background for the label - position at bottom left
+    var container = Control.new()
+    container.name = "ModeIndicator"
+    container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    container.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+    container.size = Vector2(200, 50)  # Wider container (350px instead of 200px)
+    # Add margins
+    container.position = Vector2(20, -70)  # 20px from left, 70px from bottom
+    container.visible = false  # Start hidden
+    
+    var bg = ColorRect.new()
+    bg.color = Color(0.0, 0.0, 0.0, 0.5)
+    bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+    bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    
+    container.add_child(bg)
+    container.add_child(mode_label)
+    canvas_layer.add_child(container)
     
     var parent = get_parent()
     build_controller = parent.find_child("BuildController", true, false)
@@ -117,6 +161,8 @@ func toggle_move_mode() -> void:
     is_move_mode = !is_move_mode
     
     move_mode_indicator.visible = is_move_mode
+    mode_label.visible = is_move_mode
+    mode_label.get_parent().visible = is_move_mode  # Show/hide the container
     
     print("Move mode toggled: ", is_move_mode)
     

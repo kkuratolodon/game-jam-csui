@@ -15,6 +15,8 @@ var can_toggle: bool = true
 var toggle_cooldown: float = 0.3  # 300ms cooldown for toggle
 var current_toggle_cooldown: float = 0.0
 var move_controller = null 
+var mode_label: Label
+var mode_indicator: Control
 
 func _ready() -> void:
     base_tower_scene = load("res://Scene/Tower/base_tower.tscn")
@@ -38,6 +40,52 @@ func _ready() -> void:
     # Sembunyikan UI options pada preview
     if preview_tower.has_node("TowerOptions"):
         preview_tower.get_node("TowerOptions").visible = false
+    
+    # Create a UI indicator for build mode
+    var canvas_layer = CanvasLayer.new()
+    canvas_layer.layer = 100
+    add_child(canvas_layer)
+    
+    # Create container for the mode indicator - position at bottom left
+    mode_indicator = Control.new()
+    mode_indicator.name = "ModeIndicator"
+    mode_indicator.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    mode_indicator.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+    mode_indicator.size = Vector2(200, 50)  # Wider container (350px instead of 200px)
+    # Add margins
+    mode_indicator.position = Vector2(20, -70)  # 20px from left, 70px from bottom
+    mode_indicator.visible = false
+    
+    var bg = ColorRect.new()
+    bg.color = Color(0.0, 0.0, 0.0, 0.5)
+    bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+    bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    
+    mode_label = Label.new()
+    mode_label.text = "BUILD MODE"
+    mode_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    mode_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+    
+    # Make label fill the entire container
+    mode_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+    mode_label.size_flags_horizontal = Control.SIZE_FILL
+    mode_label.size_flags_vertical = Control.SIZE_FILL
+    
+    # Style the label
+    var font_size = 32
+    
+    # Load custom font
+    var custom_font = load("res://Assets/Font/CraftPixNet Survival Kit.otf")
+    mode_label.add_theme_font_override("font", custom_font)
+    
+    mode_label.add_theme_font_size_override("font_size", font_size)
+    mode_label.add_theme_color_override("font_color", Color(0.2, 1.0, 0.4))
+    mode_label.add_theme_color_override("font_outline_color", Color(0.0, 0.0, 0.0, 0.8))
+    mode_label.add_theme_constant_override("outline_size", 3)
+    
+    mode_indicator.add_child(bg)
+    mode_indicator.add_child(mode_label)
+    canvas_layer.add_child(mode_indicator)
     
     # Find move controller
     var parent = get_parent()
@@ -91,6 +139,7 @@ func _process(delta: float) -> void:
 func toggle_build_mode() -> void:
     is_build_mode = !is_build_mode
     preview_tower.visible = is_build_mode
+    mode_indicator.visible = is_build_mode  # Show/hide the indicator only when in build mode
     emit_signal("build_state_changed", is_build_mode)
     
     # If entering build mode, ensure we're not interacting with any existing tower
