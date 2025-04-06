@@ -2,7 +2,7 @@ class_name CatapultTower
 extends StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
-static var buy_cost := 75
+static var buy_cost := 125
 static var cooldown_time := 2.0
 @export var catapult : PackedScene
 @export var tower_levels: Array[CatapultTowerState] = []
@@ -124,20 +124,20 @@ func _on_button_pressed() -> void:
     # Toggle debug visualization
     show_debug_shapes = !show_debug_shapes
     print("Debug shapes: ", "ON" if show_debug_shapes else "OFF")
-    if debug_overlay:
-        debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
-        turn_off_other_debug_shapes()
-        show_info_ui()
+    debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+    turn_off_other_debug_shapes()
+    show_info_ui()
+    show_sell_button()
 
 func _process(delta: float) -> void:
-    if show_debug_shapes and debug_overlay:
+    if show_debug_shapes:
         debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
     if move_controller and build_controller:
         if move_controller.is_move_mode or build_controller.is_build_mode:
             show_debug_shapes = false
-            if debug_overlay:
-                debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
-                show_info_ui()
+            debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+            show_info_ui()
+            show_sell_button()
     else:
         print(move_controller, build_controller)
 # Move drawing logic to the overlay's draw function
@@ -214,9 +214,9 @@ func turn_off_other_debug_shapes() -> void:
     for tower in get_tree().get_nodes_in_group("Towers"):
         if tower != self:
             tower.show_debug_shapes = false
-            if tower.debug_overlay:
-                tower.debug_overlay.queue_redraw() 
-                tower.show_info_ui()
+            tower.debug_overlay.queue_redraw() 
+            tower.show_info_ui()
+            tower.show_sell_button()
 
 func show_info_ui() -> void:
     $CanvasLayer/TowerInfo.visible = show_debug_shapes
@@ -224,3 +224,36 @@ func show_info_ui() -> void:
     $CanvasLayer/TowerInfo/Panel2/Control/DamageLabel.text = str(current_state.attack_damage)
     $CanvasLayer/TowerInfo/Panel2/Control2/RangeLabel.text = str(current_state.attack_range)
     $CanvasLayer/TowerInfo/Panel2/Control3/CooldownLabel.text = "%.1f" % (CatapultTower.cooldown_time/current_state.attack_speed)
+
+func show_sell_button() -> void:
+    $SellPanel.visible = show_debug_shapes
+    $SellPanel/CostLabel.text = '$'
+    $SellPanel/CostLabel.add_theme_font_size_override("font_size", 24)
+
+func _on_sell_button_pressed() -> void:
+    if $SellPanel/CostLabel.text == '$':
+        # First click - change text and size
+        $SellPanel/CostLabel.text = str(sell_price)
+        
+        # Determine font size based on number of digits
+        var digits = len(str(sell_price))
+        var font_size = 16  # Default size for 1-2 digits
+        
+        if digits == 3:
+            font_size = 14
+        elif digits > 3:
+            font_size = 12
+            
+        $SellPanel/CostLabel.add_theme_font_size_override("font_size", font_size)
+    else:
+        # Second click - sell the tower
+        sell_tower()
+
+func sell_tower() -> void:
+    # Add the sell price to the player's resources
+    var player = Player.instance
+    if player:
+        player.money += sell_price
+    
+    # Remove the tower from the scene
+    queue_free()

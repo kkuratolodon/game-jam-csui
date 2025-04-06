@@ -3,7 +3,7 @@ extends Node
 var start_hp := 100
 var start_money := 1000
 var archer_start_level = 1
-var catapult_start_level = 4
+var catapult_start_level = 1
 var magic_start_level = 1
 var guardian_start_level = 1
 

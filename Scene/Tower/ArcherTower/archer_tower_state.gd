@@ -13,7 +13,7 @@ func enter_state(tower: ArcherTower, is_spawn_archer: bool = true, speed_up: flo
     tower.clear_archers()
     var has_roof = roof_position != Vector2.ZERO
     tower.roof.position = roof_position
-    tower.roof.visible = has_roof
+    tower.roof.visible = has_roof and is_spawn_archer
     if has_roof:
         tower.roof.play("Tier%d-Upgrade" % (level-1))
     tower.is_upgrading = true

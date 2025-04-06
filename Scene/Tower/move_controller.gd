@@ -352,14 +352,11 @@ func check_for_compatible_tower_intersection(towers_in_scene: Array) -> Node2D:
         # Adjust these property names based on your actual implementation
         if tower.has_method("get_type") and selected_tower.has_method("get_type") and \
            tower.has_method("get_level") and selected_tower.has_method("get_level"):
-            print("masuk1")
             if tower.get_type() == selected_tower.get_type() and \
                tower.get_level() == selected_tower.get_level():
-                print("masuk2")
                 if tower.get_level() < tower.max_level:
                     # Check if within intersection radius
                     var distance = tower.global_position.distance_to(preview_tower.global_position)
-                    print(distance)
                     if distance <= intersection_radius:
                         found_compatible_tower = true
                         compatible_tower = tower

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bew2s8ma8uvj7"]
+[gd_scene load_steps=6 format=3 uid="uid://bew2s8ma8uvj7"]
 
 [ext_resource type="Script" path="res://Scene/UI/in_game_ui.gd" id="1_n7pv4"]
+[ext_resource type="Texture2D" uid="uid://bjc65xlxd4pmo" path="res://Assets/UI/Used Icons/heart.png" id="2_ceubw"]
+[ext_resource type="FontFile" uid="uid://cantxaynqf5fn" path="res://Assets/Font/TinyFontCraftpixPixel.otf" id="3_17kr5"]
+[ext_resource type="Texture2D" uid="uid://ddpsdvi3phk1t" path="res://Assets/UI/Used Icons/gold.png" id="3_lyo06"]
+[ext_resource type="Texture2D" uid="uid://kinnhg4oqlfu" path="res://Assets/UI/Used Icons/flag.png" id="4_jvdsl"]
 
 [node name="InGameUi" type="Control"]
 layout_mode = 3
@@ -33,23 +37,114 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 85
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-size_flags_vertical = 0
-text = "hp: x2121"
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "money: x123132132231"
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -10.0
+offset_right = 29.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-text = "wave: x/y"
+texture = ExtResource("2_ceubw")
+expand_mode = 1
+
+[node name="HeartLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_17kr5")
+text = "100"
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -11.5
+offset_right = 36.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel2/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_lyo06")
+expand_mode = 1
+
+[node name="MoneyLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Panel2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_17kr5")
+text = "100"
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Panel3" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(174, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -10.0
+offset_right = 29.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Panel3/HBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("4_jvdsl")
+expand_mode = 1
+
+[node name="HeartLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Panel3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_17kr5")
+text = "0/10"
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2

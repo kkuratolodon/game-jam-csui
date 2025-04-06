@@ -11,7 +11,7 @@ extends Resource
 
 func enter_state(tower: CatapultTower, is_spawn_catapult: bool = true, speed_up: float = 1) -> void:
     tower.clear_catapults()
-    tower.roof.visible = has_roof
+    tower.roof.visible = has_roof and is_spawn_catapult
     tower.is_upgrading = true
     tower.anim.play("Tier%d-Upgrade" % (level-1))
     await tower.get_tree().create_timer(upgrade_duration/speed_up).timeout

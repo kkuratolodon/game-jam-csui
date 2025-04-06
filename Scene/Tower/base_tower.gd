@@ -8,9 +8,9 @@ var is_move_mode_active: bool = false
 # Tower costs
 var TOWER_COSTS = {
     "ArcherTower": ArcherTower.buy_cost,
-    "MagicTower": 150,
-    "CatapultTower": 200,
-    "GuardianTower": 250
+    "MagicTower": 0,
+    "CatapultTower": CatapultTower.buy_cost,
+    "GuardianTower": 0
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -90,7 +90,7 @@ func can_afford_tower(tower_type: String) -> bool:
 # Method to create a tower if player has enough money
 func create_tower(tower_type: String) -> Node2D:
     print("konz")
-    if can_afford_tower(tower_type):
+    if can_afford_tower(tower_type) and tower_type in ["ArcherTower", "CatapultTower", ]:
         var tower_options = {
             "ArcherTower": preload("res://Scene/Tower/ArcherTower/archer_tower.tscn"),
             # "MagicTower": preload("res://Scene/Tower/MagicTower/magic_tower.tscn"),
@@ -109,12 +109,27 @@ func create_tower(tower_type: String) -> Node2D:
             get_parent().move_child(new_tower, 0)
             queue_free()
             return new_tower
-    else:
+    elif !can_afford_tower(tower_type):
         # Show error message when player can't afford it
         $TowerOptions/Container/ErrorMessage.visible = true
+        $TowerOptions/Container/ErrorMessage.text = "Not enough money!"
         # Hide after 2 seconds
         get_tree().create_timer(2.0).timeout.connect(func(): $TowerOptions/Container/ErrorMessage.visible = false)
-    
+    elif tower_type == "GuardianTower":
+        # Show error message when player tries to create Guardian Tower
+        $TowerOptions/Container/ErrorMessage.visible = true
+        $TowerOptions/Container/ErrorMessage.text = "Guardian Tower is\nnot available yet!"
+        # Hide after 2 seconds
+        get_tree().create_timer(2.0).timeout.connect(func(): $TowerOptions/Container/ErrorMessage.visible = false)
+    elif tower_type == "MagicTower":
+        # Show error message when player tries to create Magic Tower
+        $TowerOptions/Container/ErrorMessage.visible = true
+        $TowerOptions/Container/ErrorMessage.text = "Magic Tower is\nnot available yet!"
+        # Hide after 2 seconds
+        get_tree().create_timer(2.0).timeout.connect(func(): $TowerOptions/Container/ErrorMessage.visible = false)
+    else:
+        print("Invalid tower type or tower type not supported.")
+
     return null
 
 # Hide all cost labels

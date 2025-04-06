@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=4 uid="uid://ctk1lr7ns4hvm"]
+[gd_scene load_steps=18 format=4 uid="uid://ctk1lr7ns4hvm"]
 
-[ext_resource type="Texture2D" uid="uid://7cdfg7c8vu3u" path="res://Assets/Field Tileset/1 Tiles/FieldsTileset.png" id="1_tralv"]
-[ext_resource type="PackedScene" uid="uid://hv6ha0f5abg1" path="res://Scene/Decoration/tree.tscn" id="3_ysjrv"]
-[ext_resource type="Texture2D" uid="uid://tb0nrcynjus4" path="res://Assets/Field Tileset/2 Objects/9 Bush/2.png" id="4_a5jh1"]
-[ext_resource type="PackedScene" uid="uid://25ilmxgbhppv" path="res://Scene/Enemy/enemy.tscn" id="5_6cjr8"]
-[ext_resource type="PackedScene" uid="uid://eqmkqq56caru" path="res://Scene/Building/Castle/Castle.tscn" id="7_ib2u8"]
-[ext_resource type="PackedScene" uid="uid://dkyj7slnaawor" path="res://Scene/Player/Player.tscn" id="8_k6qcx"]
-[ext_resource type="Script" path="res://Scene/Tower/move_controller.gd" id="9_qhi5u"]
-[ext_resource type="PackedScene" uid="uid://bew2s8ma8uvj7" path="res://Scene/UI/in_game_ui.tscn" id="9_rqk52"]
-[ext_resource type="Script" path="res://Scene/Tower/merge_controller.gd" id="10_sm5l1"]
-[ext_resource type="Script" path="res://Scene/Tower/build_controller.gd" id="10_xq36r"]
+[ext_resource type="Script" path="res://Scene/Level/tutorial.gd" id="1_3nk2l"]
+[ext_resource type="PackedScene" uid="uid://hv6ha0f5abg1" path="res://Scene/Decoration/tree.tscn" id="1_rivsm"]
+[ext_resource type="PackedScene" uid="uid://eqmkqq56caru" path="res://Scene/Building/Castle/Castle.tscn" id="2_1pysv"]
+[ext_resource type="PackedScene" uid="uid://bew2s8ma8uvj7" path="res://Scene/UI/in_game_ui.tscn" id="3_wpdls"]
+[ext_resource type="PackedScene" uid="uid://dkyj7slnaawor" path="res://Scene/Player/Player.tscn" id="4_fh8y1"]
+[ext_resource type="Texture2D" uid="uid://7cdfg7c8vu3u" path="res://Assets/Field Tileset/1 Tiles/FieldsTileset.png" id="5_y1uro"]
+[ext_resource type="Texture2D" uid="uid://tb0nrcynjus4" path="res://Assets/Field Tileset/2 Objects/9 Bush/2.png" id="6_m6k70"]
+[ext_resource type="Script" path="res://Scene/Tower/build_controller.gd" id="7_2lyul"]
+[ext_resource type="Script" path="res://Scene/Tower/move_controller.gd" id="8_qn3dp"]
+[ext_resource type="Script" path="res://Scene/Tower/merge_controller.gd" id="9_263rj"]
+[ext_resource type="PackedScene" uid="uid://25ilmxgbhppv" path="res://Scene/Enemy/enemy.tscn" id="10_y7y6j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1ar0l"]
 vertices = PackedVector2Array(342, 522, 438, 522, 438, 554, 394, 566, 298, 566, 298, 534, 426, 598, 470, 554, 470, 586, 426, 630, 534, 586, 534, 618, 522, 630, 598, 618, 598, 650, 586, 662, 522, 662, 618, 694, 662, 650, 662, 682, 650, 726, 694, 682, 694, 714, 682, 758, 650, 758, 726, 714, 726, 746, 682, 790, 790, 746, 790, 778, 746, 790, 886, 778, 886, 810, 746, 822, 918, 810, 918, 822, 618, 726, 586, 694, 394, 598, 138, 522, 182, 534, 182, 566, 86, 566, 74, 554, 74, 522, 86, 598, 54, 598, 42, 586, 42, 554, 54, 630, 22, 630, 10, 618, 10, 586, 22, 746, 54, 746, 54, 778, 42, 790, -22, 790, 86, 778, 86, 810, 74, 854, 42, 854, 118, 810, 118, 842, 74, 886, 214, 842, 214, 874, 138, 886, 438, 874, 438, 906, 394, 918, 138, 918, 458, 950, 502, 906, 502, 938, 490, 982, 534, 938, 534, 1110, 490, 1066, 470, 1110, 470, 1142, 438, 1142, 426, 1130, 426, 1098, 458, 1098, 438, 1174, 394, 1174, 394, 1130, 458, 1066, 458, 982, 394, 950, -22, 618, 138, 490, 342, 490)
@@ -17,7 +18,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedIn
 outlines = Array[PackedVector2Array]([PackedVector2Array(-114, 370, -146, 1202, 1000, 1256, 897, 464, -108, 356)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yrtft"]
-texture = ExtResource("1_tralv")
+texture = ExtResource("5_y1uro")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -645,7 +646,7 @@ texture_region_size = Vector2i(32, 32)
 7:7/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ytg2"]
-texture = ExtResource("4_a5jh1")
+texture = ExtResource("6_m6k70")
 texture_region_size = Vector2i(37, 26)
 
 [sub_resource type="TileSet" id="TileSet_d8ddj"]
@@ -675,38 +676,39 @@ point_count = 24
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_3nk2l")
 
 [node name="Decoration" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Tree" parent="Decoration" instance=ExtResource("3_ysjrv")]
+[node name="Tree" parent="Decoration" instance=ExtResource("1_rivsm")]
 position = Vector2(228, 730)
 collision_layer = 4
 collision_mask = 2
 
-[node name="Tree4" parent="Decoration" instance=ExtResource("3_ysjrv")]
+[node name="Tree4" parent="Decoration" instance=ExtResource("1_rivsm")]
 position = Vector2(701, 563)
 collision_layer = 4
 collision_mask = 2
 
-[node name="Tree2" parent="Decoration" instance=ExtResource("3_ysjrv")]
+[node name="Tree2" parent="Decoration" instance=ExtResource("1_rivsm")]
 position = Vector2(211, 669)
 collision_layer = 4
 collision_mask = 2
 
-[node name="Tree3" parent="Decoration" instance=ExtResource("3_ysjrv")]
+[node name="Tree3" parent="Decoration" instance=ExtResource("1_rivsm")]
 position = Vector2(166, 710)
 collision_layer = 4
 collision_mask = 2
 
-[node name="Castle" parent="." instance=ExtResource("7_ib2u8")]
+[node name="Castle" parent="." instance=ExtResource("2_1pysv")]
 position = Vector2(921, 762)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="InGameUi" parent="CanvasLayer" instance=ExtResource("9_rqk52")]
+[node name="InGameUi" parent="CanvasLayer" instance=ExtResource("3_wpdls")]
 
-[node name="Player" parent="." instance=ExtResource("8_k6qcx")]
+[node name="Player" parent="." instance=ExtResource("4_fh8y1")]
 position = Vector2(529, 827)
 
 [node name="Towers" type="Node2D" parent="."]
@@ -726,24 +728,24 @@ collision_visibility_mode = 2
 position = Vector2(944, 810)
 
 [node name="BuildController" type="Node2D" parent="."]
-script = ExtResource("10_xq36r")
+script = ExtResource("7_2lyul")
 
 [node name="MoveController" type="Node2D" parent="."]
-script = ExtResource("9_qhi5u")
+script = ExtResource("8_qn3dp")
 
 [node name="MergeController" type="Node2D" parent="."]
-script = ExtResource("10_sm5l1")
+script = ExtResource("9_263rj")
 
 [node name="EnemyPaths" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="EnemyPaths"]
 curve = SubResource("Curve2D_m74yj")
 
-[node name="Enemy2" parent="EnemyPaths/Path2D" instance=ExtResource("5_6cjr8")]
+[node name="Enemy2" parent="EnemyPaths/Path2D" instance=ExtResource("10_y7y6j")]
 position = Vector2(500, 1137)
 
 [node name="Path2D2" type="Path2D" parent="EnemyPaths"]
 curve = SubResource("Curve2D_xxbog")
 
-[node name="Enemy" parent="EnemyPaths/Path2D2" instance=ExtResource("5_6cjr8")]
+[node name="Enemy" parent="EnemyPaths/Path2D2" instance=ExtResource("10_y7y6j")]
 position = Vector2(514, 1158)

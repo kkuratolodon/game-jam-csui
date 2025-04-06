@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_u8q85")
 level = 4
-attack_damage = 600
+attack_damage = 400
 attack_speed = 1.05
-attack_range = 240.0
+attack_range = 120.0
 catapult_positions = Array[Vector2]([Vector2(1, -16)])
 upgrade_duration = 1.0
 has_roof = true

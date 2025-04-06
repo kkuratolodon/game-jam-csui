@@ -29,18 +29,18 @@ func init(new_target: Node2D, new_damage: int, new_z_index: int, spawn_position:
     if target:
         target_initial_position = target.global_position
         
-        # First predict the future position
-        predict_future_position()
-        
-        # Calculate travel time based on distance to predicted position
-        var distance_to_predicted = global_position.distance_to(predicted_position)
+        # Calculate travel time based on distance to target
+        var distance_to_target = global_position.distance_to(target.global_position)
         
         var min_distance = 100.0  # Distance for minimum travel time
-        var max_distance = 300.0  # Distance for maximum travel time
+        var max_distance = 200.0  # Distance for maximum travel time
+
         
-        # Adjust travel time based on distance to predicted position
-        var normalized_distance = clamp((distance_to_predicted - min_distance) / (max_distance - min_distance), 0.0, 1.0)
-        travel_time = lerp(1.0,2.0, normalized_distance)
+        # Clamp distance within range to calculate travel time between 0.8 and 1.5
+        var normalized_distance = clamp((distance_to_target - min_distance) / (max_distance - min_distance), 0.0, 1.0)
+        travel_time = lerp(0.75, 1.25, normalized_distance)
+        
+        predict_future_position()
         
     return self
 
