@@ -27,7 +27,7 @@ func _ready() -> void:
     $TowerOptions/Container/GuardianPanel/CostLabel.text = str(TOWER_COSTS["GuardianTower"])
     
     # Try to find the build controller and connect to its signal
-    var main_scene = get_tree().root.get_child(0)
+    var main_scene = get_tree().root.get_node("Node2D")
     var build_controller = main_scene.find_child("BuildController", true, false)
     if build_controller:
         if not build_controller.build_state_changed.is_connected(_on_build_state_changed):
@@ -38,10 +38,13 @@ func _ready() -> void:
     # Connect to move controller
     var move_controller = main_scene.find_child("MoveController", true, false)
     if move_controller:
+        print("MoveController found in the scene tree.")
         if not move_controller.move_state_changed.is_connected(_on_move_state_changed):
             move_controller.move_state_changed.connect(_on_move_state_changed)
         # Initialize with current move mode state
         initialize_move_mode(move_controller.is_move_mode)
+    else:
+        print("MoveController not found in the scene tree.")
 
 # New method to initialize build mode state
 func initialize_build_mode(build_mode_state: bool) -> void:
@@ -65,6 +68,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
     # Only allow interaction if not in build mode AND not in move mode
+    print("is_build_mode_active: ", is_build_mode_active)
+    print("is_move_mode_active: ", is_move_mode_active)
     if body.name == "Player" and !is_build_mode_active and !is_move_mode_active:
         var player = Player.instance
         player.in_base_tower = self
@@ -188,12 +193,12 @@ func _on_tower_button_mouse_exited() -> void:
     hide_all_cost_labels()
 
 func _on_mouse_entered() -> void:
-    if !is_build_mode_active:
+    # Only show options if neither build mode nor move mode is active
+    if !is_build_mode_active and !is_move_mode_active:
         _on_body_entered(Player.instance)
 
 func _on_container_mouse_exited() -> void:
-    if !is_build_mode_active:
-        _on_body_exited(Player.instance)
+    _on_body_exited(Player.instance)
         
 func initialize_move_mode(move_mode_state: bool) -> void:
     is_move_mode_active = move_mode_state
