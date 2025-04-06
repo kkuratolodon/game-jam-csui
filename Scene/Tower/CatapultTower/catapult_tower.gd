@@ -3,7 +3,7 @@ extends StaticBody2D
 
 # Called when the node enters the scene tree for the first time.
 static var buy_cost := 75
-static var cooldown_time := 1.0
+static var cooldown_time := 2.0
 @export var catapult : PackedScene
 @export var tower_levels: Array[CatapultTowerState] = []
 @onready var anim = $AnimationPlayer
@@ -93,7 +93,7 @@ func update_sell_price() -> void:
 func spawn_catapult(offset : Vector2) -> void:
     var catapult_instance = catapult.instantiate()
     catapult_instance.position = offset
-    
+    print("catapult instance", catapult_instance)
     # Pass the current state's attributes to the catapult
     
     catapult_instance.damage = current_state.attack_damage
@@ -124,18 +124,20 @@ func _on_button_pressed() -> void:
     # Toggle debug visualization
     show_debug_shapes = !show_debug_shapes
     print("Debug shapes: ", "ON" if show_debug_shapes else "OFF")
-    debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
-    turn_off_other_debug_shapes()
-    show_info_ui()
+    if debug_overlay:
+        debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+        turn_off_other_debug_shapes()
+        show_info_ui()
 
 func _process(delta: float) -> void:
-    if show_debug_shapes:
+    if show_debug_shapes and debug_overlay:
         debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
     if move_controller and build_controller:
         if move_controller.is_move_mode or build_controller.is_build_mode:
             show_debug_shapes = false
-            debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
-            show_info_ui()
+            if debug_overlay:
+                debug_overlay.queue_redraw()  # Queue redraw on the overlay, not self
+                show_info_ui()
     else:
         print(move_controller, build_controller)
 # Move drawing logic to the overlay's draw function
@@ -212,8 +214,9 @@ func turn_off_other_debug_shapes() -> void:
     for tower in get_tree().get_nodes_in_group("Towers"):
         if tower != self:
             tower.show_debug_shapes = false
-            tower.debug_overlay.queue_redraw() 
-            tower.show_info_ui()
+            if tower.debug_overlay:
+                tower.debug_overlay.queue_redraw() 
+                tower.show_info_ui()
 
 func show_info_ui() -> void:
     $CanvasLayer/TowerInfo.visible = show_debug_shapes

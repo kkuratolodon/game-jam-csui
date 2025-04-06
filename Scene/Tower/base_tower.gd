@@ -106,6 +106,7 @@ func create_tower(tower_type: String) -> Node2D:
             var new_tower = tower_options[tower_type].instantiate()
             new_tower.position = position
             get_parent().add_child(new_tower)
+            get_parent().move_child(new_tower, 0)
             queue_free()
             return new_tower
     else:

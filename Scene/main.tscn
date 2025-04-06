@@ -739,7 +739,7 @@ script = ExtResource("10_sm5l1")
 [node name="Path2D" type="Path2D" parent="EnemyPaths"]
 curve = SubResource("Curve2D_m74yj")
 
-[node name="Enemy" parent="EnemyPaths/Path2D" instance=ExtResource("5_6cjr8")]
+[node name="Enemy2" parent="EnemyPaths/Path2D" instance=ExtResource("5_6cjr8")]
 position = Vector2(500, 1137)
 
 [node name="Path2D2" type="Path2D" parent="EnemyPaths"]

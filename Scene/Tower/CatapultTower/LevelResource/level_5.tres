@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CatapultTowerState" load_steps=2 format=3 uid="uid://cxtismmuq46pa"]
+[gd_resource type="Resource" script_class="CatapultTowerState" load_steps=2 format=3 uid="uid://pdd8hh4itpsa"]
 
 [ext_resource type="Script" path="res://Scene/Tower/CatapultTower/catapult_tower_state.gd" id="1_78gev"]
 
@@ -8,6 +8,6 @@ level = 5
 attack_damage = 1100
 attack_speed = 1.1
 attack_range = 260.0
-catapult_positions = Array[Vector2]([Vector2(0, -5)])
+catapult_positions = Array[Vector2]([Vector2(1, -27.333)])
 upgrade_duration = 1.0
 has_roof = true

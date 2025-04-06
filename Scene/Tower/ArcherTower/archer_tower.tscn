@@ -932,6 +932,7 @@ offset_left = -31.0
 offset_top = -25.0
 offset_right = 31.0
 offset_bottom = 35.0
+mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t8ms8")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_gumw1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_22c68")

@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://cia6a47nkon00"]
+
+[ext_resource type="Texture2D" uid="uid://c6y7b67ti11e3" path="res://Assets/Towers/CatapultTower/3 Units/Projectiles/sprite_sheet.png" id="1_0faoy"]
+[ext_resource type="Texture2D" uid="uid://xkn1lfjdfm34" path="res://Assets/Towers/CatapultTower/3 Units/Projectiles/2.png" id="1_m4lh2"]
+[ext_resource type="Script" path="res://Scene/Tower/CatapultTower/projectile.gd" id="1_pg2bd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q03ud"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(0, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dspt"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(279, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h67sg"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(558, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2p11"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(837, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlesv"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(1116, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih5r0"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(1395, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwns4"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(1674, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c75sl"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(1953, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am5bn"]
+atlas = ExtResource("1_0faoy")
+region = Rect2(2232, 0, 279, 275)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aky7v"]
+atlas = ExtResource("1_m4lh2")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3x2r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q03ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dspt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h67sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2p11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlesv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih5r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwns4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c75sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am5bn")
+}],
+"loop": false,
+"name": &"break",
+"speed": 18.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aky7v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_pg2bd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x3x2r")
+animation = &"break"
+autoplay = "default"
+frame = 8
+frame_progress = 1.0

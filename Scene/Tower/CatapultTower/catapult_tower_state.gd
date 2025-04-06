@@ -18,7 +18,6 @@ func enter_state(tower: CatapultTower, is_spawn_catapult: bool = true, speed_up:
     if is_spawn_catapult:
         for position in catapult_positions:
             tower.spawn_catapult(position)
-    print(level)
     tower.is_upgrading = false
     tower.anim.play("Tier%d-Idle" % (level))
         

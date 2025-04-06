@@ -42,7 +42,6 @@ func _ready() -> void:
     # Find move controller
     var parent = get_parent()
     move_controller = parent.find_child("MoveController", true, false)
-    print(move_controller)
 
 func _process(delta: float) -> void:
     # Update cooldown timer
