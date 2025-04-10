@@ -10,6 +10,10 @@ func _ready() -> void:
     speed = owner.speed
 
 func _process(delta):
+    # Check if enemy is dying, don't move if health is zero or below
+    if owner.current_health <= 0:
+        return
+        
     owner.progress += speed * delta
     
     # Check if the owner node has reached the end of the path

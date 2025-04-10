@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="IGJ"
-run/main_scene="res://Scene/Level/tutorial.tscn"
+run/main_scene="res://Scene/Menu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Config="*res://Scene/Utils/config.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
@@ -69,3 +73,5 @@ ui_down={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

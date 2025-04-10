@@ -33,6 +33,7 @@ func show_next_button(visible: bool):
     content_margin.size = content_margin.size
 
 func _on_next_button_pressed():
+    print("Next button pressed")
     # Ensure any highlight is hidden before emitting the signal
     var tutorial_highlights = get_tree().get_nodes_in_group("TutorialHighlight")
     for highlight in tutorial_highlights:

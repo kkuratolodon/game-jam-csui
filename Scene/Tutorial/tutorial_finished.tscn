@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm8f70efrolvs"]
+
+[ext_resource type="Texture2D" uid="uid://cbcryfjljttk3" path="res://Assets/UI/table.png" id="1_8x1qk"]
+[ext_resource type="Script" path="res://Scene/Tutorial/tutorial_panel.gd" id="2_20n7d"]
+[ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="3_sunl7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yv7wa"]
+texture = ExtResource("1_8x1qk")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_awvlf"]
+
+[node name="TutorialPanel" type="Panel"]
+custom_minimum_size = Vector2(400, 200)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -172.0
+offset_right = 200.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_yv7wa")
+script = ExtResource("2_20n7d")
+metadata/_edit_horizontal_guides_ = [326.0]
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 71.0
+offset_right = 400.0
+offset_bottom = 263.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_awvlf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.94902, 0.94902, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_sunl7")
+theme_override_font_sizes/font_size = 24
+text = "Congratulations!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="ContentLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_sunl7")
+theme_override_font_sizes/font_size = 18
+text = "You have successfully completed all tutorials!
+
+You've mastered the basics of building, moving towers, and defeating enemies. Now you're ready to take on the full game challenges.
+
+Good luck defending your kingdom!"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="NextButton" type="Button" parent="Panel/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_sunl7")
+theme_override_font_sizes/font_size = 18
+text = "Continue"
+
+[connection signal="pressed" from="Panel/VBoxContainer/ButtonContainer/NextButton" to="." method="_on_next_button_pressed"]

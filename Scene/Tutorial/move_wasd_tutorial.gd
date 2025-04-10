@@ -50,7 +50,7 @@ func show_current_step():
     match current_step:
         0: # Introduction
             manager.tutorial_ui.set_title("Basic Movement")
-            manager.tutorial_ui.set_content("Welcome! Let's learn how to move your character using the keyboard.")
+            manager.tutorial_ui.set_content("Welcome! Let's learn how to move your camera using the keyboard.")
             manager.tutorial_ui.show_next_button(true)
             # Use default panel size and position
             manager.tutorial_ui.show_panel()

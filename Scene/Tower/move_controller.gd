@@ -23,7 +23,6 @@ var current_click_cooldown: float = 0.0
 
 var tower_being_moved: bool = false
 
-var move_mode_indicator: ColorRect
 var mode_label: Label
 
 var recently_moved_towers = []
@@ -32,16 +31,10 @@ var recent_move_timer = 0.0
 var compatible_tower: Node2D = null
 
 func _ready() -> void:
-    move_mode_indicator = ColorRect.new()
-    move_mode_indicator.color = Color(0.2, 0.4, 0.8, 0.1)
-    move_mode_indicator.size = Vector2(get_viewport_rect().size.x, get_viewport_rect().size.y)
-    move_mode_indicator.mouse_filter = Control.MOUSE_FILTER_IGNORE
-    move_mode_indicator.visible = false
     
     var canvas_layer = CanvasLayer.new()
     canvas_layer.layer = 100
     add_child(canvas_layer)
-    canvas_layer.add_child(move_mode_indicator)
     
     # Create mode indicator label
     mode_label = Label.new()
@@ -160,7 +153,6 @@ func toggle_move_mode() -> void:
     
     is_move_mode = !is_move_mode
     
-    move_mode_indicator.visible = is_move_mode
     mode_label.visible = is_move_mode
     mode_label.get_parent().visible = is_move_mode  # Show/hide the container
     

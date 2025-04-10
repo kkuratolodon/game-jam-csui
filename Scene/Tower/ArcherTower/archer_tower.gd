@@ -162,7 +162,7 @@ func _on_debug_overlay_draw() -> void:
         # Set colors based on enemy presence
         var fill_color = Color(0.3, 0.3, 0.3, 0.2)  # Darker gray with transparency when no enemies
         var outline_color = Color(0.4, 0.4, 0.4, 0.7)  # Darker gray outline
-        print(archer_instance.nearest_enemy)
+        # print(archer_instance.nearest_enemy)
         if archer_instance.nearest_enemy:
             fill_color = Color(0, 1, 0, 0.1)  # Lighter green fill with more transparency
             outline_color = Color(0, 0.7, 0, 0.7)  # Darker green outline

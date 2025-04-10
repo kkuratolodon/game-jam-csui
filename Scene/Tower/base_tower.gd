@@ -3,8 +3,8 @@ class_name BaseTower
 
 # New variable to track build mode state
 var is_build_mode_active: bool = false
+var build_controller
 var is_move_mode_active: bool = false
-
 # Tower costs
 var TOWER_COSTS = {
     "ArcherTower": ArcherTower.buy_cost,
@@ -28,7 +28,7 @@ func _ready() -> void:
     
     # Try to find the build controller and connect to its signal
     var main_scene = get_tree().root.get_node("Node2D")
-    var build_controller = main_scene.find_child("BuildController", true, false)
+    build_controller = main_scene.find_child("BuildController", true, false)
     if build_controller:
         if not build_controller.build_state_changed.is_connected(_on_build_state_changed):
             build_controller.build_state_changed.connect(_on_build_state_changed)
@@ -67,13 +67,14 @@ func _process(delta: float) -> void:
     pass
 
 func _on_body_entered(body: Node2D) -> void:
-    # Only allow interaction if not in build mode AND not in move mode
-    print("is_build_mode_active: ", is_build_mode_active)
-    print("is_move_mode_active: ", is_move_mode_active)
-    if body.name == "Player" and !is_build_mode_active and !is_move_mode_active:
-        var player = Player.instance
-        player.in_base_tower = self
-        $TowerOptions.visible = true
+    if build_controller.can_build_tower:
+        # Only allow interaction if not in build mode AND not in move mode
+        print("is_build_mode_active: ", is_build_mode_active)
+        print("is_move_mode_active: ", is_move_mode_active)
+        if body.name == "Player" and !is_build_mode_active and !is_move_mode_active:
+            var player = Player.instance
+            player.in_base_tower = self
+            $TowerOptions.visible = true
         
 
 func _on_body_exited(body: Node2D) -> void:

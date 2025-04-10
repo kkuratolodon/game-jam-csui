@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyvlbyxl4non"]
+
+[ext_resource type="Script" path="res://Scene/Menu/main_menu.gd" id="1_bi1en"]
+[ext_resource type="Texture2D" uid="uid://dgtenoa4dnbor" path="res://Assets/UI/Menu/5 Logo/Logo.png" id="2_5k3m6"]
+[ext_resource type="Texture2D" uid="uid://bsj5u0x0b4yaf" path="res://Assets/UI/Free-Fields-Tileset-Pixel-Art-for-Tower-Defense.jpg" id="2_55tje"]
+[ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="3_fx5lc"]
+[ext_resource type="Texture2D" uid="uid://bgjne7h7y1oji" path="res://Assets/UI/Menu/2 Bars/Button1.png" id="4_wq1jd"]
+[ext_resource type="Texture2D" uid="uid://bkeljqf7gd4r5" path="res://Assets/UI/Menu/2 Bars/Button2.png" id="5_yicno"]
+
+[sub_resource type="Shader" id="Shader_emugo"]
+code = "shader_type canvas_item;
+
+uniform float blur_amount : hint_range(0, 3) = 1.0;
+
+void fragment() {
+    // Simple and subtle Gaussian-like blur
+    vec2 pixel_size = 1.0 / TEXTURE_PIXEL_SIZE;
+    float blur = blur_amount / pixel_size.x;
+    
+    vec4 color = texture(TEXTURE, UV) * 0.5;
+    color += texture(TEXTURE, UV + vec2(-blur, 0.0)) * 0.125;
+    color += texture(TEXTURE, UV + vec2(blur, 0.0)) * 0.125;
+    color += texture(TEXTURE, UV + vec2(0.0, -blur)) * 0.125;
+    color += texture(TEXTURE, UV + vec2(0.0, blur)) * 0.125;
+    
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u04m7"]
+shader = SubResource("Shader_emugo")
+shader_parameter/blur_amount = 1.0
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_bi1en")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_u04m7")
+offset_left = -66.0
+offset_right = 1186.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("2_55tje")
+expand_mode = 1
+
+[node name="DarkOverlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Logo" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -250.0
+offset_right = 283.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5k3m6")
+
+[node name="Label" type="Label" parent="CanvasLayer/Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -37.5
+offset_right = 179.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.835294, 0.411765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_fx5lc")
+theme_override_font_sizes/font_size = 46
+text = "Merge Vanguards"
+
+[node name="StartButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 507.0
+offset_top = 343.0
+offset_right = 555.0
+offset_bottom = 371.0
+scale = Vector2(2.735, 2.735)
+texture_normal = ExtResource("4_wq1jd")
+texture_pressed = ExtResource("5_yicno")
+texture_hover = ExtResource("5_yicno")
+
+[node name="Label" type="Label" parent="CanvasLayer/StartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.8812
+offset_top = -10.3437
+offset_right = 90.1188
+offset_bottom = 38.6563
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.345, 0.345)
+theme_override_colors/font_color = Color(0.819608, 0.521569, 0.117647, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_fx5lc")
+theme_override_font_sizes/font_size = 46
+text = "Start"
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer"]
+offset_left = 507.0
+offset_top = 444.0
+offset_right = 555.0
+offset_bottom = 472.0
+scale = Vector2(2.735, 2.735)
+texture_normal = ExtResource("4_wq1jd")
+texture_pressed = ExtResource("5_yicno")
+texture_hover = ExtResource("5_yicno")
+
+[node name="Label" type="Label" parent="CanvasLayer/ExitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.8592
+offset_top = -9.24681
+offset_right = 69.1408
+offset_bottom = 39.7532
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.345, 0.345)
+theme_override_colors/font_color = Color(0.819608, 0.521569, 0.117647, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_fx5lc")
+theme_override_font_sizes/font_size = 46
+text = "Exit"
+
+[connection signal="mouse_entered" from="CanvasLayer/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_pressed"]

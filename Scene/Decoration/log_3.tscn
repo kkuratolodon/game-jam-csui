@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlvd3vvgci4kp"]
+
+[ext_resource type="Texture2D" uid="uid://cfehkb3bu1qks" path="res://Assets/Field Tileset/2 Objects/7 Decor/Log3.png" id="1_xr65w"]
+
+[node name="Log3" type="StaticBody2D"]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xr65w")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-20, -2, -21, 7, 22, 3, 20, -3)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx7ggfq0b015v"]
+
+[ext_resource type="Texture2D" uid="uid://cgi6kmftco4ut" path="res://Assets/Field Tileset/2 Objects/9 Bush/4.png" id="1_f3pls"]
+
+[node name="Bush4" type="StaticBody2D"]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f3pls")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(19, 3, -18, 2, -12, 11, 14, 12)

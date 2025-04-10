@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Scene/Tower/CatapultTower/catapult_tower.gd" id="1_ic4ts"]
 [ext_resource type="PackedScene" uid="uid://ccwnr2i6rhno7" path="res://Scene/Tower/CatapultTower/catapult.tscn" id="2_0rvsa"]
 [ext_resource type="Script" path="res://Scene/Tower/CatapultTower/catapult_tower_state.gd" id="3_yvqhq"]
-[ext_resource type="Resource" uid="uid://uv3xnrseqfe3" path="res://Scene/Tower/CatapultTower/LevelResource/level_1.tres" id="4_fley6"]
-[ext_resource type="Resource" uid="uid://cclp44y2hyopc" path="res://Scene/Tower/CatapultTower/LevelResource/level_2.tres" id="5_4agnv"]
-[ext_resource type="Resource" uid="uid://be3rsk7br5r10" path="res://Scene/Tower/CatapultTower/LevelResource/level_3.tres" id="6_487vp"]
-[ext_resource type="Resource" uid="uid://c7vi186yragbq" path="res://Scene/Tower/CatapultTower/LevelResource/level_4.tres" id="7_o0t3w"]
-[ext_resource type="Resource" uid="uid://pdd8hh4itpsa" path="res://Scene/Tower/CatapultTower/LevelResource/level_5.tres" id="8_hjn5f"]
-[ext_resource type="Resource" uid="uid://fvjx1mycsirx" path="res://Scene/Tower/CatapultTower/LevelResource/level_6.tres" id="9_t1w1g"]
+[ext_resource type="Resource" uid="uid://uv3xnrseqfe3" path="res://Scene/Tower/GuardianTower/LevelResource/level_1.tres" id="4_fley6"]
+[ext_resource type="Resource" uid="uid://cclp44y2hyopc" path="res://Scene/Tower/GuardianTower/LevelResource/level_2.tres" id="5_4agnv"]
+[ext_resource type="Resource" uid="uid://be3rsk7br5r10" path="res://Scene/Tower/GuardianTower/LevelResource/level_3.tres" id="6_487vp"]
+[ext_resource type="Resource" uid="uid://c7vi186yragbq" path="res://Scene/Tower/GuardianTower/LevelResource/level_4.tres" id="7_o0t3w"]
+[ext_resource type="Resource" uid="uid://pdd8hh4itpsa" path="res://Scene/Tower/GuardianTower/LevelResource/level_5.tres" id="8_hjn5f"]
+[ext_resource type="Resource" uid="uid://fvjx1mycsirx" path="res://Scene/Tower/GuardianTower/LevelResource/level_6.tres" id="9_t1w1g"]
 [ext_resource type="Texture2D" uid="uid://b8kec85egdvl8" path="res://Assets/Towers/ArcherTower/1 Upgrade/1.png" id="11_nwj7a"]
 [ext_resource type="Texture2D" uid="uid://tspbkge7ilq0" path="res://Assets/Towers/CatapultTower/1 Upgrade/2.png" id="12_0mlph"]
 [ext_resource type="Texture2D" uid="uid://blww2qne6i3bl" path="res://Assets/Towers/CatapultTower/1 Upgrade/1.png" id="12_jxy7h"]
@@ -1277,15 +1277,17 @@ vertical_alignment = 1
 
 [node name="TowerInfo" type="Panel" parent="CanvasLayer"]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 377.0
-offset_top = 483.0
-offset_right = -377.0
-offset_bottom = -65.0
+offset_left = -197.0
+offset_top = -117.0
+offset_right = 197.0
+offset_bottom = -17.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_styles/panel = SubResource("StyleBoxTexture_uviur")

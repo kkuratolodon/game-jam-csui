@@ -1,7 +1,5 @@
 extends Node2D
 
-var move_speed: float = 200.0
-
 func _physics_process(delta: float) -> void:
     var player = Player.get_instance()
     if player:
@@ -17,6 +15,9 @@ func _physics_process(delta: float) -> void:
 
         direction = direction.normalized()
         
-        player.velocity = direction * move_speed
+        player.velocity = direction * player.move_speed
         
         player.move_and_slide()
+
+        player.global_position.x = clamp(player.global_position.x, player.map_limits.position.x, player.map_limits.end.x)
+        player.global_position.y = clamp(player.global_position.y, player.map_limits.position.y, player.map_limits.end.y)   

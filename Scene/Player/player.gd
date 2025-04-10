@@ -7,6 +7,8 @@ var money : int :
     set(value):
         money = value
         money_changed.emit(money)
+@export var map_limits: Rect2 = Rect2(0, 0, 1920, 1080) # Sesuaikan dengan ukuran map Anda
+@export var move_speed: float = 200.0
 
 signal money_changed(new_health)
 

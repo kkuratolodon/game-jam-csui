@@ -125,7 +125,7 @@ func check_target_reached() -> void:
                 var distance = global_position.distance_to(enemy.global_position)
                 print(distance)
                 if distance <= 35.0:
-                    enemy.take_damage(damage)
+                    enemy.take_damage(damage, false)
         
         # Play the break animation
         if anim:

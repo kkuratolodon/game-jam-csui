@@ -98,6 +98,7 @@ offset = Vector2(0, -30)
 hframes = 4
 
 [node name="TowerOptions" type="Control" parent="."]
+visible = false
 z_index = 4096
 layout_mode = 3
 anchors_preset = 15

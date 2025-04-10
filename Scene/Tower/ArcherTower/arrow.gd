@@ -113,7 +113,7 @@ func check_target_reached() -> void:
             var distance_target_to_prediction = target.global_position.distance_to(predicted_position)
             
             if distance_target_to_prediction < 50 and target.has_method("take_damage"):
-                target.take_damage(damage)
+                target.take_damage(damage, true)
         
         queue_free()
 

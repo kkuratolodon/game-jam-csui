@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvcqm3wqjb3vm"]
+
+[ext_resource type="Texture2D" uid="uid://b6x1oajdl6aq" path="res://Assets/Field Tileset/2 Objects/7 Decor/Lamp4.png" id="1_ac2nb"]
+
+[node name="lamp_4" type="StaticBody2D"]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ac2nb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.35, -75.2063)
+scale = Vector2(1.4375, 4.97917)
+polygon = PackedVector2Array(-8.5913, 14.3008, -5.80869, 14.9033, -7.2, 15.9075, -4.41739, 15.1042, 6.71304, 16.9117, 8.8, 16.7109, -0.939131, 14.7025, 1.84348, 13.6983, -3.02609, 14.5017, -7.89565, 13.6983)

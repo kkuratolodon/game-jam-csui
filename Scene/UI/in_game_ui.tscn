@@ -138,12 +138,12 @@ layout_mode = 2
 texture = ExtResource("4_jvdsl")
 expand_mode = 1
 
-[node name="HeartLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Panel3/HBoxContainer"]
+[node name="WaveLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Panel3/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_17kr5")
-text = "0/10"
+text = "0/1"
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]

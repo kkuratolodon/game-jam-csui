@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
     if can_shoot and owner.nearest_enemy:
         # print("can shoot")
         var target_enemy = owner.nearest_enemy
-        print(target_enemy)
+        # print(target_enemy)
         if target_enemy and is_instance_valid(target_enemy):
             shoot_projectile(target_enemy)
     # else:

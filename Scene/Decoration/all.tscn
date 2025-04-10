@@ -1,0 +1,88 @@
+[gd_scene load_steps=22 format=3 uid="uid://chhhke82o4g2y"]
+
+[ext_resource type="PackedScene" uid="uid://cggoqwqtrsoyr" path="res://Scene/Decoration/box_1.tscn" id="1_u8vkg"]
+[ext_resource type="PackedScene" uid="uid://dlhgp4axt85kb" path="res://Scene/Decoration/box_2.tscn" id="2_e1fs1"]
+[ext_resource type="PackedScene" uid="uid://c6djhjt8nifpo" path="res://Scene/Decoration/box_3.tscn" id="3_sib5v"]
+[ext_resource type="PackedScene" uid="uid://bwrpg745lmr4h" path="res://Scene/Decoration/box_4.tscn" id="4_l2q3f"]
+[ext_resource type="PackedScene" uid="uid://bjn3q5c2k7b1y" path="res://Scene/Decoration/lamp_1.tscn" id="5_isuds"]
+[ext_resource type="PackedScene" uid="uid://06jwr7sluhne" path="res://Scene/Decoration/lamp_2.tscn" id="6_7hhft"]
+[ext_resource type="PackedScene" uid="uid://csdhys2eroifc" path="res://Scene/Decoration/lamp_3.tscn" id="7_lbg53"]
+[ext_resource type="PackedScene" uid="uid://cvcqm3wqjb3vm" path="res://Scene/Decoration/lamp_4.tscn" id="8_7jc1r"]
+[ext_resource type="PackedScene" uid="uid://dun3qehqymlcl" path="res://Scene/Decoration/lamp_5.tscn" id="9_x0cyr"]
+[ext_resource type="PackedScene" uid="uid://bweuoy6je0q52" path="res://Scene/Decoration/lamp_6.tscn" id="10_sj2g0"]
+[ext_resource type="PackedScene" uid="uid://cd7vv3uf5fx87" path="res://Scene/Decoration/log_1.tscn" id="11_5k217"]
+[ext_resource type="PackedScene" uid="uid://jlcgjeikc8c8" path="res://Scene/Decoration/log_2.tscn" id="12_h8enw"]
+[ext_resource type="PackedScene" uid="uid://dlvd3vvgci4kp" path="res://Scene/Decoration/log_3.tscn" id="13_me481"]
+[ext_resource type="PackedScene" uid="uid://bhvyr1xgbm26f" path="res://Scene/Decoration/log_4.tscn" id="14_hbxiv"]
+[ext_resource type="PackedScene" uid="uid://oic0iomfrth3" path="res://Scene/Decoration/tree_2.tscn" id="15_6c3h7"]
+[ext_resource type="PackedScene" uid="uid://bbg1sy8dcmdy2" path="res://Scene/Decoration/bush_1.tscn" id="16_ehp0d"]
+[ext_resource type="PackedScene" uid="uid://cgx8p37ek0ucs" path="res://Scene/Decoration/bush_2.tscn" id="17_jakjd"]
+[ext_resource type="PackedScene" uid="uid://crvttrt3tsmpk" path="res://Scene/Decoration/bush_3.tscn" id="18_3t05g"]
+[ext_resource type="PackedScene" uid="uid://bx7ggfq0b015v" path="res://Scene/Decoration/bush_4.tscn" id="19_1k72m"]
+[ext_resource type="PackedScene" uid="uid://bje2tsou4t0py" path="res://Scene/Decoration/bush_5.tscn" id="20_y286p"]
+[ext_resource type="PackedScene" uid="uid://bil7o0y7vnnuh" path="res://Scene/Decoration/bush_6.tscn" id="21_gbe13"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Box1" parent="." instance=ExtResource("1_u8vkg")]
+
+[node name="Box2" parent="." instance=ExtResource("2_e1fs1")]
+
+[node name="Box3" parent="." instance=ExtResource("3_sib5v")]
+
+[node name="Box4" parent="." instance=ExtResource("4_l2q3f")]
+
+[node name="Box5" parent="." instance=ExtResource("4_l2q3f")]
+
+[node name="lamp_1" parent="." instance=ExtResource("5_isuds")]
+visible = false
+
+[node name="lamp_2" parent="." instance=ExtResource("6_7hhft")]
+visible = false
+
+[node name="lamp_3" parent="." instance=ExtResource("7_lbg53")]
+visible = false
+
+[node name="lamp_4" parent="." instance=ExtResource("8_7jc1r")]
+visible = false
+
+[node name="lamp_5" parent="." instance=ExtResource("9_x0cyr")]
+visible = false
+
+[node name="lamp_6" parent="." instance=ExtResource("10_sj2g0")]
+visible = false
+
+[node name="Log1" parent="." instance=ExtResource("11_5k217")]
+visible = false
+
+[node name="Log2" parent="." instance=ExtResource("12_h8enw")]
+visible = false
+
+[node name="Log3" parent="." instance=ExtResource("13_me481")]
+visible = false
+
+[node name="Log4" parent="." instance=ExtResource("14_hbxiv")]
+visible = false
+
+[node name="Tree2" parent="." instance=ExtResource("15_6c3h7")]
+visible = false
+
+[node name="Bush1" parent="." instance=ExtResource("16_ehp0d")]
+visible = false
+
+[node name="Bush2" parent="." instance=ExtResource("17_jakjd")]
+visible = false
+
+[node name="Bush3" parent="." instance=ExtResource("18_3t05g")]
+visible = false
+
+[node name="Bush4" parent="." instance=ExtResource("19_1k72m")]
+visible = false
+
+[node name="Bush5" parent="." instance=ExtResource("20_y286p")]
+visible = false
+
+[node name="Bush6" parent="." instance=ExtResource("21_gbe13")]
+visible = false
+
+[editable path="Box5"]

@@ -17,6 +17,7 @@ var current_toggle_cooldown: float = 0.0
 var move_controller = null 
 var mode_label: Label
 var mode_indicator: Control
+var can_build_tower: bool = true
 
 func _ready() -> void:
     base_tower_scene = load("res://Scene/Tower/base_tower.tscn")

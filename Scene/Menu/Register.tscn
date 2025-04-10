@@ -1,0 +1,226 @@
+[gd_scene load_steps=9 format=3 uid="uid://df8pmri36tg7w"]
+
+[ext_resource type="Texture2D" uid="uid://cbcryfjljttk3" path="res://Assets/UI/table.png" id="1_5jxhd"]
+[ext_resource type="Script" path="res://Scene/Menu/register.gd" id="2_j1wqf"]
+[ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="3_hhp3o"]
+[ext_resource type="Texture2D" uid="uid://bgjne7h7y1oji" path="res://Assets/UI/Menu/2 Bars/Button1.png" id="4_wq1jd"]
+[ext_resource type="Texture2D" uid="uid://bkeljqf7gd4r5" path="res://Assets/UI/Menu/2 Bars/Button2.png" id="5_yicno"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ko2fa"]
+bg_color = Color(0, 0, 0, 0.752941)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ehf4b"]
+texture = ExtResource("1_5jxhd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wj8r5"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.109804, 0.0901961, 0.0705882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Register" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_j1wqf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="BackgroundOverlay" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ko2fa")
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -243.0
+offset_right = 204.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ehf4b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.823529, 0.521569, 0.117647, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.490196)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 28
+text = "Register"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="UsernameLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.823529, 0.521569, 0.117647, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+text = "Username"
+
+[node name="UsernameInput" type="LineEdit" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.94902, 0.94902, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_wj8r5")
+placeholder_text = "Enter username"
+
+[node name="DisplayNameLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.823529, 0.521569, 0.117647, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+text = "Display Name"
+
+[node name="DisplayNameInput" type="LineEdit" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.94902, 0.94902, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_wj8r5")
+placeholder_text = "Enter display name"
+
+[node name="PasswordLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.823529, 0.521569, 0.117647, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+text = "Password"
+
+[node name="PasswordInput" type="LineEdit" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.94902, 0.94902, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_wj8r5")
+placeholder_text = "Enter password"
+secret = true
+
+[node name="ConfirmPasswordLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.823529, 0.521569, 0.117647, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+text = "Confirm Password"
+
+[node name="ConfirmPasswordInput" type="LineEdit" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.94902, 0.94902, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_wj8r5")
+placeholder_text = "Confirm password"
+secret = true
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.913725, 0.298039, 0.235294, 1)
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RegisterButton" type="TextureButton" parent="CanvasLayer/Panel/VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(130, 35)
+layout_mode = 2
+texture_normal = ExtResource("4_wq1jd")
+texture_pressed = ExtResource("5_yicno")
+texture_hover = ExtResource("5_yicno")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer/ButtonContainer/RegisterButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -15.0
+offset_right = 35.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.819608, 0.521569, 0.117647, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 18
+text = "Register"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer/Panel/VBoxContainer/BackContainer"]
+custom_minimum_size = Vector2(130, 35)
+layout_mode = 2
+texture_normal = ExtResource("4_wq1jd")
+texture_pressed = ExtResource("5_yicno")
+texture_hover = ExtResource("5_yicno")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer/BackContainer/BackButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -15.0
+offset_right = 52.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.819608, 0.521569, 0.117647, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_hhp3o")
+theme_override_font_sizes/font_size = 16
+text = "Back to Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/ButtonContainer/RegisterButton" to="." method="_on_register_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/BackContainer/BackButton" to="." method="_on_back_button_pressed"]

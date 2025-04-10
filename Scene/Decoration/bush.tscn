@@ -8,6 +8,7 @@ size = Vector2(33.4405, 5.14469)
 
 [node name="Bush" type="StaticBody2D"]
 y_sort_enabled = true
+collision_layer = 3
 
 [node name="Bush" type="Sprite2D" parent="."]
 y_sort_enabled = true

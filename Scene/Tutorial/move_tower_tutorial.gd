@@ -61,13 +61,13 @@ func show_current_step():
             
         2: # Selecting towers
             manager.tutorial_ui.set_title("Selecting Towers")
-            manager.tutorial_ui.set_content("Click on a tower to select it for moving. You can reposition base towers.")
+            manager.tutorial_ui.set_content("Click on a tower base to select it for moving. You can reposition base towers.")
             manager.tutorial_ui.show_next_button(false)
             manager.tutorial_ui.show_panel()
             
         3: # Moving towers
             manager.tutorial_ui.set_title("Moving Towers")
-            manager.tutorial_ui.set_content("Great! Now click to place the tower in a new valid location. Make sure the preview is green before placing.")
+            manager.tutorial_ui.set_content("Great! Now click to place the tower base in a new valid location. Make sure the preview is green before placing.")
             manager.tutorial_ui.show_next_button(false)
             manager.tutorial_ui.show_panel()
             
@@ -109,7 +109,7 @@ func _on_move_state_changed(is_active):
         move_mode_canceled = true
 
 func check_for_tower_movement():
-    print("Checking for tower movement...")
+    # print("Checking for tower movement...")
     if manager.move_controller:
         # Check if any tower has been moved
         if manager.move_controller.recently_moved_towers.size() > 0:
@@ -118,7 +118,14 @@ func check_for_tower_movement():
 
 func check_for_tower_selection():
     if manager.move_controller and manager.move_controller.selected_tower != null:
-        tower_selected = true
+        # Check if the selected tower is in the "Basetower" group
+        if manager.move_controller.selected_tower.is_in_group("BaseTower"):
+            tracking_tower = manager.move_controller.selected_tower
+            tower_selected = true
+            print("Tutorial detected tower selection!")
+        else:
+            print("Selected tower is not a base tower")
+            tower_selected = false
         print("Tutorial detected tower selection!")
 
 func _on_tower_selected():
