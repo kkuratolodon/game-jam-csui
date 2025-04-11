@@ -1,0 +1,288 @@
+[gd_scene load_steps=14 format=3 uid="uid://d2g8u0sgst3y8"]
+
+[ext_resource type="Script" path="res://Scene/Transition/SceneTransitionManager.gd" id="1_vd4ch"]
+
+[sub_resource type="Shader" id="Shader_wnk85"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0) = 0.0;
+uniform float diamond_size = 10.0;
+
+void fragment() {
+    // Calculate the nearest diamond center
+    float ratio = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y;
+    vec2 uv = UV;
+    uv.x /= ratio;
+    vec2 diamond_grid = floor(uv * diamond_size) / diamond_size;
+    diamond_grid.x *= ratio;
+    
+    // Calculate distance to the center of the nearest diamond
+    vec2 diamond_center = (diamond_grid + vec2(0.5 / diamond_size)) * vec2(ratio, 1.0);
+    float dist = distance(uv, diamond_center);
+    
+    // Transition based on distance from center of diamond
+    float cutoff = progress * 0.7;
+    float alpha = step(cutoff, dist);
+    
+    COLOR = texture(TEXTURE, UV);
+    COLOR.a *= alpha;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hm51i"]
+shader = SubResource("Shader_wnk85")
+shader_parameter/progress = 0.0
+shader_parameter/diamond_size = 16.0
+
+[sub_resource type="Shader" id="Shader_3a8xg"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0) = 0.0;
+uniform float smoothness : hint_range(0.0, 1.0) = 0.1;
+
+void fragment() {
+    // Create a circle transition
+    float dist = distance(UV, vec2(0.5));
+    float circle = smoothstep(progress, progress + smoothness, dist);
+    
+    // Apply the transition
+    COLOR = texture(TEXTURE, UV);
+    COLOR.a *= circle;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pui8c"]
+shader = SubResource("Shader_3a8xg")
+shader_parameter/progress = 0.0
+shader_parameter/smoothness = 0.1
+
+[sub_resource type="Shader" id="Shader_k2swn"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0) = 0.0;
+uniform float pixels = 100.0;
+uniform sampler2D noise_texture;
+
+void fragment() {
+    float pixelSize = 1.0 / pixels;
+    vec2 uv = floor(UV / pixelSize) * pixelSize;
+    
+    // Sample noise value for the current pixel
+    float noise = texture(noise_texture, uv).r;
+    
+    // Apply the transition
+    float threshold = progress * 1.2 - 0.1; // Adjust threshold for smoother transition
+    float alpha = step(threshold, noise);
+    
+    COLOR = texture(TEXTURE, UV);
+    COLOR.a *= alpha;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s2atj"]
+noise_type = 3
+frequency = 0.01
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tydlb"]
+seamless = true
+noise = SubResource("FastNoiseLite_s2atj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fcnx"]
+shader = SubResource("Shader_k2swn")
+shader_parameter/progress = 0.0
+shader_parameter/pixels = 100.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tydlb")
+
+[sub_resource type="Shader" id="Shader_qwl6p"]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0.0, 1.0) = 0.0;
+uniform vec4 color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform float line_width = 0.01;
+uniform float line_angle = 0.7;
+
+void fragment() {
+    // Calculate line
+    float slope = tan(line_angle);
+    float line_pos = progress * (1.0 + abs(slope) + line_width) - line_width - abs(slope);
+    float line_dist = UV.x + slope * UV.y - line_pos;
+    
+    // Behind the line: show original, ahead of line: show transition color
+    if (line_dist < 0.0) {
+        COLOR = texture(TEXTURE, UV);
+    } else if (line_dist < line_width) {
+        // Line effect
+        COLOR = mix(texture(TEXTURE, UV), color, line_dist / line_width);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjh0e"]
+shader = SubResource("Shader_qwl6p")
+shader_parameter/progress = 0.0
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/line_width = 0.05
+shader_parameter/line_angle = 0.7
+
+[sub_resource type="Animation" id="Animation_j3lpt"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Diamond:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dissolve:material:shader_parameter/progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wipe:material:shader_parameter/progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Diamond:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Circle:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dissolve:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Wipe:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pn2j1"]
+_data = {
+"RESET": SubResource("Animation_j3lpt")
+}
+
+[node name="SceneTransitionManager" type="CanvasLayer"]
+process_mode = 3
+layer = 128
+script = ExtResource("1_vd4ch")
+
+[node name="Diamond" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_hm51i")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Circle" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_pui8c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dissolve" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_0fcnx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Wipe" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_bjh0e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pn2j1")
+}

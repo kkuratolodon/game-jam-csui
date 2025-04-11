@@ -88,25 +88,73 @@ func _on_login_completed():
         # Check if tutorial has been completed
         var tutorial_completed = config.user_data.get("tutorial_complete")
         
-        # Navigate to appropriate scene after a short delay
-        await get_tree().create_timer(0.5).timeout
+        # Create fade animation before scene change
+        var tween = create_tween()
+        tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 0.5)
+        await tween.finished
         
+        # Navigate to appropriate scene with fancy transition
         if tutorial_completed:
-            # If tutorial completed, go to level select
-            get_tree().change_scene_to_file("res://Scene/Menu/LevelSelect.tscn")
+            # If tutorial completed, go to level select with iris transition
+            SceneTransition.change_scene("res://Scene/Menu/LevelSelect.tscn", 
+                                         SceneTransition.TransitionType.IRIS, 
+                                         0.8)
         else:
-            # If tutorial not completed, go to tutorial
-            get_tree().change_scene_to_file("res://Scene/Level/tutorial.tscn")
+            # If tutorial not completed, go to tutorial with fade transition
+            SceneTransition.change_scene("res://Scene/Level/tutorial.tscn", 
+                                         SceneTransition.TransitionType.FADE, 
+                                         0.7)
     else:
         # Login failed
         message_label.text = "Invalid username or password. Please try again."
 
 func _on_register_button_pressed():
-    # Show register screen
+    print("Register button pressed")
+    
+    # Create register scene
     var register_scene = load("res://Scene/Menu/Register.tscn").instantiate()
+    # Add it to the same parent node
     get_parent().add_child(register_scene)
-    queue_free()
+    print("Register scene instantiated and added")
+    
+    # Make sure register panel is visible and positioned correctly
+    if register_scene.has_node("CanvasLayer"):
+        var canvas = register_scene.get_node("CanvasLayer")
+        canvas.visible = true
+        canvas.layer = 15  # Ensure it's on top but not too high
+        
+        if canvas.has_node("Panel"):
+            var panel = canvas.get_node("Panel")
+            panel.visible = true
+            
+            # Store the center position of the panel and adjust it to be slightly lower
+            var center_position = panel.position
+            var target_position = Vector2(center_position.x, center_position.y)  # Adjust by 50 pixels down
+            
+            # Start from above
+            panel.position.y = -600
+            panel.modulate = Color(1, 1, 1, 0)
+            
+            # Simple animation to the adjusted position
+            var tween = create_tween()
+            tween.set_ease(Tween.EASE_OUT)
+            tween.set_trans(Tween.TRANS_BACK)
+            tween.tween_property(panel, "position", target_position, 0.5)
+            tween.parallel().tween_property(panel, "modulate", Color(1, 1, 1, 1), 0.3)
+            print("Register panel animation started")
+    
+    # Hide login panel immediately
+    $CanvasLayer.visible = false
+    
+    # Don't queue_free yet - just hide it so we can come back
+    # (The register.gd will handle this)
 
 func _on_back_button_pressed():
+    # Create closing animation
+    var tween = create_tween()
+    tween.tween_property($CanvasLayer/Panel, "position:y", -600, 0.5)
+    tween.parallel().tween_property($CanvasLayer/BackgroundOverlay, "modulate", Color(1, 1, 1, 0), 0.3)
+    await tween.finished
+    
     # Remove self, which will return to main menu
     queue_free()

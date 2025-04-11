@@ -15,6 +15,21 @@ const COLOR_HOVER = Color("ffd569")   # Hovered button color
 var config = Config
 
 func _ready():
+    # Make extra sure we're visible
+    modulate = Color(1, 1, 1, 1)
+    visible = true
+    
+    # Ensure CanvasLayer is visible
+    if $CanvasLayer:
+        $CanvasLayer.visible = true
+        $CanvasLayer.layer = 100
+        
+        # Set panel visibility
+        if $CanvasLayer/Panel:
+            $CanvasLayer/Panel.visible = true
+            $CanvasLayer/Panel.modulate = Color(1, 1, 1, 1)
+            print("Register panel visibility explicitly set")
+    
     # Clear any previous messages
     message_label.text = ""
     
@@ -97,7 +112,50 @@ func _on_registration_completed():
         message_label.text = "Registration failed. Username may already be taken."
 
 func _on_back_button_pressed():
-    # Show login screen
+    print("Back button pressed - returning to login")
+    
+    # First create a login scene
     var login_scene = load("res://Scene/Menu/Login.tscn").instantiate()
+    # Add it to the same parent node
     get_parent().add_child(login_scene)
-    queue_free()
+    print("Login scene instantiated and added")
+    
+    # Make sure login panel is visible and positioned correctly
+    if login_scene.has_node("CanvasLayer"):
+        var canvas = login_scene.get_node("CanvasLayer")
+        canvas.visible = true
+        canvas.layer = 15  # Ensure it's on top but not too high
+        
+        if canvas.has_node("Panel"):
+            var panel = canvas.get_node("Panel")
+            panel.visible = true
+            
+            # Store the center position of the panel and adjust it to be slightly lower
+            var center_position = panel.position
+            var target_position = Vector2(center_position.x, center_position.y)
+            
+            # Start from above
+            panel.position.y = -600
+            panel.modulate = Color(1, 1, 1, 0)
+            
+            # Simple animation to the adjusted position
+            var tween = create_tween()
+            tween.set_ease(Tween.EASE_OUT)
+            tween.set_trans(Tween.TRANS_BACK)
+            tween.tween_property(panel, "position", target_position, 0.5)
+            tween.parallel().tween_property(panel, "modulate", Color(1, 1, 1, 1), 0.3)
+            print("Login panel animation started")
+    
+    # Hide register panel immediately instead of destroying it
+    $CanvasLayer.visible = false
+    
+    # IMPORTANT: Use a timer to delay the queue_free call
+    # This gives the login scene time to properly establish itself
+    var free_timer = Timer.new()
+    add_child(free_timer)
+    free_timer.wait_time = 0.7  # Wait longer than the animation duration
+    free_timer.one_shot = true
+    free_timer.timeout.connect(func(): queue_free())
+    free_timer.start()
+    
+    print("Register scene hiding, will be removed after delay")

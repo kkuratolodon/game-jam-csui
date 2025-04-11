@@ -7,9 +7,11 @@ var money : int :
     set(value):
         money = value
         money_changed.emit(money)
-@export var map_limits: Rect2 = Rect2(0, 0, 1920, 1080) # Sesuaikan dengan ukuran map Anda
-@export var move_speed: float = 200.0
 
+@export var color_rect : ColorRect
+
+@export var move_speed: float = 200.0
+var map_limits: Rect2 = Rect2(0, 0, 1920, 1080) # Sesuaikan dengan ukuran map Anda
 signal money_changed(new_health)
 
 func _enter_tree() -> void:
@@ -22,6 +24,12 @@ func _enter_tree() -> void:
 
 static func get_instance() -> CharacterBody2D:
     return instance
+
+func _ready() -> void:
+    if color_rect:
+        var rect_pos = color_rect.global_position
+        var rect_size = color_rect.size
+        map_limits = Rect2(rect_pos, rect_size)
 
 func _process(delta: float) -> void:
     if in_base_tower:

@@ -140,10 +140,30 @@ func _on_tutorial_finished_continue():
         else:
             print("Failed to send tutorial completion update")
     
-    # Change to LevelSelect scene
-    var level_select_path = "res://Scene/Menu/LevelSelect.tscn"
-    print("Transitioning to level select: " + level_select_path)
-    get_tree().change_scene_to_file(level_select_path)
+    # Set global flag to inform the level select that tutorial was just completed
+    if Engine.has_singleton("GlobalFlags"):
+        var flags = Engine.get_singleton("GlobalFlags")
+        flags.set("tutorial_just_completed", true)
+    
+    # Create fancy transition to level select scene
+    var ui_elements = get_parent().get_node_or_null("CanvasLayer")
+    if ui_elements:
+        # Fade out the UI elements first
+        var ui_tween = create_tween()
+        ui_tween.set_parallel(true)
+        
+        # Find all direct children of CanvasLayer and fade them out
+        for child in ui_elements.get_children():
+            if child.has_method("set_modulate"):
+                ui_tween.tween_property(child, "modulate", Color(1, 1, 1, 0), 0.5)
+        
+        await ui_tween.finished
+    
+    # Then do the scene transition with a nice effect
+    SceneTransition.set_transition_color(Color(0.0, 0.0, 0.0, 0.9))
+    SceneTransition.change_scene("res://Scene/Menu/LevelSelect.tscn", 
+                               SceneTransition.TransitionType.IRIS, 
+                               0.8)
 
 func _process(delta):
     if current_state:
