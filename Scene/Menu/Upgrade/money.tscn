@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5fjo3kqspduc"]
+
+[ext_resource type="Texture2D" uid="uid://dy0pyfmeakuv3" path="res://Assets/UI/Menu/Level Select/btton_empty.png" id="1_b3sfk"]
+[ext_resource type="Texture2D" uid="uid://ddpsdvi3phk1t" path="res://Assets/UI/Used Icons/gold.png" id="2_g14w4"]
+[ext_resource type="Texture2D" uid="uid://cfh4da3wu2fq1" path="res://Assets/UI/Menu/Upgrade/window_.png" id="3_24w10"]
+[ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="4_bh43o"]
+
+[node name="Money" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -47.0
+offset_right = 47.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_b3sfk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.443137)
+polygon = PackedVector2Array(11, 25, 25, 13, 67, 12, 80, 24, 79, 70, 66, 81, 24, 81, 11, 67)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 19.0
+offset_right = 70.0
+offset_bottom = 73.0
+mouse_filter = 2
+texture = ExtResource("2_g14w4")
+expand_mode = 1
+
+[node name="Level" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 72.0
+offset_right = 99.0
+offset_bottom = 92.0
+texture = ExtResource("3_24w10")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Level"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 46.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.968627, 0.733333, 0.121569, 1)
+theme_override_fonts/font = ExtResource("4_bh43o")
+text = "1"

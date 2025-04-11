@@ -1345,58 +1345,18 @@ offset_bottom = 40.0
 [node name="Archer" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("51_iflp7")]
 layout_mode = 0
 anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 125.0
-offset_top = 114.0
-offset_right = 219.0
-offset_bottom = 208.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Catapult" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("54_3xpap")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 300.0
-offset_top = 114.0
-offset_right = 394.0
-offset_bottom = 208.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Heart" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("53_uqs4t")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 125.0
-offset_top = 251.0
-offset_right = 219.0
-offset_bottom = 345.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="Money" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("52_k6wg1")]
 layout_mode = 0
 anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 300.0
-offset_top = 251.0
-offset_right = 394.0
-offset_bottom = 345.0
-grow_horizontal = 1
-grow_vertical = 1
+
+[node name="Heart" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("53_uqs4t")]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="Catapult" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("54_3xpap")]
+layout_mode = 0
+anchors_preset = 0
 
 [node name="DarkOverlay2" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -1663,9 +1623,5 @@ theme_override_fonts/font = ExtResource("54_na14h")
 text = "Build Archer Tower at level 1"
 
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Archer" to="." method="_on_archer_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Catapult" to="." method="_on_catapult_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Heart" to="." method="_on_heart_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Money" to="." method="_on_money_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeInfo/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeInfo/DoneButton" to="." method="_on_done_button_pressed"]

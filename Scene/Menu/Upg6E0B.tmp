@@ -52,11 +52,11 @@
 [ext_resource type="Texture2D" uid="uid://drkvt5x3vkflo" path="res://Assets/UI/Menu/Level Select/button_left.png" id="49_ide51"]
 [ext_resource type="Texture2D" uid="uid://dy0pyfmeakuv3" path="res://Assets/UI/Menu/Level Select/btton_empty.png" id="50_m5bca"]
 [ext_resource type="Texture2D" uid="uid://bhtodn2wiq3dc" path="res://Assets/UI/Used Icons/archer_icon.png" id="51_0saok"]
-[ext_resource type="PackedScene" uid="uid://ccfgu3o4hp787" path="res://Scene/Menu/Upgrade/archer.tscn" id="51_iflp7"]
-[ext_resource type="PackedScene" uid="uid://b5fjo3kqspduc" path="res://Scene/Menu/Upgrade/money.tscn" id="52_k6wg1"]
-[ext_resource type="PackedScene" uid="uid://cqjxpg0iuiioo" path="res://Scene/Menu/Upgrade/heart.tscn" id="53_uqs4t"]
-[ext_resource type="PackedScene" uid="uid://bm45tlx7fuue4" path="res://Scene/Menu/Upgrade/catapult.tscn" id="54_3xpap"]
+[ext_resource type="Texture2D" uid="uid://ddpsdvi3phk1t" path="res://Assets/UI/Used Icons/gold.png" id="52_1l8f5"]
+[ext_resource type="Texture2D" uid="uid://cg4p1223hjako" path="res://Assets/UI/Used Icons/catapult_icon.png" id="52_s443u"]
+[ext_resource type="Texture2D" uid="uid://cfh4da3wu2fq1" path="res://Assets/UI/Menu/Upgrade/window_.png" id="53_ckquc"]
 [ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="54_na14h"]
+[ext_resource type="Texture2D" uid="uid://bjc65xlxd4pmo" path="res://Assets/UI/Used Icons/heart.png" id="55_opunn"]
 [ext_resource type="Texture2D" uid="uid://c6rjoi4bqontf" path="res://Assets/UI/Menu/Level Select/button_close.png" id="57_8n8np"]
 [ext_resource type="Texture2D" uid="uid://dny8u8rdem2dp" path="res://Assets/UI/Used Icons/Money.png" id="58_6mmqa"]
 [ext_resource type="Texture2D" uid="uid://cx635l3wk3vri" path="res://Assets/UI/Menu/Upgrade/button_done.png" id="58_uegi5"]
@@ -1342,61 +1342,183 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Archer" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("51_iflp7")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 125.0
-offset_top = 114.0
-offset_right = 219.0
-offset_bottom = 208.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="Archer" type="TextureButton" parent="CanvasLayer/UpgradePanel/Buttons"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 74.0
+offset_right = 190.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("50_m5bca")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="Catapult" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("54_3xpap")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 300.0
-offset_top = 114.0
-offset_right = 394.0
-offset_bottom = 208.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UpgradePanel/Buttons/Archer"]
+color = Color(0, 0, 0, 0.443137)
+polygon = PackedVector2Array(11, 25, 25, 13, 67, 12, 80, 24, 79, 70, 66, 81, 24, 81, 11, 67)
 
-[node name="Heart" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("53_uqs4t")]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UpgradePanel/Buttons/Archer"]
 layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 125.0
-offset_top = 251.0
-offset_right = 219.0
-offset_bottom = 345.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = 17.0
+offset_top = 19.0
+offset_right = 70.0
+offset_bottom = 73.0
+mouse_filter = 2
+texture = ExtResource("51_0saok")
+expand_mode = 1
 
-[node name="Money" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("52_k6wg1")]
+[node name="Level" type="TextureRect" parent="CanvasLayer/UpgradePanel/Buttons/Archer"]
 layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 300.0
-offset_top = 251.0
-offset_right = 394.0
-offset_bottom = 345.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = 7.0
+offset_top = 52.0
+offset_right = 89.0
+offset_bottom = 97.0
+texture = ExtResource("3_2tigw")
+expand_mode = 1
+
+[node name="Money" type="TextureButton" parent="CanvasLayer/UpgradePanel/Buttons"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 216.0
+offset_right = 190.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("50_m5bca")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UpgradePanel/Buttons/Money"]
+color = Color(0, 0, 0, 0.443137)
+polygon = PackedVector2Array(11, 25, 25, 13, 67, 12, 80, 24, 79, 70, 66, 81, 24, 81, 11, 67)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UpgradePanel/Buttons/Money"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 19.0
+offset_right = 70.0
+offset_bottom = 73.0
+mouse_filter = 2
+texture = ExtResource("52_1l8f5")
+expand_mode = 1
+
+[node name="Level" type="TextureRect" parent="CanvasLayer/UpgradePanel/Buttons/Money"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 72.0
+offset_right = 99.0
+offset_bottom = 92.0
+texture = ExtResource("53_ckquc")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/UpgradePanel/Buttons/Money/Level"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 46.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.968627, 0.733333, 0.121569, 1)
+theme_override_fonts/font = ExtResource("54_na14h")
+
+[node name="Heart" type="TextureButton" parent="CanvasLayer/UpgradePanel/Buttons"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 313.0
+offset_top = 223.0
+offset_right = 407.0
+offset_bottom = 317.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("50_m5bca")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UpgradePanel/Buttons/Heart"]
+color = Color(0, 0, 0, 0.443137)
+polygon = PackedVector2Array(11, 25, 25, 13, 67, 12, 80, 24, 79, 70, 66, 81, 24, 81, 11, 67)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UpgradePanel/Buttons/Heart"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 21.0
+offset_right = 70.0
+offset_bottom = 74.0
+mouse_filter = 2
+texture = ExtResource("55_opunn")
+expand_mode = 1
+
+[node name="Level" type="TextureRect" parent="CanvasLayer/UpgradePanel/Buttons/Heart"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 72.0
+offset_right = 99.0
+offset_bottom = 92.0
+texture = ExtResource("53_ckquc")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/UpgradePanel/Buttons/Heart/Level"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 46.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.968627, 0.733333, 0.121569, 1)
+theme_override_fonts/font = ExtResource("54_na14h")
+
+[node name="Catapult" type="TextureButton" parent="CanvasLayer/UpgradePanel/Buttons"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 313.0
+offset_top = 77.0
+offset_right = 407.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("50_m5bca")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UpgradePanel/Buttons/Catapult"]
+color = Color(0, 0, 0, 0.443137)
+polygon = PackedVector2Array(11, 25, 25, 13, 67, 12, 80, 24, 79, 70, 66, 81, 24, 81, 11, 67)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UpgradePanel/Buttons/Catapult"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 19.0
+offset_right = 70.0
+offset_bottom = 73.0
+mouse_filter = 2
+texture = ExtResource("52_s443u")
+expand_mode = 1
+
+[node name="Level" type="TextureRect" parent="CanvasLayer/UpgradePanel/Buttons/Catapult"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 52.0
+offset_right = 89.0
+offset_bottom = 97.0
+texture = ExtResource("3_2tigw")
+expand_mode = 1
 
 [node name="DarkOverlay2" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -1664,8 +1786,8 @@ text = "Build Archer Tower at level 1"
 
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Archer" to="." method="_on_archer_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Catapult" to="." method="_on_catapult_pressed"]
-[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Heart" to="." method="_on_heart_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Money" to="." method="_on_money_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Heart" to="." method="_on_heart_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Catapult" to="." method="_on_catapult_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeInfo/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeInfo/DoneButton" to="." method="_on_done_button_pressed"]

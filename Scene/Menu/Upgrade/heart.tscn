@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqjxpg0iuiioo"]
+
+[ext_resource type="Texture2D" uid="uid://dy0pyfmeakuv3" path="res://Assets/UI/Menu/Level Select/btton_empty.png" id="1_4n0ya"]
+[ext_resource type="Texture2D" uid="uid://bjc65xlxd4pmo" path="res://Assets/UI/Used Icons/heart.png" id="2_mlklb"]
+[ext_resource type="Texture2D" uid="uid://cfh4da3wu2fq1" path="res://Assets/UI/Menu/Upgrade/window_.png" id="3_vbgyr"]
+[ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="4_xn0c7"]
+
+[node name="Heart" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -47.0
+offset_right = 47.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("1_4n0ya")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.443137)
+polygon = PackedVector2Array(11, 25, 25, 13, 67, 12, 80, 24, 79, 70, 66, 81, 24, 81, 11, 67)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 21.0
+offset_right = 70.0
+offset_bottom = 74.0
+mouse_filter = 2
+texture = ExtResource("2_mlklb")
+expand_mode = 1
+
+[node name="Level" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 72.0
+offset_right = 99.0
+offset_bottom = 92.0
+texture = ExtResource("3_vbgyr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Level"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 46.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.968627, 0.733333, 0.121569, 1)
+theme_override_fonts/font = ExtResource("4_xn0c7")
+text = "1"
