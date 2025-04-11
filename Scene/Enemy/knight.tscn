@@ -801,8 +801,8 @@ size = Vector2(24, 33)
 rotates = false
 loop = false
 script = ExtResource("1_7uq37")
-speed = 50.0
-max_health = 200
+speed = 65.0
+max_health = 300
 money_reward = 20
 
 [node name="Shield" type="Area2D" parent="."]

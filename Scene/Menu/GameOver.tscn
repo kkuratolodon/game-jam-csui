@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmbs6v5cbe0ox"]
+
+[ext_resource type="Script" path="res://Scene/Menu/game_over.gd" id="1_txlmi"]
+[ext_resource type="Texture2D" uid="uid://cm4hnucrrxlp7" path="res://Assets/UI/Menu/Level Select/table.png" id="51_dnefh"]
+[ext_resource type="Texture2D" uid="uid://bmw554xgxqp6x" path="res://Assets/UI/Menu/GameOver/button_restart.png" id="53_simic"]
+[ext_resource type="Texture2D" uid="uid://dt0lilok82eb" path="res://Assets/UI/Menu/GameOver/header_failed.png" id="53_t3wrt"]
+[ext_resource type="Texture2D" uid="uid://drkvt5x3vkflo" path="res://Assets/UI/Menu/Level Select/button_left.png" id="54_cy1l3"]
+[ext_resource type="Texture2D" uid="uid://bax2vcdmllki1" path="res://Assets/UI/Menu/GameOver/wondow.png" id="55_cduph"]
+[ext_resource type="Texture2D" uid="uid://dmtpb71dhivxx" path="res://Assets/UI/Menu/GameOver/20250305_140521.jpg" id="56_tkevv"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_txlmi")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="DarkOverlay" type="ColorRect" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -125.0
+offset_right = 88.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="GameOverPanel" type="TextureRect" parent="CanvasLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -222.0
+offset_right = 192.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("51_dnefh")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer2/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = -6.125
+offset_right = 126.0
+offset_bottom = 84.875
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("53_t3wrt")
+expand_mode = 2
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer2/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -60.0
+offset_right = 121.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("53_simic")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BackButton" type="TextureButton" parent="CanvasLayer2/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -60.0
+offset_right = -12.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("54_cy1l3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect21" type="TextureRect" parent="CanvasLayer2/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -138.5
+offset_right = 125.0
+offset_bottom = 146.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("55_cduph")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/GameOverPanel"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 241.0
+offset_right = 261.0
+offset_bottom = 344.0
+texture = ExtResource("56_tkevv")
+expand_mode = 1
+
+[connection signal="pressed" from="CanvasLayer2/GameOverPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/GameOverPanel/BackButton" to="." method="_on_back_button_pressed"]

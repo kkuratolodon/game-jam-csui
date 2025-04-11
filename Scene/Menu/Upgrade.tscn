@@ -711,6 +711,10 @@ sources/4 = SubResource("TileSetAtlasSource_o8ct8")
 [node name="Upgrade" type="Node2D"]
 script = ExtResource("1_v30cy")
 level_textures = Array[Texture2D]([ExtResource("2_rdsyc"), ExtResource("61_7ayeh"), ExtResource("4_3rudb"), ExtResource("5_mxssm")])
+archer_button_scene = ExtResource("51_iflp7")
+catapult_button_scene = ExtResource("54_3xpap")
+hp_button_scene = ExtResource("53_uqs4t")
+money_button_scene = ExtResource("52_k6wg1")
 
 [node name="Map" type="TileMapLayer" parent="."]
 z_index = -500
@@ -1118,10 +1122,19 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.6)
 
 [node name="UpgradePanel" type="TextureRect" parent="CanvasLayer"]
-offset_left = 281.0
-offset_top = 57.0
-offset_right = 815.0
-offset_bottom = 502.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -222.5
+offset_right = 267.0
+offset_bottom = 222.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("45_37vpy")
 expand_mode = 1
 
@@ -1398,6 +1411,20 @@ offset_bottom = 345.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Money2" parent="CanvasLayer/UpgradePanel/Buttons" instance=ExtResource("52_k6wg1")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 300.0
+offset_top = 251.0
+offset_right = 394.0
+offset_bottom = 345.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="DarkOverlay2" type="ColorRect" parent="CanvasLayer"]
 visible = false
 anchors_preset = 15
@@ -1414,10 +1441,18 @@ color = Color(0, 0, 0, 0.6)
 
 [node name="UpgradeInfo" type="TextureRect" parent="CanvasLayer"]
 visible = false
-offset_left = 342.0
-offset_top = 97.0
-offset_right = 760.0
-offset_bottom = 525.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -214.0
+offset_right = 209.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 texture = ExtResource("45_37vpy")
 expand_mode = 1
 
@@ -1502,10 +1537,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -38.0
-offset_top = -47.0
-offset_right = 37.0
-offset_bottom = -7.0
+offset_left = -23.0
+offset_top = -49.0
+offset_right = 23.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 6
@@ -1522,15 +1557,22 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("59_wvs1y")
-text = "100"
+text = "123"
 vertical_alignment = 1
 
 [node name="Before" type="TextureButton" parent="CanvasLayer/UpgradeInfo"]
 layout_mode = 1
-offset_left = 61.0
-offset_top = 104.0
-offset_right = 155.0
-offset_bottom = 198.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -105.0
+offset_right = -60.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("50_m5bca")
 ignore_texture_size = true
 stretch_mode = 0
@@ -1560,21 +1602,24 @@ expand_mode = 1
 
 [node name="After" type="TextureButton" parent="CanvasLayer/UpgradeInfo"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -155.0
-offset_top = 104.0
-offset_right = -61.0
-offset_bottom = 198.0
-grow_horizontal = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 62.0
+offset_top = -105.0
+offset_right = 156.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("50_m5bca")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/UpgradeInfo/After"]
 color = Color(0, 0, 0, 0.443137)
-polygon = PackedVector2Array(11, 25, 25, 13, 67, 12, 80, 24, 79, 70, 66, 81, 24, 81, 11, 67)
+polygon = PackedVector2Array(11, 25, 25, 13, 51.6264, 12.366, 67, 12, 80, 24, 79, 70, 66, 81, 24, 81, 11, 67)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UpgradeInfo/After"]
 layout_mode = 0
@@ -1602,6 +1647,7 @@ offset = Vector2(-204.425, -153.28)
 polygon = PackedVector2Array(173, 146, 212, 146, 209, 123, 241, 154, 209, 183, 212, 162, 173, 162)
 
 [node name="Arrow2" type="Polygon2D" parent="CanvasLayer/UpgradeInfo/Arrow"]
+position = Vector2(1, 0)
 scale = Vector2(1.00079, 1.00346)
 color = Color(0.984314, 0.784314, 0.207843, 1)
 offset = Vector2(-204.425, -153.28)
@@ -1629,6 +1675,8 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.984314, 0.784314, 0.207843, 1)
 theme_override_fonts/font = ExtResource("54_na14h")
 text = "Build Archer Tower at level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Arrow2" type="Polygon2D" parent="CanvasLayer/UpgradeInfo/TextureRect"]
 position = Vector2(151, 65)
@@ -1653,19 +1701,22 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -109.0
-offset_top = -40.0
+offset_top = -38.0
 offset_right = 107.0
-offset_bottom = -17.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.984314, 0.784314, 0.207843, 1)
 theme_override_fonts/font = ExtResource("54_na14h")
 text = "Build Archer Tower at level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Archer" to="." method="_on_archer_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Catapult" to="." method="_on_catapult_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Heart" to="." method="_on_heart_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Money" to="." method="_on_money_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradePanel/Buttons/Money2" to="." method="_on_money_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeInfo/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradeInfo/DoneButton" to="." method="_on_done_button_pressed"]

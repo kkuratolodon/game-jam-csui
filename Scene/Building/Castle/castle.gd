@@ -5,7 +5,7 @@ signal health_changed(new_health)
 
 static var instance : Castle
 
-@export var max_health: int = Config.start_hp
+var max_health: int = Config.start_hp
 var current_health: int :
     set(value):
         current_health = clamp(value, 0, max_health)
@@ -22,8 +22,8 @@ func _enter_tree():
 
 func take_damage(damage: int):
     current_health -= damage
-    if current_health <= 0:
-        queue_free()
+    # if current_health <= 0:
+    #     queue_free()
 
 func _on_area_entered(area:Area2D) -> void:
     print(area)

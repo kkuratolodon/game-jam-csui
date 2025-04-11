@@ -9,8 +9,9 @@ extends Node2D
 @onready var area_2d := $Area2D
 @onready var collision : CollisionShape2D = $Area2D/CollisionShape2D
 
-var attack_range = 1000
+var attack_range
 var nearest_enemy
+var best_target # Store the best target for both shooting and animation
 var enemies_in_area = []
 var can_attack : bool
 var damage: int
@@ -28,13 +29,23 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-    var dir_to_enemy = get_direction_to_nearest_enemy()
+    # Find the best target (that won't be killed by other projectiles)
+    best_target = find_best_target()
+    
+    # Get direction to the best target, or nearest enemy if no best target
+    var dir_to_enemy = Vector2.ZERO
+    if best_target and is_instance_valid(best_target):
+        dir_to_enemy = (best_target.global_position - global_position).normalized()
+    else:
+        dir_to_enemy = get_direction_to_nearest_enemy()
+    
+    # Update gunpoint position and animations
     change_gunpoint_position(dir_to_enemy)
     animation_tree.set("parameters/Idle/blend_position", dir_to_enemy)
     animation_tree.set("parameters/Attack/blend_position", dir_to_enemy)
-    nearest_enemy = find_nearest_enemy_in_range()
-    # can_attack = nearest_enemy != null
-    # animation_tree.set("parameters/conditions/attack", can_attack)
+    
+    # Update nearest_enemy for compatibility with existing code
+    nearest_enemy = best_target if best_target else find_nearest_enemy_in_range()
 
 
 func find_nearest_enemy():
@@ -167,3 +178,31 @@ func _on_area_2d_area_entered(area:Area2D) -> void:
 func _on_area_2d_area_exited(area:Area2D) -> void:
     if area.get_parent() in enemies_in_area:
         enemies_in_area.erase(area.get_parent())
+
+
+# Find target that won't die from damage already in flight
+func find_best_target() -> Node2D:
+    var enemies = enemies_in_area.duplicate()
+    if enemies.size() == 0:
+        return null
+        
+    # Sort by progress (farthest along path first)
+    enemies.sort_custom(func(a, b): return a.progress > b.progress)
+    
+    # Find enemies that will survive current in-flight damage
+    var valid_targets = []
+    for enemy in enemies:
+        if not is_instance_valid(enemy):
+            continue
+            
+        # Only target enemies that won't die from existing in-flight damage
+        if enemy.predicted_health > 0:
+            valid_targets.append(enemy)
+    
+    # If we have valid targets, return the one furthest along the path
+    if valid_targets.size() > 0:
+        valid_targets.sort_custom(func(a, b): return a.progress > b.progress)
+        return valid_targets[0]
+    
+    # If all enemies are predicted to die, return the one farthest along
+    return enemies[0] if enemies.size() > 0 else null

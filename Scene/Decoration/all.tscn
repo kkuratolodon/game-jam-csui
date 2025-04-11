@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://chhhke82o4g2y"]
+[gd_scene load_steps=28 format=3 uid="uid://chhhke82o4g2y"]
 
 [ext_resource type="PackedScene" uid="uid://cggoqwqtrsoyr" path="res://Scene/Decoration/box_1.tscn" id="1_u8vkg"]
 [ext_resource type="PackedScene" uid="uid://dlhgp4axt85kb" path="res://Scene/Decoration/box_2.tscn" id="2_e1fs1"]
@@ -21,18 +21,29 @@
 [ext_resource type="PackedScene" uid="uid://bx7ggfq0b015v" path="res://Scene/Decoration/bush_4.tscn" id="19_1k72m"]
 [ext_resource type="PackedScene" uid="uid://bje2tsou4t0py" path="res://Scene/Decoration/bush_5.tscn" id="20_y286p"]
 [ext_resource type="PackedScene" uid="uid://bil7o0y7vnnuh" path="res://Scene/Decoration/bush_6.tscn" id="21_gbe13"]
+[ext_resource type="PackedScene" uid="uid://fw3disy53abo" path="res://Scene/Decoration/camp.tscn" id="22_dmy4q"]
+[ext_resource type="PackedScene" uid="uid://dmvyjs5ylfoma" path="res://Scene/Decoration/camp_2.tscn" id="23_t3e63"]
+[ext_resource type="PackedScene" uid="uid://b6inyvjql4gik" path="res://Scene/Decoration/camp_3.tscn" id="24_opl43"]
+[ext_resource type="PackedScene" uid="uid://csedi03r7josp" path="res://Scene/Decoration/camp_4.tscn" id="25_tdb8i"]
+[ext_resource type="PackedScene" uid="uid://dn5xgxtwr71pn" path="res://Scene/Decoration/camp_5.tscn" id="26_q7vxq"]
+[ext_resource type="PackedScene" uid="uid://dsx75pqrk0rul" path="res://Scene/Decoration/camp_6.tscn" id="27_pma5d"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Box1" parent="." instance=ExtResource("1_u8vkg")]
+visible = false
 
 [node name="Box2" parent="." instance=ExtResource("2_e1fs1")]
+visible = false
 
 [node name="Box3" parent="." instance=ExtResource("3_sib5v")]
+visible = false
 
 [node name="Box4" parent="." instance=ExtResource("4_l2q3f")]
+visible = false
 
 [node name="Box5" parent="." instance=ExtResource("4_l2q3f")]
+visible = false
 
 [node name="lamp_1" parent="." instance=ExtResource("5_isuds")]
 visible = false
@@ -83,6 +94,24 @@ visible = false
 visible = false
 
 [node name="Bush6" parent="." instance=ExtResource("21_gbe13")]
+visible = false
+
+[node name="Camp" parent="." instance=ExtResource("22_dmy4q")]
+visible = false
+
+[node name="Camp2" parent="." instance=ExtResource("23_t3e63")]
+visible = false
+
+[node name="Camp3" parent="." instance=ExtResource("24_opl43")]
+visible = false
+
+[node name="Camp4" parent="." instance=ExtResource("25_tdb8i")]
+visible = false
+
+[node name="Camp5" parent="." instance=ExtResource("26_q7vxq")]
+visible = false
+
+[node name="Camp6" parent="." instance=ExtResource("27_pma5d")]
 visible = false
 
 [editable path="Box5"]

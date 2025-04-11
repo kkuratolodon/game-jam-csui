@@ -49,6 +49,24 @@ func _ready():
         back_button.button_down.connect(_on_button_down.bind(back_button))
         back_button.button_up.connect(_on_button_up.bind(back_button))
     
+    # Connect upgrade button signals
+    if has_node("CanvasLayer/UpgradeButton"):
+        var upgrade_button = $CanvasLayer/UpgradeButton
+        upgrade_button.pressed.connect(_on_upgrade_button_pressed)
+        upgrade_button.mouse_entered.connect(_on_button_mouse_entered.bind(upgrade_button))
+        upgrade_button.mouse_exited.connect(_on_button_mouse_exited.bind(upgrade_button))
+        upgrade_button.button_down.connect(_on_button_down.bind(upgrade_button))
+        upgrade_button.button_up.connect(_on_button_up.bind(upgrade_button))
+    
+    # Alternative path for upgrade button if it's in the TextureRect
+    elif has_node("CanvasLayer/TextureRect/UpgradeButton"):
+        var upgrade_button = $CanvasLayer/TextureRect/UpgradeButton
+        upgrade_button.pressed.connect(_on_upgrade_button_pressed)
+        upgrade_button.mouse_entered.connect(_on_button_mouse_entered.bind(upgrade_button))
+        upgrade_button.mouse_exited.connect(_on_button_mouse_exited.bind(upgrade_button))
+        upgrade_button.button_down.connect(_on_button_down.bind(upgrade_button))
+        upgrade_button.button_up.connect(_on_button_up.bind(upgrade_button))
+    
     # Continue with normal initialization
     _initialize_level_select()
 
@@ -169,21 +187,20 @@ func _on_back_button_pressed() -> void:
         click_tween.tween_property(back_button, "scale", NORMAL_SCALE, 0.1)
         await click_tween.finished
     
-    # Only animate UI elements
+    # Use a fade animation instead of sliding down
     var ui_tween = create_tween()
     ui_tween.set_parallel(true)
-    ui_tween.tween_property($CanvasLayer/TextureRect, "position:y", 800, 0.4)
+    ui_tween.tween_property($CanvasLayer/TextureRect, "modulate", Color(1, 1, 1, 0), 0.4)
     
     if has_node("CanvasLayer/DarkOverlay"):
         ui_tween.tween_property($CanvasLayer/DarkOverlay, "modulate", Color(0, 0, 0, 0), 0.3)
     
     await ui_tween.finished
     
-    # Use IRIS transition that will show a circular transition, keeping background visible
-    # until the circle closes
+    # Use FADE transition instead of IRIS
     SceneTransition.set_transition_color(Color(0.0, 0.0, 0.0, 0.9))
     SceneTransition.change_scene("res://Scene/Menu/MainMenu.tscn", 
-                               SceneTransition.TransitionType.IRIS, 
+                               SceneTransition.TransitionType.FADE, 
                                0.6)
 
 # Button hover animation
@@ -221,3 +238,30 @@ func _on_button_up(button: TextureButton) -> void:
     
     tween.tween_property(button, "scale", target_scale, 0.1)
     tween.parallel().tween_property(button, "modulate", target_tint, 0.1)
+
+func _on_upgrade_button_pressed() -> void:
+    print("Upgrade button pressed - transitioning to upgrade screen")
+    
+    # Play button click animation first
+    var upgrade_button = $CanvasLayer/UpgradeButton if has_node("CanvasLayer/UpgradeButton") else $CanvasLayer/TextureRect/UpgradeButton
+    if upgrade_button:
+        var click_tween = create_tween()
+        click_tween.tween_property(upgrade_button, "scale", CLICK_SCALE, 0.05)
+        click_tween.tween_property(upgrade_button, "scale", NORMAL_SCALE, 0.1)
+        await click_tween.finished
+    
+    # Fade out UI elements instead of sliding down
+    var ui_tween = create_tween()
+    ui_tween.set_parallel(true)
+    ui_tween.tween_property($CanvasLayer/TextureRect, "modulate", Color(1, 1, 1, 0), 0.4)
+    
+    if has_node("CanvasLayer/DarkOverlay"):
+        ui_tween.tween_property($CanvasLayer/DarkOverlay, "modulate", Color(0, 0, 0, 0), 0.3)
+    
+    await ui_tween.finished
+    
+    # Use IRIS transition (like the back button) instead of SLIDE_LEFT
+    SceneTransition.set_transition_color(Color(0.0, 0.0, 0.0, 0.9))
+    SceneTransition.change_scene("res://Scene/Menu/Upgrade.tscn", 
+                               SceneTransition.TransitionType.IRIS, 
+                               0.6)

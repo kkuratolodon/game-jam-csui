@@ -10,26 +10,54 @@ var archer_start_level = 1
 var catapult_start_level = 1
 var magic_start_level = 1
 var guardian_start_level = 1
-var start_money = 200
-var start_hp = 100
+var start_money = 100
+var start_hp = 1001
 var money = 0
 
 # Dictionaries mapping upgrade levels to actual values
 const MONEY_LEVEL_VALUES = {
-    1: 200,  # Level 1: 200 starting money
-    2: 250,  # Level 2: 250 starting money
-    3: 300,  # Level 3: 300 starting money
-    4: 350,  # Level 4: 350 starting money
-    5: 400   # Level 5: 400 starting money
+    1: 100,  # Level 1: 200 starting money
+    2: 150,  # Level 2: 250 starting money
+    3: 200,  # Level 3: 300 starting money
+    4: 300,  # Level 4: 350 starting money
+    5: 400,  # Level 5: 400 starting money
+    6: 450   # Level 6: 450 starting money
 }
 
 const HP_LEVEL_VALUES = {
-    1: 100,  # Level 1: 100 starting HP
+    1: 10,  # Level 1: 100 starting HP
     2: 120,  # Level 2: 120 starting HP
     3: 140,  # Level 3: 140 starting HP
     4: 160,  # Level 4: 160 starting HP
-    5: 200   # Level 5: 200 starting HP
+    5: 200,  # Level 5: 200 starting HP
+    6: 250   # Level 6: 250 starting HP
 }
+
+const RESOURCE_UPGRADE_COSTS = {
+    # Level to upgrade to: cost
+    2: 500,
+    3: 1000,
+    4: 2000,
+    5: 3500,
+    6: 5000
+}
+
+# Separate upgrade costs for each tower type
+const ARCHER_UPGRADE_COSTS = {
+    # Level to upgrade to: cost
+    2: 1000,
+    3: 2500,
+    4: 7500
+}
+
+const CATAPULT_UPGRADE_COSTS = {
+    # Level to upgrade to: cost
+    2: 1500,  # More expensive than archer
+    3: 4000, # More expensive than archer
+    4: 10000  # More expensive than archer
+}
+const MAX_TOWER_LEVEL = 4     # Archer and Catapult max level is 4
+const MAX_RESOURCE_LEVEL = 6  # Money and HP max level is 6
 
 # User data from server
 var user_data = null
@@ -319,5 +347,13 @@ func _update_local_config():
         catapult_start_level = user_data.get("catapult_level", catapult_start_level)
         magic_start_level = user_data.get("magic_level", magic_start_level)
         guardian_start_level = user_data.get("guardian_level", guardian_start_level)
-        # Update the actual values based on levels
+        start_money = MONEY_LEVEL_VALUES.get(start_money_level)
+        start_hp = HP_LEVEL_VALUES.get(start_hp_level)
+        if is_instance_valid(Castle.instance) and Castle.instance != null:
+            Castle.instance.max_health = start_hp
+            Castle.instance.current_health = start_hp
+        
+        if is_instance_valid(Player.instance) and Player.instance != null:
+            Player.instance.money = start_money
+            # Update the actual values based on levels
         update_start_values()
