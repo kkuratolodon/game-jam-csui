@@ -1,7 +1,7 @@
 [gd_scene load_steps=47 format=3 uid="uid://chhyyigy8wli7"]
 
-[ext_resource type="Script" path="res://Scene/Enemy/enemy.gd" id="1_7uq37"]
-[ext_resource type="Script" path="res://Scene/Enemy/Knight/shield.gd" id="2_0n7lo"]
+[ext_resource type="Script" uid="uid://brtp3dblsf8rf" path="res://Scene/Enemy/enemy.gd" id="1_7uq37"]
+[ext_resource type="Script" uid="uid://c0fi542olvi2s" path="res://Scene/Enemy/Knight/shield.gd" id="2_0n7lo"]
 [ext_resource type="Texture2D" uid="uid://d0c7ev338a140" path="res://Assets/Enemy/Knight/D_Death.png" id="3_umia2"]
 [ext_resource type="Texture2D" uid="uid://dn5yrks28kio0" path="res://Assets/Enemy/Knight/D_Walk.png" id="4_ktyxs"]
 [ext_resource type="Texture2D" uid="uid://doapnwf7xi7hq" path="res://Assets/Enemy/Knight/S_Death.png" id="5_u1leo"]
@@ -10,12 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://cx2ov0a6qayu5" path="res://Assets/Enemy/Knight/U_Walk.png" id="8_4bgfh"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://dw0e4frfnxsvx" path="res://Scene/Enemy/enemy_walk.tres" id="8_q1bc6"]
 [ext_resource type="Texture2D" uid="uid://br1kbpmx34plm" path="res://Assets/Enemy/Knight/D_Block.png" id="9_ix2e8"]
-[ext_resource type="Script" path="res://Scene/Enemy/enemy_animation.gd" id="9_j0ewd"]
+[ext_resource type="Script" uid="uid://l63l43o5nmtn" path="res://Scene/Enemy/enemy_animation.gd" id="9_j0ewd"]
 [ext_resource type="Texture2D" uid="uid://dlu4mtrggbbni" path="res://Assets/UI/2 Bars/Healthbar_empty.png" id="10_7krtn"]
 [ext_resource type="Texture2D" uid="uid://be41hsp0o2de2" path="res://Assets/Enemy/Knight/S_Block.png" id="10_ftk8a"]
 [ext_resource type="Texture2D" uid="uid://c0oi6hq8wx1n1" path="res://Assets/UI/2 Bars/Healthbar_full.png" id="11_06x38"]
 [ext_resource type="Texture2D" uid="uid://ctp0grf42fl46" path="res://Assets/Enemy/Knight/U_Block.png" id="11_udi5i"]
-[ext_resource type="Script" path="res://Scene/Enemy/enemy_navigation.gd" id="12_73n47"]
+[ext_resource type="Script" uid="uid://dihg01jal4a0v" path="res://Scene/Enemy/enemy_navigation.gd" id="12_73n47"]
 
 [sub_resource type="Animation" id="Animation_u7p40"]
 resource_name = "D_Block"
@@ -710,19 +710,19 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ih782"]
 _data = {
-"D_Block": SubResource("Animation_u7p40"),
-"D_Death": SubResource("Animation_8ly0p"),
-"D_Walk": SubResource("Animation_rxvlt"),
-"L_Block": SubResource("Animation_yyh2h"),
-"L_Death": SubResource("Animation_vvukt"),
-"L_Walk": SubResource("Animation_tg5de"),
-"RESET": SubResource("Animation_0ojrt"),
-"R_Block": SubResource("Animation_3idpv"),
-"R_Death": SubResource("Animation_oe6lv"),
-"R_Walk": SubResource("Animation_vi1ff"),
-"U_Block": SubResource("Animation_wjsso"),
-"U_Death": SubResource("Animation_8bn6r"),
-"U_Walk": SubResource("Animation_7pffl")
+&"D_Block": SubResource("Animation_u7p40"),
+&"D_Death": SubResource("Animation_8ly0p"),
+&"D_Walk": SubResource("Animation_rxvlt"),
+&"L_Block": SubResource("Animation_yyh2h"),
+&"L_Death": SubResource("Animation_vvukt"),
+&"L_Walk": SubResource("Animation_tg5de"),
+&"RESET": SubResource("Animation_0ojrt"),
+&"R_Block": SubResource("Animation_3idpv"),
+&"R_Death": SubResource("Animation_oe6lv"),
+&"R_Walk": SubResource("Animation_vi1ff"),
+&"U_Block": SubResource("Animation_wjsso"),
+&"U_Death": SubResource("Animation_8bn6r"),
+&"U_Walk": SubResource("Animation_7pffl")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lx1xl"]
@@ -812,11 +812,12 @@ script = ExtResource("2_0n7lo")
 texture = ExtResource("6_cvpmu")
 offset = Vector2(0, 20)
 hframes = 6
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_ih782")
+&"": SubResource("AnimationLibrary_ih782")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Shield"]

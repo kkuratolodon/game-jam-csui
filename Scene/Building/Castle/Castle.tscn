@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://eqmkqq56caru"]
 
-[ext_resource type="Script" path="res://Scene/Building/Castle/castle.gd" id="1_b62ub"]
+[ext_resource type="Script" uid="uid://b0qt3fh16k16h" path="res://Scene/Building/Castle/castle.gd" id="1_b62ub"]
 [ext_resource type="PackedScene" uid="uid://to42viyhpa1x" path="res://Scene/Building/Castle/castle_gate.tscn" id="1_xbkh6"]
 [ext_resource type="PackedScene" uid="uid://cvciefiakvauj" path="res://Scene/Building/Castle/castle_high_tower.tscn" id="2_h7hxi"]
 [ext_resource type="PackedScene" uid="uid://dpet3alel0rcm" path="res://Scene/Building/Castle/castle_medium_tower.tscn" id="3_mthej"]
 [ext_resource type="PackedScene" uid="uid://cvc3qjqdbk2xy" path="res://Scene/Building/Castle/castle_wall_back.tscn" id="4_647h3"]
 [ext_resource type="PackedScene" uid="uid://crj6fm56w8ica" path="res://Scene/Building/Castle/castle_wall_front.tscn" id="5_r2c8t"]
 [ext_resource type="PackedScene" uid="uid://u6t4wthhdvkc" path="res://Scene/Building/Castle/castle_small_tower.tscn" id="6_dpvvk"]
-[ext_resource type="Script" path="res://Scene/Building/Castle/castle_animation.gd" id="8_g2u1w"]
+[ext_resource type="Script" uid="uid://crljo5oi0ry5k" path="res://Scene/Building/Castle/castle_animation.gd" id="8_g2u1w"]
 
 [node name="Castle" type="Area2D"]
 y_sort_enabled = true

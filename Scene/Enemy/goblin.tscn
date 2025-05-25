@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://bhjmj4dwcxnu3" path="res://Assets/Enemy/2/D_Walk.png" id="1_cht70"]
 [ext_resource type="Texture2D" uid="uid://r1njv0lxhpoj" path="res://Assets/Enemy/2/U_Walk.png" id="1_itoff"]
-[ext_resource type="Script" path="res://Scene/Enemy/enemy.gd" id="1_vit48"]
+[ext_resource type="Script" uid="uid://brtp3dblsf8rf" path="res://Scene/Enemy/enemy.gd" id="1_vit48"]
 [ext_resource type="Texture2D" uid="uid://dtfqu0jsy44be" path="res://Assets/Enemy/2/S_Walk.png" id="3_8hgih"]
 [ext_resource type="Texture2D" uid="uid://s8v7bkc60kfj" path="res://Assets/Enemy/2/U_Death.png" id="5_q1svs"]
-[ext_resource type="Script" path="res://Scene/Enemy/enemy_animation.gd" id="5_wif4x"]
-[ext_resource type="Script" path="res://Scene/Enemy/enemy_navigation.gd" id="6_bff0g"]
+[ext_resource type="Script" uid="uid://l63l43o5nmtn" path="res://Scene/Enemy/enemy_animation.gd" id="5_wif4x"]
+[ext_resource type="Script" uid="uid://dihg01jal4a0v" path="res://Scene/Enemy/enemy_navigation.gd" id="6_bff0g"]
 [ext_resource type="Texture2D" uid="uid://d6rcuiwr1sx8" path="res://Assets/Enemy/2/S_Death.png" id="6_vab6j"]
 [ext_resource type="Texture2D" uid="uid://dlu4mtrggbbni" path="res://Assets/UI/2 Bars/Healthbar_empty.png" id="7_kwot8"]
 [ext_resource type="Texture2D" uid="uid://dsiw18t06pt0u" path="res://Assets/Enemy/2/D_Death.png" id="7_lrwn8"]
@@ -514,15 +514,15 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ih782"]
 _data = {
-"D_Death": SubResource("Animation_8ly0p"),
-"D_Walk": SubResource("Animation_rxvlt"),
-"L_Death": SubResource("Animation_vvukt"),
-"L_Walk": SubResource("Animation_tg5de"),
-"RESET": SubResource("Animation_0ojrt"),
-"R_Death": SubResource("Animation_oe6lv"),
-"R_Walk": SubResource("Animation_vi1ff"),
-"U_Death": SubResource("Animation_8bn6r"),
-"U_Walk": SubResource("Animation_7pffl")
+&"D_Death": SubResource("Animation_8ly0p"),
+&"D_Walk": SubResource("Animation_rxvlt"),
+&"L_Death": SubResource("Animation_vvukt"),
+&"L_Walk": SubResource("Animation_tg5de"),
+&"RESET": SubResource("Animation_0ojrt"),
+&"R_Death": SubResource("Animation_oe6lv"),
+&"R_Walk": SubResource("Animation_vi1ff"),
+&"U_Death": SubResource("Animation_8bn6r"),
+&"U_Walk": SubResource("Animation_7pffl")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ly7uk"]
@@ -569,7 +569,7 @@ size = Vector2(12, 20)
 rotates = false
 loop = false
 script = ExtResource("1_vit48")
-speed = 1000.0
+speed = 55.0
 max_health = 150
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -581,7 +581,7 @@ hframes = 6
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_ih782")
+&"": SubResource("AnimationLibrary_ih782")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="Area2D"]

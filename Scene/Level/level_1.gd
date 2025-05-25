@@ -6,6 +6,8 @@ extends Node2D
 # Game state
 var game_can_start = false  # Game starts frozen until config is loaded
 var game_initialized = false  # Flag to track if game has been initialized
+var is_game_over = false  # Flag to prevent multiple game over screens
+var is_win = false  # Flag to prevent multiple win screens
 
 # Wave configuration
 var current_wave = 0
@@ -20,7 +22,7 @@ const WAVE_TRANSITION_TIME = 15.0  # 15 seconds between waves
 const INITIAL_TRANSITION_TIME = 5.0  # 5 seconds before first wave
 var transition_timer = 0.0
 var in_transition = false  # Changed to false initially
-var progress_bar_instance = null
+var progress_bar_instance: Node = null
 
 # Wave timing
 var wave_timer = 0.0     # Tracks the current time within a wave
@@ -166,6 +168,20 @@ func _ready() -> void:
     if player_node and player_node.has_method("set_process_input"):
         player_node.set_process_input(false)
         player_node.set_physics_process(false)
+    
+    # Connect to the castle's health_changed signal
+    Castle.instance.health_changed.connect(_on_castle_health_changed)
+    
+    # Get the enemy paths reference
+    enemy_paths = $EnemyPaths
+    
+    # Setup the wave progress bar
+    setup_progress_bar()
+    
+    # Make Player the "player" group for easy finding
+    $Player.add_to_group("player")
+    
+    print("[Level1] Press F12 to trigger instant win (debug)")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -205,6 +221,7 @@ func _process(delta: float) -> void:
                 wave_timer = 0.0  # Explicit reset here
             else:
                 print("All waves complete!")
+                on_all_waves_completed()
     
     # Only process wave spawning if wave is active and not in transition
     elif wave_active and !in_transition:
@@ -224,6 +241,18 @@ func _process(delta: float) -> void:
         # Check if wave is complete
         if is_wave_complete():
             end_wave()
+    
+    # Check castle health for game over condition
+    if Castle.instance.current_health <= 0 and not is_game_over:
+        show_game_over()
+    
+    # Debug key for instant win - use F12 key
+    if Input.is_key_pressed(KEY_F12):
+        debug_trigger_win()
+    
+    # Alternative debug combo: Ctrl+W
+    if Input.is_key_pressed(KEY_CTRL) and Input.is_key_pressed(KEY_W):
+        debug_trigger_win()
 
 # Called when Config's user data is updated
 func _on_user_data_updated():
@@ -445,3 +474,84 @@ func _on_wave_started() -> void:
     # This gets called when the player clicks the start button in tutorial
     wave_active = true
     wave_timer = 0.0  # Reset timer when wave is manually started
+
+# Called when the castle's health changes
+func _on_castle_health_changed(new_health: int) -> void:
+    if new_health <= 0 and not is_game_over:
+        show_game_over()
+
+# Called when all waves are completed successfully
+func on_all_waves_completed() -> void:
+    if not is_win and not is_game_over:
+        show_win_screen()
+
+# Show game over screen
+func show_game_over() -> void:
+    # Set flag to prevent multiple calls
+    is_game_over = true
+    
+    # Pause the game
+    get_tree().paused = true
+    
+    # Instance the game over scene
+    var game_over_scene = load("res://Scene/Menu/GameOver.tscn")
+    var game_over_instance = game_over_scene.instantiate()
+    
+    # Store the current level path
+    game_over_instance.current_level = scene_file_path
+    
+    # Add to canvas layer and animate in
+    $CanvasLayer.add_child(game_over_instance)
+    print("Game Over: Castle destroyed!")
+
+# Debug function to instantly win the level
+func debug_trigger_win() -> void:
+    if not is_win and not is_game_over:
+        print("[DEBUG] Instant win triggered!")
+        show_win_screen()
+
+# Function to show win screen and save progress
+func show_win_screen() -> void:
+    # Set flag to prevent multiple calls
+    is_win = true
+    
+    # Get current level path
+    var current_level = scene_file_path
+    
+    # Get last completed level from Config
+    var last_completed = Config.user_data.get("last_completed_level", 0)
+    print("last completed", last_completed)
+    # Only update last_completed_level if the current level is newer
+    var update_last_completed = false
+    
+    # Extract level numbers for comparison (assuming format like "Level1.tscn", "Level2.tscn")
+    var current_level_num = int(current_level.get_basename().get_file().replace("Level", ""))
+    
+    if current_level_num > last_completed:
+        update_last_completed = true
+    
+    # Create the update data dictionary
+    var update_data = {
+        "money": Config.user_data.get("money", 0) + 100
+    }
+    
+    # Only update last_completed_level if it's a newer level
+    if update_last_completed:
+        update_data["last_completed_level"] = current_level
+    
+    # Update the user data in Config
+    Config.update_user_data(update_data)
+    
+    # Pause the game
+    get_tree().paused = true
+    
+    # Instance the win scene
+    var win_scene = load("res://Scene/Menu/Win.tscn")
+    var win_instance = win_scene.instantiate()
+    
+    # Store the current level path for restart functionality
+    win_instance.current_level = current_level
+    
+    # Add to canvas layer and animate in
+    $CanvasLayer.add_child(win_instance)
+    print("Level complete! Money +100, progress saved.")

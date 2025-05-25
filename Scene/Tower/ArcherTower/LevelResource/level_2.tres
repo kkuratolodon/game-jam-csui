@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArcherTowerState" load_steps=2 format=3 uid="uid://cxgabdqlw8xke"]
 
-[ext_resource type="Script" path="res://Scene/Tower/ArcherTower/archer_tower_state.gd" id="1_ecmym"]
+[ext_resource type="Script" uid="uid://ddvi40mkxdxrl" path="res://Scene/Tower/ArcherTower/archer_tower_state.gd" id="1_ecmym"]
 
 [resource]
 script = ExtResource("1_ecmym")

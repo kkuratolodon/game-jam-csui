@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cck2l66u4hsma"]
 
-[ext_resource type="Script" path="res://Scene/Menu/settings.gd" id="1_0t264"]
+[ext_resource type="Script" uid="uid://j6spx4n6400g" path="res://Scene/Menu/settings.gd" id="1_0t264"]
 [ext_resource type="Texture2D" uid="uid://cm4hnucrrxlp7" path="res://Assets/UI/Menu/Level Select/table.png" id="1_r4i55"]
 [ext_resource type="Texture2D" uid="uid://cmcqoxpu2w3xh" path="res://Assets/UI/Menu/Level Select/rope_small.png" id="2_0upel"]
 [ext_resource type="Texture2D" uid="uid://bby3asmxwfve1" path="res://Assets/UI/Menu/Settings/button_restart.png" id="4_bj6dl"]

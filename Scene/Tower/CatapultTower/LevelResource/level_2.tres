@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CatapultTowerState" load_steps=2 format=3 uid="uid://cclp44y2hyopc"]
 
-[ext_resource type="Script" path="res://Scene/Tower/CatapultTower/catapult_tower_state.gd" id="1_w306v"]
+[ext_resource type="Script" uid="uid://bchu3j6m63ftu" path="res://Scene/Tower/CatapultTower/catapult_tower_state.gd" id="1_w306v"]
 
 [resource]
 script = ExtResource("1_w306v")

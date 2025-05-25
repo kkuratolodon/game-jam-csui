@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyvlbyxl4non"]
 
-[ext_resource type="Script" path="res://Scene/Menu/main_menu.gd" id="1_bi1en"]
+[ext_resource type="Script" uid="uid://bseceyqatkpy2" path="res://Scene/Menu/main_menu.gd" id="1_bi1en"]
 [ext_resource type="Texture2D" uid="uid://dgtenoa4dnbor" path="res://Assets/UI/Menu/5 Logo/Logo.png" id="2_5k3m6"]
 [ext_resource type="Texture2D" uid="uid://bsj5u0x0b4yaf" path="res://Assets/UI/Free-Fields-Tileset-Pixel-Art-for-Tower-Defense.jpg" id="2_55tje"]
 [ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="3_fx5lc"]

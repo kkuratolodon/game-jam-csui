@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cm8f70efrolvs"]
 
 [ext_resource type="Texture2D" uid="uid://cbcryfjljttk3" path="res://Assets/UI/table.png" id="1_8x1qk"]
-[ext_resource type="Script" path="res://Scene/Tutorial/tutorial_panel.gd" id="2_20n7d"]
+[ext_resource type="Script" uid="uid://ceh8uo4l1nd86" path="res://Scene/Tutorial/tutorial_panel.gd" id="2_20n7d"]
 [ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="3_sunl7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yv7wa"]

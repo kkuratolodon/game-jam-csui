@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://d2g8u0sgst3y8"]
 
-[ext_resource type="Script" path="res://Scene/Transition/SceneTransitionManager.gd" id="1_vd4ch"]
+[ext_resource type="Script" uid="uid://dan3o0cjv0okf" path="res://Scene/Transition/SceneTransitionManager.gd" id="1_vd4ch"]
 
 [sub_resource type="Shader" id="Shader_wnk85"]
 code = "shader_type canvas_item;
@@ -78,7 +78,6 @@ void fragment() {
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_s2atj"]
 noise_type = 3
-frequency = 0.01
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tydlb"]
 seamless = true
@@ -224,7 +223,7 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pn2j1"]
 _data = {
-"RESET": SubResource("Animation_j3lpt")
+&"RESET": SubResource("Animation_j3lpt")
 }
 
 [node name="SceneTransitionManager" type="CanvasLayer"]

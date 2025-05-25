@@ -25,7 +25,7 @@ const MONEY_LEVEL_VALUES = {
 }
 
 const HP_LEVEL_VALUES = {
-    1: 10,  # Level 1: 100 starting HP
+    1: 100,  # Level 1: 100 starting HP
     2: 120,  # Level 2: 120 starting HP
     3: 140,  # Level 3: 140 starting HP
     4: 160,  # Level 4: 160 starting HP

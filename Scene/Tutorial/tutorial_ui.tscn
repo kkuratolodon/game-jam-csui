@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5c6kx2xjhrey"]
 
-[ext_resource type="Script" path="res://Scene/Tutorial/tutorial_ui.gd" id="1_y8das"]
+[ext_resource type="Script" uid="uid://d0amr0cwq0y2f" path="res://Scene/Tutorial/tutorial_ui.gd" id="1_y8das"]
 
 [node name="TutorialUI" type="CanvasLayer"]
 layer = 100

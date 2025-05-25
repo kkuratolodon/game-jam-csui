@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://blkc0kpokoe1i"]
 
 [ext_resource type="Texture2D" uid="uid://cbcryfjljttk3" path="res://Assets/UI/table.png" id="1_42oj8"]
-[ext_resource type="Script" path="res://Scene/Menu/login.gd" id="2_1nhjv"]
+[ext_resource type="Script" uid="uid://br5ksq0r16dv" path="res://Scene/Menu/login.gd" id="2_1nhjv"]
 [ext_resource type="FontFile" uid="uid://boiunemv4jot1" path="res://Assets/Font/CraftPixNet Survival Kit.otf" id="3_o2hbj"]
 [ext_resource type="Texture2D" uid="uid://bgjne7h7y1oji" path="res://Assets/UI/Menu/2 Bars/Button1.png" id="4_wq1jd"]
 [ext_resource type="Texture2D" uid="uid://bkeljqf7gd4r5" path="res://Assets/UI/Menu/2 Bars/Button2.png" id="5_yicno"]

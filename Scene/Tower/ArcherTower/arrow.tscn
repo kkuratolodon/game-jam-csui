@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=3 uid="uid://bhurj4v5bje2m"]
 
 [ext_resource type="Texture2D" uid="uid://cr4n8q0avvfrn" path="res://Assets/Towers/ArcherTower/3 Units/Arrow/23.png" id="1_rwdfl"]
-[ext_resource type="Script" path="res://Scene/Tower/ArcherTower/arrow.gd" id="1_u5n48"]
+[ext_resource type="Script" uid="uid://b5x1ikdywrmba" path="res://Scene/Tower/ArcherTower/arrow.gd" id="1_u5n48"]
 [ext_resource type="Texture2D" uid="uid://do1ejr3utidpf" path="res://Assets/Towers/ArcherTower/3 Units/Arrow/24.png" id="2_254he"]
 [ext_resource type="Texture2D" uid="uid://bipbtb6l66tmg" path="res://Assets/Towers/ArcherTower/3 Units/Arrow/25.png" id="3_6c6r0"]
 [ext_resource type="Texture2D" uid="uid://bn7h5yii0c1a1" path="res://Assets/Towers/ArcherTower/3 Units/Arrow/26.png" id="4_113yg"]
@@ -660,23 +660,23 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8mkg"]
 _data = {
-"0": SubResource("Animation_n51gh"),
-"1": SubResource("Animation_t6t5r"),
-"10": SubResource("Animation_kfyni"),
-"11": SubResource("Animation_sp3eg"),
-"12": SubResource("Animation_h1jrq"),
-"13": SubResource("Animation_3gr70"),
-"14": SubResource("Animation_otexf"),
-"15": SubResource("Animation_tu31g"),
-"2": SubResource("Animation_ad0jt"),
-"3": SubResource("Animation_qnmhq"),
-"4": SubResource("Animation_q41ps"),
-"5": SubResource("Animation_8egr5"),
-"6": SubResource("Animation_6r7mu"),
-"7": SubResource("Animation_8lrto"),
-"8": SubResource("Animation_axg4s"),
-"9": SubResource("Animation_7wbgr"),
-"RESET": SubResource("Animation_gu87j")
+&"0": SubResource("Animation_n51gh"),
+&"1": SubResource("Animation_t6t5r"),
+&"10": SubResource("Animation_kfyni"),
+&"11": SubResource("Animation_sp3eg"),
+&"12": SubResource("Animation_h1jrq"),
+&"13": SubResource("Animation_3gr70"),
+&"14": SubResource("Animation_otexf"),
+&"15": SubResource("Animation_tu31g"),
+&"2": SubResource("Animation_ad0jt"),
+&"3": SubResource("Animation_qnmhq"),
+&"4": SubResource("Animation_q41ps"),
+&"5": SubResource("Animation_8egr5"),
+&"6": SubResource("Animation_6r7mu"),
+&"7": SubResource("Animation_8lrto"),
+&"8": SubResource("Animation_axg4s"),
+&"9": SubResource("Animation_7wbgr"),
+&"RESET": SubResource("Animation_gu87j")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g63dq"]
@@ -777,7 +777,7 @@ texture = ExtResource("4_113yg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_c8mkg")
+&"": SubResource("AnimationLibrary_c8mkg")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

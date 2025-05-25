@@ -960,24 +960,24 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gm0o7"]
 _data = {
-"RESET": SubResource("Animation_tt04e"),
-"Tier0-Idle": SubResource("Animation_b2n4a"),
-"Tier0-Upgrade": SubResource("Animation_oi1xp"),
-"Tier1-Idle": SubResource("Animation_30upe"),
-"Tier1-Upgrade": SubResource("Animation_csjk2"),
-"Tier2-Idle": SubResource("Animation_6j66m"),
-"Tier2-Upgrade": SubResource("Animation_1tbq0"),
-"Tier3-Door": SubResource("Animation_bmq4h"),
-"Tier3-Idle": SubResource("Animation_hgwfn"),
-"Tier3-Upgrade": SubResource("Animation_0pepy"),
-"Tier4-Door": SubResource("Animation_s467u"),
-"Tier4-Idle": SubResource("Animation_yi4qy"),
-"Tier4-Upgrade": SubResource("Animation_tfyl5"),
-"Tier5-Door": SubResource("Animation_cbc6w"),
-"Tier5-Idle": SubResource("Animation_fvacx"),
-"Tier5-Upgrade": SubResource("Animation_jycnh"),
-"Tier6-Door": SubResource("Animation_j25wv"),
-"Tier6-Idle": SubResource("Animation_swr53")
+&"RESET": SubResource("Animation_tt04e"),
+&"Tier0-Idle": SubResource("Animation_b2n4a"),
+&"Tier0-Upgrade": SubResource("Animation_oi1xp"),
+&"Tier1-Idle": SubResource("Animation_30upe"),
+&"Tier1-Upgrade": SubResource("Animation_csjk2"),
+&"Tier2-Idle": SubResource("Animation_6j66m"),
+&"Tier2-Upgrade": SubResource("Animation_1tbq0"),
+&"Tier3-Door": SubResource("Animation_bmq4h"),
+&"Tier3-Idle": SubResource("Animation_hgwfn"),
+&"Tier3-Upgrade": SubResource("Animation_0pepy"),
+&"Tier4-Door": SubResource("Animation_s467u"),
+&"Tier4-Idle": SubResource("Animation_yi4qy"),
+&"Tier4-Upgrade": SubResource("Animation_tfyl5"),
+&"Tier5-Door": SubResource("Animation_cbc6w"),
+&"Tier5-Idle": SubResource("Animation_fvacx"),
+&"Tier5-Upgrade": SubResource("Animation_jycnh"),
+&"Tier6-Door": SubResource("Animation_j25wv"),
+&"Tier6-Idle": SubResource("Animation_swr53")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfa3q"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bew2s8ma8uvj7"]
 
-[ext_resource type="Script" path="res://Scene/UI/in_game_ui.gd" id="1_n7pv4"]
+[ext_resource type="Script" uid="uid://crcqs352fml2n" path="res://Scene/UI/in_game_ui.gd" id="1_n7pv4"]
 [ext_resource type="Texture2D" uid="uid://bjc65xlxd4pmo" path="res://Assets/UI/Used Icons/heart.png" id="2_ceubw"]
 [ext_resource type="FontFile" uid="uid://cantxaynqf5fn" path="res://Assets/Font/TinyFontCraftpixPixel.otf" id="3_17kr5"]
 [ext_resource type="Texture2D" uid="uid://ddpsdvi3phk1t" path="res://Assets/UI/Used Icons/gold.png" id="3_lyo06"]

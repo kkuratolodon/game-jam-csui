@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyf6l2dhun8j4"]
 
-[ext_resource type="Script" path="res://Scene/Transition/scene_transition.gd" id="1_mctv6"]
+[ext_resource type="Script" uid="uid://jy0nnmjljd7d" path="res://Scene/Transition/scene_transition.gd" id="1_mctv6"]
 
 [sub_resource type="Animation" id="Animation_1jtch"]
 resource_name = "RESET"
@@ -64,9 +64,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ilvq"]
 _data = {
-"RESET": SubResource("Animation_1jtch"),
-"dissolve": SubResource("Animation_ux7m4"),
-"panel_slide": SubResource("Animation_y3gdi")
+&"RESET": SubResource("Animation_1jtch"),
+&"dissolve": SubResource("Animation_ux7m4"),
+&"panel_slide": SubResource("Animation_y3gdi")
 }
 
 [node name="SceneTransition" type="CanvasLayer"]

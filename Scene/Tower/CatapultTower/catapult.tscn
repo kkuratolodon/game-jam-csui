@@ -1,7 +1,7 @@
 [gd_scene load_steps=50 format=3 uid="uid://ccwnr2i6rhno7"]
 
-[ext_resource type="Script" path="res://Scene/Tower/CatapultTower/catapult.gd" id="1_mupco"]
-[ext_resource type="Script" path="res://Scene/Tower/CatapultTower/catapult_attack.gd" id="3_clcj7"]
+[ext_resource type="Script" uid="uid://cpifrt2arf6vg" path="res://Scene/Tower/CatapultTower/catapult.gd" id="1_mupco"]
+[ext_resource type="Script" uid="uid://bqtsn4e5pot8s" path="res://Scene/Tower/CatapultTower/catapult_attack.gd" id="3_clcj7"]
 [ext_resource type="PackedScene" uid="uid://cia6a47nkon00" path="res://Scene/Tower/CatapultTower/projectile.tscn" id="3_odkxp"]
 [ext_resource type="Texture2D" uid="uid://ou72cj7311wg" path="res://Assets/Towers/CatapultTower/3 Units/2/DS.png" id="4_a18u4"]
 [ext_resource type="Texture2D" uid="uid://5d7gg8pwsct1" path="res://Assets/Towers/CatapultTower/3 Units/2/D.png" id="5_32x00"]
@@ -993,23 +993,23 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktjf1"]
 _data = {
-"DL_attack": SubResource("Animation_u3mdk"),
-"DL_idle": SubResource("Animation_7yu2f"),
-"DR_attack": SubResource("Animation_5eiye"),
-"DR_idle": SubResource("Animation_kh3d4"),
-"D_attack": SubResource("Animation_men38"),
-"D_idle": SubResource("Animation_d7m1k"),
-"L_attack": SubResource("Animation_d28fe"),
-"L_idle": SubResource("Animation_qfn0i"),
-"RESET": SubResource("Animation_gt8x0"),
-"R_attack": SubResource("Animation_1xgre"),
-"R_idle": SubResource("Animation_mv2cj"),
-"UL_attack": SubResource("Animation_jgab8"),
-"UL_idle": SubResource("Animation_qrs86"),
-"UR_attack": SubResource("Animation_3vjy6"),
-"UR_idle": SubResource("Animation_gsfj0"),
-"U_attack": SubResource("Animation_nh80e"),
-"U_idle": SubResource("Animation_w0lgp")
+&"DL_attack": SubResource("Animation_u3mdk"),
+&"DL_idle": SubResource("Animation_7yu2f"),
+&"DR_attack": SubResource("Animation_5eiye"),
+&"DR_idle": SubResource("Animation_kh3d4"),
+&"D_attack": SubResource("Animation_men38"),
+&"D_idle": SubResource("Animation_d7m1k"),
+&"L_attack": SubResource("Animation_d28fe"),
+&"L_idle": SubResource("Animation_qfn0i"),
+&"RESET": SubResource("Animation_gt8x0"),
+&"R_attack": SubResource("Animation_1xgre"),
+&"R_idle": SubResource("Animation_mv2cj"),
+&"UL_attack": SubResource("Animation_jgab8"),
+&"UL_idle": SubResource("Animation_qrs86"),
+&"UR_attack": SubResource("Animation_3vjy6"),
+&"UR_idle": SubResource("Animation_gsfj0"),
+&"U_attack": SubResource("Animation_nh80e"),
+&"U_idle": SubResource("Animation_w0lgp")
 }
 
 [node name="Catapult" type="Node2D"]
@@ -1041,7 +1041,7 @@ shape = SubResource("CapsuleShape2D_1at83")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ktjf1")
+&"": SubResource("AnimationLibrary_ktjf1")
 }
 
 [node name="Node2D" type="Node2D" parent="."]
