@@ -5,7 +5,7 @@ This document provides comprehensive information about the Game Backend API endp
 ## Base URL
 
 - Local Development: `http://127.0.0.1:8000`
-- Production Server: `http://54.255.152.114`
+- Production Server: `http://54.254.163.134`
 
 ## Authentication
 
@@ -190,7 +190,7 @@ Updates user data including game progress and resources.
 ```gdscript
 extends Node
 
-const API_URL = "http://54.255.152.114"
+const API_URL = "http://54.254.163.134"
 const SECRET_KEY = "game-secret-for-api-authentication"
 
 # Register a new user
@@ -299,6 +299,6 @@ func _on_http_request_completed(result, response_code, headers, body):
 
 ## Deployment Notes
 
-The API is currently deployed on AWS EC2 at IP address: 54.255.152.114
+The API is currently deployed on AWS EC2 at IP address: 54.254.163.134
 
 For any questions or issues, contact the development team.

@@ -1,6 +1,6 @@
 extends Node
 
-const API_URL = "http://54.255.152.114"
+const API_URL = "http://54.254.163.134"
 const SECRET_KEY = "game-secret-for-api-authentication"
 const USE_LOCAL_DEV = false # Set to true when testing with local server
 
