@@ -1,6 +1,6 @@
 extends Node
 
-const API_URL = "http://54.254.163.134"
+const API_URL = "http://34.126.163.184"
 const SECRET_KEY = "game-secret-for-api-authentication"
 const USE_LOCAL_DEV = false # Set to true when testing with local server
 
@@ -140,6 +140,11 @@ func save_cached_user_data():
     else:
         print("User data cached successfully")
 
+func force_save_data():
+    """Force save current user data to cache"""
+    save_cached_user_data()
+    print("Data force saved to cache")
+
 func get_base_url() -> String:
     return "http://127.0.0.1:8000" if USE_LOCAL_DEV else API_URL
 
@@ -202,6 +207,7 @@ func get_user_data(username, password):
     return true
 
 func update_user_data(data_to_update):
+    print("Updating user data with: ", data_to_update)
     if !username or !password:
         print("username or password not set")
         push_error("Username or password not set")
@@ -332,7 +338,7 @@ func _on_update_completed(result, response_code, headers, body):
             _update_local_config()
             # Save to local cache
             save_cached_user_data()
-            print("User data updated successfully")
+            print("User data updated successfully!")
             user_data_updated.emit()
     else:
         var error_text = body.get_string_from_utf8()

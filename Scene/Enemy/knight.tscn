@@ -812,7 +812,6 @@ script = ExtResource("2_0n7lo")
 texture = ExtResource("6_cvpmu")
 offset = Vector2(0, 20)
 hframes = 6
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
 root_node = NodePath("../..")

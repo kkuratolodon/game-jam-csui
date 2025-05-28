@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://c7rg7b140boh6"]
+[gd_scene load_steps=59 format=4 uid="uid://c7rg7b140boh6"]
 
 [ext_resource type="Texture2D" uid="uid://be13jhmy6exld" path="res://Assets/Field Tileset/2 Objects/5 Grass/3.png" id="1_1bpnd"]
 [ext_resource type="Script" uid="uid://cqb6hljfoqekb" path="res://Scene/Level/level_1.gd" id="1_bjxbv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1sb1ohujo2pc" path="res://Scene/Level/wave_progress_bar.tscn" id="2_5v8fp"]
 [ext_resource type="Texture2D" uid="uid://cv4bcacpfvs8e" path="res://Assets/Field Tileset/2 Objects/5 Grass/6.png" id="3_h3iy2"]
 [ext_resource type="Texture2D" uid="uid://dhmitpg6crtd1" path="res://Assets/Field Tileset/2 Objects/5 Grass/2.png" id="4_88kvk"]
+[ext_resource type="PackedScene" uid="uid://sbbtop4k32j8" path="res://Scene/Menu/FastForward.tscn" id="4_tx414"]
 [ext_resource type="Texture2D" uid="uid://dqn3ggvtnnhxt" path="res://Assets/Field Tileset/2 Objects/5 Grass/1.png" id="5_s0d1h"]
 [ext_resource type="Texture2D" uid="uid://bt6cwnmbmvcfh" path="res://Assets/Field Tileset/2 Objects/5 Grass/5.png" id="6_bsndx"]
 [ext_resource type="Texture2D" uid="uid://wkf4lvmi6y3t" path="res://Assets/Field Tileset/2 Objects/6 Flower/1.png" id="7_bm0kb"]
@@ -717,6 +718,9 @@ wave_progress_bar = ExtResource("2_5v8fp")
 spawner_location = NodePath("SpawnerLocation")
 
 [node name="Settings" parent="." instance=ExtResource("50_1svnw")]
+
+[node name="Settings2" parent="." instance=ExtResource("4_tx414")]
+position = Vector2(710, 509)
 
 [node name="Decoration" type="Node2D" parent="."]
 y_sort_enabled = true

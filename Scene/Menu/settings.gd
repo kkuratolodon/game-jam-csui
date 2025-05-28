@@ -1,9 +1,9 @@
 extends Node2D
 
 # Color constants for button states
-const COLOR_NORMAL = Color("d1851e")  # Normal button color
-const COLOR_HOVER = Color("ffd569")   # Hovered button color
-
+const COLOR_NORMAL = Color("ffffff")  # Normal button color
+const COLOR_HOVER = Color("cccccc")   # Light gray hover color
+const COLOR_ACTIVE = Color("666666")  # Dark gray when settings panel is active
 # Animation constants
 const HOVER_SCALE = Vector2(1.1, 1.1)
 const NORMAL_SCALE = Vector2(1.0, 1.0)
@@ -11,6 +11,7 @@ const CLICK_SCALE = Vector2(0.9, 0.9)
 
 # Keep track of previous game state
 var was_paused = false
+var is_settings_active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,15 +33,27 @@ func _ready() -> void:
             button.mouse_exited.connect(func(): _on_button_mouse_exited(button))
             button.button_down.connect(func(): _on_button_down(button))
             button.button_up.connect(func(): _on_button_up(button))
+            
+            # Set initial color for settings button
+            if button == $CanvasLayer2/SettingsButton:
+                button.modulate = COLOR_NORMAL
 
 # Handle button hover effect
 func _on_button_mouse_entered(button):
+    # For settings button, don't change color on hover if settings panel is active
+    if button == $CanvasLayer2/SettingsButton and not is_settings_active:
+        button.modulate = COLOR_HOVER
+    
     # Add a subtle scale effect
     var tween = create_tween()
     tween.tween_property(button, "scale", HOVER_SCALE, 0.1)
 
 # Handle button hover exit effect
 func _on_button_mouse_exited(button):
+    # For settings button, restore appropriate color based on active state
+    if button == $CanvasLayer2/SettingsButton:
+        button.modulate = COLOR_ACTIVE if is_settings_active else COLOR_NORMAL
+    
     # Restore original scale
     var tween = create_tween()
     tween.tween_property(button, "scale", NORMAL_SCALE, 0.1)
@@ -91,6 +104,12 @@ func _on_close_button_pressed() -> void:
     $CanvasLayer2/SettingPanel.visible = false
     $CanvasLayer2/DarkOverlay.visible = false
     
+    # Update settings state and button color
+    is_settings_active = false
+    var settings_button = $CanvasLayer2/SettingsButton
+    if settings_button:
+        settings_button.modulate = COLOR_HOVER if settings_button.is_hovered() else COLOR_NORMAL
+    
     # Unpause the game if it was paused
     if get_tree().paused:
         get_tree().paused = false
@@ -123,6 +142,12 @@ func _on_settings_button_pressed() -> void:
     else:
         # Store current pause state
         was_paused = get_tree().paused
+        
+        # Update settings state and button color
+        is_settings_active = true
+        var settings_button = $CanvasLayer2/SettingsButton
+        if settings_button:
+            settings_button.modulate = COLOR_ACTIVE
         
         # Pause the game
         get_tree().paused = true

@@ -22,6 +22,9 @@ func _ready():
     
     # Connect signals for level buttons
     for button in button_node.get_children():
+        var lvl = int(button.name.substr(5))
+        if lvl > 1:
+            continue
         if button is TextureButton:
             button.pressed.connect(_on_level_button_pressed.bind(button.name))
             

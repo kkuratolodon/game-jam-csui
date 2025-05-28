@@ -15,7 +15,10 @@ func _ready():
     
     # Pause the game immediately
     get_tree().paused = true
-    
+    if Config.user_data:
+        # Force save cached data to make sure it's persistent
+        Config.save_cached_user_data()
+        print("Progress saved on win screen")
     # Setup initial appearance
     if dark_overlay:
         dark_overlay.modulate = Color(1, 1, 1, 0)
@@ -69,7 +72,7 @@ func _ready():
     
     if back_button and not back_button.is_connected("pressed", _on_back_button_pressed):
         back_button.pressed.connect(_on_back_button_pressed)
-
+    
 # Button hover animation
 func _on_button_hover(button):
     var hover_tween = create_tween()

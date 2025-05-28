@@ -75,26 +75,26 @@ var waves = [
     [
         # Path 0 enemies
         [0, 0, 0.0],   # Goblin at 0s
-        [0, 1, 4.0],   # Knight at 4s - Early knight!
+        [0, 0, 4.0],   # Knight at 4s - Early knight!
         [0, 0, 8.0],   # Goblin at 8s
         [0, 0, 12.0],  # Goblin at 12s
         [0, 0, 16.0],  # Goblin at 16s
-        [0, 1, 20.0],  # Knight at 20s
+        [0, 0, 20.0],  # Knight at 20s
         [0, 0, 24.0],  # Goblin at 24s
         [0, 0, 28.0],  # Goblin at 28s
         [0, 0, 32.0],  # Goblin at 32s
-        [0, 1, 36.0],  # Knight at 36s
+        [0, 0, 36.0],  # Knight at 36s
         
         # Path 1 enemies - alternating pattern for challenge
         [1, 0, 2.0],   # Goblin at 2s
         [1, 0, 6.0],   # Goblin at 6s
-        [1, 1, 10.0],  # Knight at 10s
+        [1, 0, 10.0],  # Knight at 10s
         [1, 0, 14.0],  # Goblin at 14s
         [1, 0, 18.0],  # Goblin at 18s
-        [1, 1, 22.0],  # Knight at 22s
+        [1, 0, 22.0],  # Knight at 22s
         [1, 0, 26.0],  # Goblin at 26s
         [1, 0, 30.0],  # Goblin at 30s
-        [1, 1, 34.0],  # Knight at 34s
+        [1, 0, 34.0],  # Knight at 34s
         [1, 0, 38.0],  # Goblin at 38s
     ],
     
@@ -104,7 +104,7 @@ var waves = [
         [0, 0, 0.0],   # Goblin at 0s
         [0, 0, 7.0],   # Goblin at 7s
         [0, 0, 14.0],  # Goblin at 14s
-        [0, 1, 21.0],  # Knight at 21s (first knight!)
+        [0, 0, 21.0],  # Knight at 21s (first knight!)
         [0, 0, 28.0],  # Goblin at 28s
         [0, 0, 35.0],  # Goblin at 35s
         
@@ -113,7 +113,7 @@ var waves = [
         [1, 0, 10.0],  # Goblin at 10s
         [1, 0, 17.0],  # Goblin at 17s
         [1, 0, 24.0],  # Goblin at 24s
-        [1, 1, 31.0],  # Knight at 31s (second knight, different path)
+        [1, 0, 31.0],  # Knight at 31s (second knight, different path)
         [1, 0, 38.0],  # Goblin at 38s
     ],
     
@@ -122,19 +122,19 @@ var waves = [
         # Path 0 enemies
         [0, 0, 0.0],   # Goblin at 0s
         [0, 0, 6.0],   # Goblin at 6s
-        [0, 1, 12.0],  # Knight at 12s
+        [0, 0, 12.0],  # Knight at 12s
         [0, 0, 18.0],  # Goblin at 18s
         [0, 0, 24.0],  # Goblin at 24s
-        [0, 1, 30.0],  # Knight at 30s
+        [0, 0, 30.0],  # Knight at 30s
         [0, 0, 36.0],  # Goblin at 36s
         
         # Path 1 enemies
         [1, 0, 3.0],   # Goblin at 3s
         [1, 0, 9.0],   # Goblin at 9s
         [1, 0, 15.0],  # Goblin at 15s
-        [1, 1, 21.0],  # Knight at 21s
+        [1, 0, 21.0],  # Knight at 21s
         [1, 0, 27.0],  # Goblin at 27s
-        [1, 1, 33.0],  # Knight at 33s
+        [1, 0, 33.0],  # Knight at 33s
         [1, 0, 39.0],  # Goblin at 39s
     ]
 ]
@@ -520,7 +520,6 @@ func show_win_screen() -> void:
     
     # Get last completed level from Config
     var last_completed = Config.user_data.get("last_completed_level", 0)
-    print("last completed", last_completed)
     # Only update last_completed_level if the current level is newer
     var update_last_completed = false
     
@@ -530,17 +529,43 @@ func show_win_screen() -> void:
     if current_level_num > last_completed:
         update_last_completed = true
     
-    # Create the update data dictionary
+    print("hanau")
+    print("Current level number: ", current_level_num)
+    print("Last completed level number: ", last_completed)
+    print("Update last completed level: ", update_last_completed)
+    
+    # DIRECTLY update specific fields to force server save
+    # Update money first
+    var new_money = Config.user_data.get("money", 0) + 100
+    Config.user_data["money"] = new_money
+    
+    # Update level completion if necessary
+    if update_last_completed:
+        Config.user_data["last_completed_level"] = current_level_num
+    
+    # Create update data for server update
     var update_data = {
-        "money": Config.user_data.get("money", 0) + 100
+        "money": new_money
     }
     
-    # Only update last_completed_level if it's a newer level
     if update_last_completed:
-        update_data["last_completed_level"] = current_level
+        update_data["last_completed_level"] = current_level_num
     
-    # Update the user data in Config
+    # Connect to Config's user_data_updated signal to wait for update completion
+    if not Config.user_data_updated.is_connected(_on_win_update_completed):
+        Config.user_data_updated.connect(_on_win_update_completed, CONNECT_ONE_SHOT)
+    
+    # Force immediate server update
     Config.update_user_data(update_data)
+    
+    print("Waiting for server update to complete before showing win screen...")
+
+# Called when the server update is completed after winning
+func _on_win_update_completed():
+    print("Server update completed! Now showing win screen...")
+    
+    # Store the current level path for restart functionality
+    var current_level = scene_file_path
     
     # Pause the game
     get_tree().paused = true
@@ -554,4 +579,6 @@ func show_win_screen() -> void:
     
     # Add to canvas layer and animate in
     $CanvasLayer.add_child(win_instance)
-    print("Level complete! Money +100, progress saved.")
+    print("Level complete! Money +100, progress updated and saved to server.")
+
+    

@@ -11,7 +11,7 @@ signal health_changed(new_health)
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var timer := Timer.new()
 @onready var hp_bar = $HealthBar
-@onready var shield = $Shield
+@onready var shield = $Shield if has_node("Shield") else null
 
 var is_blocking : bool = false
 var path : Path2D
@@ -51,5 +51,9 @@ func cancel_incoming_damage(damage_amount: int) -> void:
 func check_shield() -> bool:
     if !shield:
         return false
-    else:
-        return shield.check_shield()
+    
+    # Check if shield node is valid and has the check_shield method
+    if !is_instance_valid(shield) or !shield.has_method("check_shield"):
+        return false
+    
+    return shield.check_shield()

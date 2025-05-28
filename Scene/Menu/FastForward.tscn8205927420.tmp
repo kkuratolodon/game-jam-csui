@@ -1,15 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cck2l66u4hsma"]
+[gd_scene load_steps=8 format=3 uid="uid://sbbtop4k32j8"]
 
-[ext_resource type="Script" uid="uid://j6spx4n6400g" path="res://Scene/Menu/settings.gd" id="1_0t264"]
-[ext_resource type="Texture2D" uid="uid://cm4hnucrrxlp7" path="res://Assets/UI/Menu/Level Select/table.png" id="1_r4i55"]
-[ext_resource type="Texture2D" uid="uid://cmcqoxpu2w3xh" path="res://Assets/UI/Menu/Level Select/rope_small.png" id="2_0upel"]
-[ext_resource type="Texture2D" uid="uid://bby3asmxwfve1" path="res://Assets/UI/Menu/Settings/button_restart.png" id="4_bj6dl"]
-[ext_resource type="Texture2D" uid="uid://drkvt5x3vkflo" path="res://Assets/UI/Menu/Level Select/button_left.png" id="4_igyhi"]
-[ext_resource type="Texture2D" uid="uid://c6rjoi4bqontf" path="res://Assets/UI/Menu/Level Select/button_close.png" id="9_notcq"]
-[ext_resource type="Texture2D" uid="uid://b2cbyo26louk2" path="res://Assets/UI/Menu/Settings/button_pause.png" id="18_68b2d"]
+[ext_resource type="Script" uid="uid://brysgq1nu85ib" path="res://Scene/Menu/fast_forward.gd" id="1_q3pdf"]
+[ext_resource type="Texture2D" uid="uid://cm4hnucrrxlp7" path="res://Assets/UI/Menu/Level Select/table.png" id="2_q0psn"]
+[ext_resource type="Texture2D" uid="uid://cmcqoxpu2w3xh" path="res://Assets/UI/Menu/Level Select/rope_small.png" id="3_vpupl"]
+[ext_resource type="Texture2D" uid="uid://drkvt5x3vkflo" path="res://Assets/UI/Menu/Level Select/button_left.png" id="4_ay4t2"]
+[ext_resource type="Texture2D" uid="uid://c6rjoi4bqontf" path="res://Assets/UI/Menu/Level Select/button_close.png" id="5_04pll"]
+[ext_resource type="Texture2D" uid="uid://bby3asmxwfve1" path="res://Assets/UI/Menu/Settings/button_restart.png" id="6_5u44q"]
+[ext_resource type="Texture2D" uid="uid://c04njj8dk527f" path="res://Assets/UI/Menu/Level Select/button_quick.png" id="7_q3pdf"]
 
-[node name="Settings" type="Node2D"]
-script = ExtResource("1_0t264")
+[node name="FastForward" type="Node2D"]
+script = ExtResource("1_q3pdf")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -42,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_r4i55")
+texture = ExtResource("2_q0psn")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer2/SettingPanel"]
@@ -51,7 +51,7 @@ offset_left = 98.0
 offset_top = -258.0
 offset_right = 125.0
 offset_bottom = 57.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -61,7 +61,7 @@ offset_left = 99.0
 offset_top = -379.0
 offset_right = 126.0
 offset_bottom = -103.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -71,7 +71,7 @@ offset_left = 99.0
 offset_top = -467.0
 offset_right = 126.0
 offset_bottom = -191.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -81,7 +81,7 @@ offset_left = 246.5
 offset_top = -366.5
 offset_right = 273.5
 offset_bottom = -90.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -91,7 +91,7 @@ offset_left = 246.5
 offset_top = -454.5
 offset_right = 273.5
 offset_bottom = -178.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -101,7 +101,7 @@ offset_left = 99.0
 offset_top = -581.0
 offset_right = 126.0
 offset_bottom = -305.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -111,7 +111,7 @@ offset_left = 99.0
 offset_top = -669.0
 offset_right = 126.0
 offset_bottom = -393.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -121,7 +121,7 @@ offset_left = 246.5
 offset_top = -568.5
 offset_right = 273.5
 offset_bottom = -292.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -131,7 +131,7 @@ offset_left = 246.5
 offset_top = -656.5
 offset_right = 273.5
 offset_bottom = -380.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -141,7 +141,7 @@ offset_left = 98.0
 offset_top = -712.0
 offset_right = 125.0
 offset_bottom = -436.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -151,7 +151,7 @@ offset_left = 98.0
 offset_top = -800.0
 offset_right = 125.0
 offset_bottom = -524.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -161,7 +161,7 @@ offset_left = 245.5
 offset_top = -699.5
 offset_right = 272.5
 offset_bottom = -423.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -171,7 +171,7 @@ offset_left = 245.5
 offset_top = -787.5
 offset_right = 272.5
 offset_bottom = -511.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -181,7 +181,7 @@ offset_left = 98.0
 offset_top = -822.0
 offset_right = 125.0
 offset_bottom = -546.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -191,7 +191,7 @@ offset_left = 98.0
 offset_top = -910.0
 offset_right = 125.0
 offset_bottom = -634.0
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -201,7 +201,7 @@ offset_left = 245.5
 offset_top = -809.5
 offset_right = 272.5
 offset_bottom = -533.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -211,7 +211,7 @@ offset_left = 245.5
 offset_top = -897.5
 offset_right = 272.5
 offset_bottom = -621.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -221,7 +221,7 @@ offset_left = 247.5
 offset_top = -256.5
 offset_right = 274.5
 offset_bottom = 58.5
-texture = ExtResource("2_0upel")
+texture = ExtResource("3_vpupl")
 expand_mode = 4
 stretch_mode = 1
 
@@ -238,7 +238,7 @@ offset_right = -24.5
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_igyhi")
+texture_normal = ExtResource("4_ay4t2")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -255,7 +255,7 @@ offset_right = 206.5
 offset_bottom = -85.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("9_notcq")
+texture_normal = ExtResource("5_04pll")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -272,16 +272,16 @@ offset_right = 116.5
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_bj6dl")
+texture_normal = ExtResource("6_5u44q")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="SettingsButton" type="TextureButton" parent="CanvasLayer2"]
-offset_left = 1055.0
+offset_left = 973.0
 offset_top = 27.0
-offset_right = 1116.0
+offset_right = 1034.0
 offset_bottom = 87.0
-texture_normal = ExtResource("18_68b2d")
+texture_normal = ExtResource("7_q3pdf")
 ignore_texture_size = true
 stretch_mode = 0
 
